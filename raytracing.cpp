@@ -45,6 +45,7 @@ int testrun()
         std::cout << hit << std::endl;
     }
 
+    mesh -> ToSurface();
     delete tracer;
     
 

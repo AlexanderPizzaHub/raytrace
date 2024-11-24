@@ -3,6 +3,7 @@
 
 #include "../constants.hpp"
 #include "../geometry/objects.hpp"
+#include "../geometry/marchingcube.hpp"
 #include <string>
 #include <vector>
 
@@ -10,6 +11,7 @@ class Ray;
 class Line;
 class Square;
 class GridCartesian;
+class MarchingCube2D;
 // 组件还是继承？ 组件会导致多一层跳转
 class RefArea
 {
@@ -55,7 +57,7 @@ class Mesh
 
         // related to refarea construction
         bool IdentifyEffectiveCube(Square& square);
-        void MarchingCube(Square& square);
+        void SetMarchingCube(Square& square);
 
         //void ConstructRefArea(Square& square);
 
@@ -66,9 +68,13 @@ class Mesh
         RefArea* getRefArea(label index);
         label getnumRefAreas();
 
+        void ToSurface(); // convert the mesh to surface and save it to file
+
+
     private:
         std::string inputpath_;
         std::string outputpath_;
+        MarchingCube2D* marchingcube_;
 
         label nx, ny;
         std::vector<Square*> squareptrs_;

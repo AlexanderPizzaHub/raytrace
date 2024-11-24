@@ -1,6 +1,19 @@
 #include "objects.hpp"
 #include <cmath>
 
+#pragma region GridCartesian
+GridCartesian::GridCartesian(scalar x_, scalar y_, scalar phi_)
+{
+    x = x_;
+    y = y_;
+    phi = phi_;
+}
+
+GridCartesian::~GridCartesian()
+{
+}
+
+
 #pragma region Line
 Line::Line(Line& line)
 {
@@ -82,41 +95,41 @@ scalar Line::Intersect(Ray& ray)
     }
 }
 
+void Line::getendpoints(Const::vecDd& start, Const::vecDd& end)
+{
+    // NEED DOUBLE CHECK
+    start[0] = center_[0] - radius_ * normal_[1];
+    start[1] = center_[1] + radius_ * normal_[0];
+    end[0] = center_[0] + radius_ * normal_[1];
+    end[1] = center_[1] - radius_ * normal_[0];
+}
+
 #pragma endregion
 
 #pragma region Square
 Square::Square(Square& square)
 {
-    label* lowerleft = square.getlowerleft();
-    label* upperright = square.getupperright();
-    std::copy(lowerleft, lowerleft + Const::D, lowerleft_);
-    std::copy(upperright, upperright + Const::D, upperright_);
-
-    delete lowerleft;
-    delete upperright;
+    //TODO
 }
 
 Square::Square(Const::vecDi lowerleft, Const::vecDi upperright)
 {
-    std::copy(lowerleft, lowerleft + Const::D, lowerleft_);
-    std::copy(upperright, upperright + Const::D, upperright_);
+    // TOFO
+}
+
+Square::Square(GridCartesian* ul, GridCartesian* ll, GridCartesian* lr, GridCartesian* ur)
+{
+    linked_grids_.emplace_back(ul);
+    linked_grids_.emplace_back(ll);
+    linked_grids_.emplace_back(lr);
+    linked_grids_.emplace_back(ur);
+
 }
 
 Square::~Square()
 {
-    delete[] lowerleft_;
-    delete[] upperright_;
 }
 
-label* Square::getlowerleft()
-{
-    return lowerleft_;
-}
-
-label* Square::getupperright()
-{
-    return upperright_;
-}
 
 scalar Square::Intersect(Ray& ray)
 {

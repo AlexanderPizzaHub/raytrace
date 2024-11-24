@@ -13,11 +13,12 @@ Objects that are possibly used for ray tracing provides related functions.
 
 class RefArea;
 
-struct Grid
+class Grid
 {
     /*
     0D object, for unstructured grids.
     */
+    public:
     scalar coordX;
     scalar coordY;
     label index;
@@ -25,14 +26,18 @@ struct Grid
     scalar phi;
 };
 
-struct GridCartesian
+class GridCartesian
 {
     /*
     0D object. Assert Cartesian mesh, the grid is indexed by i,j.
     */
-   label x;
-   label y;
+   public:
+   scalar x;
+   scalar y;
    scalar phi;
+
+    GridCartesian(scalar x, scalar y, scalar phi);
+    ~GridCartesian();
 };
 
 class Square
@@ -45,21 +50,16 @@ class Square
 
     Square(Square& square);
     //Square(Const::vecDd lowerleft, Const::vecDd upperright);
-    Square(Const::vecDi lowerleft, Const::vecDi upperright);
+    Square(Const::vecDi lowerleft, Const::vecDi upperright); // initialize by index 
+    Square(GridCartesian* ul, GridCartesian* ll, GridCartesian* lr, GridCartesian* ur); // initialize by grid pointers
     ~Square();
 
     scalar Intersect(Ray& ray); //implement ray-square intersection. Return hit time
 
     // set the linked objects: as reference area, square may be linked with certain grids or cells
-    label linked_upperleft_grid_index_; 
+    //label linked_upperleft_grid_index_; 
+    std::vector<GridCartesian*> linked_grids_; // 0: upperleft, 1: lowerleft, 2: lowerright, 3: upperright
     std::vector<RefArea*> linked_refareas_; 
-
-    label* getlowerleft();
-    label* getupperright();
-
-    private:
-    Const::vecDi lowerleft_;
-    Const::vecDi upperright_;
 
 };
 
@@ -84,6 +84,8 @@ class Line
     scalar* getcenter();
     scalar getradius();
     scalar* getnormal();
+
+    void getendpoints(Const::vecDd& start, Const::vecDd& end);
 
     private:
     Const::vecDd center_;

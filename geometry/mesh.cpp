@@ -62,6 +62,7 @@ Mesh::Mesh(std::string inputpath, std::string outputpath)
 {
     inputpath_ = inputpath;
     outputpath_ = outputpath;
+    marchingcube_ = new MarchingCube2D();
 }
 Mesh::~Mesh()
 {
@@ -115,7 +116,7 @@ void Mesh::CreateTestMesh()
     nx = 5; ny = 5;
     for(label i=0; i< nx; i++)
     {
-        gridptrs_.emplace_back(new GridCartesian{i,0, 1.0});
+        gridptrs_.emplace_back(new GridCartesian{(scalar)i, 0, 1.0});
     }
     gridptrs_.emplace_back(new GridCartesian{0, 1, 1.0});
     gridptrs_.emplace_back(new GridCartesian{1, 1, 0.5});
@@ -125,7 +126,7 @@ void Mesh::CreateTestMesh()
 
     gridptrs_.emplace_back(new GridCartesian{0, 2, 0.5});
     gridptrs_.emplace_back(new GridCartesian{1, 2, 0.2});
-    gridptrs_.emplace_back(new GridCartesian{2, 2, 0.2});
+    gridptrs_.emplace_back(new GridCartesian{2, 2, -0.2});
     gridptrs_.emplace_back(new GridCartesian{3, 2, 0.2});
     gridptrs_.emplace_back(new GridCartesian{4, 2, 0.5});
 
@@ -142,7 +143,7 @@ void Mesh::CreateTestMesh()
     gridptrs_.emplace_back(new GridCartesian{4, 4, 0.2});
 }
 
-// Link: line(refarea) -> square(cube) -> grid(mesh) 
+// Link: line(refarea) <- square(cube) <- grid(mesh) 
 void Mesh::ConstructTopo()
 {
     // square -> grid
@@ -151,9 +152,8 @@ void Mesh::ConstructTopo()
         for(label j=0; j<ny-1; j++)
         {
             //std::cout << i << " " << j << std::endl;
-            Square* squareptr = new Square(Const::vecDi{i+1,j}, Const::vecDi{i,j+1});
+            Square* squareptr = new Square(gridptrs_[i*nx+j], gridptrs_[(i+1)*nx+j], gridptrs_[(i+1)*nx+j+1], gridptrs_[i*nx+j+1]);
             //std::cout << "Square constructed" << std::endl;
-            squareptr -> linked_upperleft_grid_index_ = i*ny + j;
             //std::cout << "Square linked" << std::endl;
             squareptrs_.push_back(squareptr);
             //std::cout << "Square pushed" << std::endl;
@@ -165,8 +165,7 @@ void Mesh::ConstructTopo()
 
 bool Mesh::IdentifyEffectiveCube(Square& square)
 {
-    label upperleft = square.linked_upperleft_grid_index_;
-    bool ispos = gridptrs_[upperleft]->phi > 0;
+    bool ispos = square.linked_grids_[0]->phi > 0;
     //std::cout << gridptrs_[upperleft]->phi << " " 
     //<< gridptrs_[upperleft+1]->phi << " " <<
     // gridptrs_[upperleft+nx]->phi << " " <<
@@ -175,9 +174,9 @@ bool Mesh::IdentifyEffectiveCube(Square& square)
     if(ispos)
     {
         if(
-            gridptrs_[upperleft+1]->phi < 0 || 
-            gridptrs_[upperleft+nx]->phi < 0 || 
-            gridptrs_[upperleft+nx+1]->phi < 0)
+            square.linked_grids_[1]->phi < 0 || 
+            square.linked_grids_[2]->phi < 0 || 
+            square.linked_grids_[3]->phi < 0)
         {
             return true;
         }
@@ -189,9 +188,9 @@ bool Mesh::IdentifyEffectiveCube(Square& square)
     else
     {
         if(
-            gridptrs_[upperleft+1]->phi > 0 || 
-            gridptrs_[upperleft+nx]->phi > 0 || 
-            gridptrs_[upperleft+nx+1]->phi > 0)
+            square.linked_grids_[1]->phi > 0 || 
+            square.linked_grids_[2]->phi > 0 || 
+            square.linked_grids_[3]->phi > 0)
         {
             return true;
         }
@@ -203,14 +202,14 @@ bool Mesh::IdentifyEffectiveCube(Square& square)
 }
 
 
-void Mesh::MarchingCube(Square& square)
+void Mesh::SetMarchingCube(Square& square)
 {
-    Line* line = new Line(Const::vecDd{-10,-10}, Const::vecDd{10,10}); //TODO
-    //std::unique_ptr<Line> line(new Line(Const::vecDd{0.5,0.5}, 0.5, Const::vecDd{0.0,1.0}));
+    marchingcube_->SetRefArea(square);
     
-    line -> linked_objects_.emplace_back(&square);
-    RefArea* refarea = new RefArea(line);
-    refareaptrs_.emplace_back(refarea);
+    for(auto &refarea : square.linked_refareas_)
+    {
+        refareaptrs_.emplace_back(refarea);
+    }
 }
 
 void Mesh::ConstructAllRefAreas()
@@ -222,7 +221,7 @@ void Mesh::ConstructAllRefAreas()
         //std::cout << gridptrs_[square->linked_upperleft_grid_index_]->phi << std::endl;
         if(IdentifyEffectiveCube(*square))
         {
-            MarchingCube(*square);
+            SetMarchingCube(*square);
         }
     }
 }
@@ -235,6 +234,24 @@ RefArea* Mesh::getRefArea(label index)
 label Mesh::getnumRefAreas()
 {
     return refareaptrs_.size();
+}
+
+void Mesh::ToSurface()
+{
+    std::ofstream ofs(outputpath_,std::ios::trunc);
+    Const::vecDd start;
+    Const::vecDd end;
+    for(auto &refarea : refareaptrs_)
+    {
+        refarea->get_object()->getendpoints(start, end);
+        ofs << start[0] << " " 
+            << end[0] << " "
+            << start[1] << " " 
+            << end[1] << " " 
+            << refarea->getweightstore() 
+        << std::endl;
+    }
+    ofs.close();
 }
 
 #pragma endregion

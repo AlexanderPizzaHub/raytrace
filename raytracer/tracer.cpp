@@ -20,10 +20,10 @@ void RaySampler::SampleDir(Const::vecDd &dir)
     scalar theta = distribution(generator) * 2 * M_PI;
     dir[0] = cos(theta);
     dir[1] = sin(theta);
-    if(dir[1]>0)
-    {
-        dir[1] = -dir[1];
-    }
+    //if(dir[1]>0)
+    //{
+    //    dir[1] = -dir[1];
+    //}
 }
 
 #pragma endregion
@@ -68,7 +68,7 @@ Ray Tracer::InitNewRay()
 {
     Const::vecDd pos;
     Const::vecDd dir;
-    splr_.SamplePos(Const::vecDd{0.0,1.0}, Const::vecDd{0.0,1.0}, pos);
+    splr_.SamplePos(Const::vecDd{5.0,6.0}, Const::vecDd{5.0,6.0}, pos);
     splr_.SampleDir(dir);
     Ray ray(pos, dir, 1.0);
     return ray;

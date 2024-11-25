@@ -17,7 +17,7 @@ int testrun()
     {
         RefArea* refarea = mesh -> getRefArea(i);
         auto center = refarea->get_object()->getcenter();
-        //std::cout << center[0] << " "<<center[1] << std::endl;
+        std::cout << center[0] << " "<<center[1] << std::endl;
     }
     //delete mesh;
    
@@ -35,9 +35,12 @@ int testrun()
     */
     
     Tracer* tracer = new Tracer(mesh);
-    //std::cout<<"finish 111"<<std::endl;
-    tracer -> CastAllRays(1000);
-    ///std::cout << "finish 222" << std::endl;
+    Const::vecDd xbound{2.0,3.0}; Const::vecDd ybound{7.0,7.0};
+    RaySampler* splrptr = new RaySampler(xbound,ybound);
+    tracer->AddNewSource(splrptr);
+    std::cout<<"finish 111"<<std::endl;
+    tracer -> CastAllRays(100000,0);
+    std::cout << "finish 222" << std::endl;
     for(label i=0; i<mesh -> getnumRefAreas(); i++)
     {
         RefArea* refarea = mesh -> getRefArea(i);

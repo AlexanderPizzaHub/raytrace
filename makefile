@@ -1,5 +1,5 @@
 CC = g++
-PROM = raytracer.exe
+PROM = raytracer.o
 OBJ = raytracing.o raytracer/ray.o raytracer/tracer.o geometry/mesh.o geometry/objects.o geometry/marchingcube.o
 CFLAGS = -Wall -std=c++11
 

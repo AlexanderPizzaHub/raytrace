@@ -36,7 +36,7 @@ class GridCartesian
    scalar y;
    scalar phi;
 
-    GridCartesian(scalar x, scalar y, scalar phi);
+    GridCartesian(scalar x_, scalar y_, scalar phi_);
     ~GridCartesian();
 };
 

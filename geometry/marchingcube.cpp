@@ -7,7 +7,7 @@
     每个函数接收refareaptrlist_，产生的新参考面加入到refareaptrlist_中
     */
 
-scalar interpolaant_zero(scalar pos0, scalar pos1, scalar phi0, scalar phi1)
+scalar interpolant_zero(scalar pos0, scalar pos1, scalar phi0, scalar phi1)
 {
     scalar zero = pos0 - phi0 * (pos1 - pos0) / (phi1 - phi0) ;
     //std::cout <<"check: " << pos1-pos0 << " "<<phi1 - phi0<< std::endl;
@@ -35,10 +35,10 @@ void case0001_(Square& square)
     std::cout <<"case0001" << std::endl;
     start[1] = square.linked_grids_[3]->y;
     // assert grid size =1 
-    start[0] = interpolaant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
+    start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
 
     end[0] = square.linked_grids_[2]->x;
-    end[1] = interpolaant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, square.linked_grids_[2]->phi, square.linked_grids_[3]->phi);
+    end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, square.linked_grids_[2]->phi, square.linked_grids_[3]->phi);
 
     Line* line = new Line(start, end); // change normal by swapping x and y
 
@@ -60,11 +60,11 @@ void case0010_(Square& square)
 
     std::cout<<"case0010" << std::endl;
     // assert grid size =1 
-    start[0] = interpolaant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
+    start[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
     start[1] = square.linked_grids_[2]->y;
 
     end[0] = square.linked_grids_[2]->x;
-    end[1] = interpolaant_zero(square.linked_grids_[3]->y, square.linked_grids_[2]->y, square.linked_grids_[3]->phi, square.linked_grids_[2]->phi);
+    end[1] = interpolant_zero(square.linked_grids_[3]->y, square.linked_grids_[2]->y, square.linked_grids_[3]->phi, square.linked_grids_[2]->phi);
 
     Line* line = new Line(start, end); 
 
@@ -86,11 +86,11 @@ void case0011_(Square& square)
 
     std::cout << "case0011" << std::endl;
     // assert grid size =1 
-    start[0] = interpolaant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
+    start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
     start[1] = square.linked_grids_[3]->y;
 
 
-    end[0] = interpolaant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
+    end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
     end[1] = square.linked_grids_[2]->y;
     
     Line* line = new Line(start, end); 
@@ -114,9 +114,9 @@ void case0100_(Square& square)
     std::cout << "case0100" << std::endl;
     // assert grid size =1 
     start[0] = square.linked_grids_[0]->x;
-    start[1] = interpolaant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
+    start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
     
-    end[0] = interpolaant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
+    end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
     end[1] = square.linked_grids_[1]->y;
     
 
@@ -153,11 +153,11 @@ void case0110_(Square& square)
 
     Const::vecDd start;
     Const::vecDd end;
-    start[1] = interpolaant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
+    start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
     start[0] =square.linked_grids_[0]->x;
     
 
-    end[1] = interpolaant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, square.linked_grids_[2]->phi, square.linked_grids_[3]->phi);
+    end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, square.linked_grids_[2]->phi, square.linked_grids_[3]->phi);
     end[0] = square.linked_grids_[2]->x;
     
     Line* line = new Line(start, end); 
@@ -181,11 +181,11 @@ void case0111_(Square& square)
 
     Const::vecDd start;
     Const::vecDd end;
-    start[0] = interpolaant_zero(square.linked_grids_[0]->x, square.linked_grids_[3]->x, square.linked_grids_[0]->phi, square.linked_grids_[3]->phi);
+    start[0] = interpolant_zero(square.linked_grids_[0]->x, square.linked_grids_[3]->x, square.linked_grids_[0]->phi, square.linked_grids_[3]->phi);
     start[1] =square.linked_grids_[0]->y;
     
     end[0] = square.linked_grids_[1]->x;
-    end[1] = interpolaant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
+    end[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
     
 
     Line* line = new Line(start, end); 
@@ -209,11 +209,11 @@ void case1000_(Square& square)
 
     Const::vecDd start;
     Const::vecDd end;
-    start[0] = interpolaant_zero(square.linked_grids_[0]->x, square.linked_grids_[3]->x, square.linked_grids_[0]->phi, square.linked_grids_[3]->phi);
+    start[0] = interpolant_zero(square.linked_grids_[0]->x, square.linked_grids_[3]->x, square.linked_grids_[0]->phi, square.linked_grids_[3]->phi);
     start[1] =square.linked_grids_[0]->y;
     
     end[0] = square.linked_grids_[1]->x;
-    end[1] = interpolaant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
+    end[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
     
 
     Line* line = new Line(start, end); 
@@ -238,10 +238,10 @@ void case1001_(Square& square)
     Const::vecDd end;
 
     start[0] =square.linked_grids_[0]->x;
-    start[1] = interpolaant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
+    start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
     
 
-    end[1] = interpolaant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, square.linked_grids_[2]->phi, square.linked_grids_[3]->phi);
+    end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, square.linked_grids_[2]->phi, square.linked_grids_[3]->phi);
     end[0] = square.linked_grids_[2]->x;
     
     Line* line = new Line(start, end); 
@@ -279,9 +279,9 @@ void case1011_(Square& square)
 
     // assert grid size =1 
     start[0] = square.linked_grids_[0]->x;
-    start[1] = interpolaant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
+    start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
     
-    end[0] = interpolaant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
+    end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
     end[1] = square.linked_grids_[1]->y;
     
 
@@ -305,11 +305,11 @@ void case1100_(Square& square)
     Const::vecDd start;
     Const::vecDd end;
 
-    start[0] = interpolaant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
+    start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
     start[1] = square.linked_grids_[3]->y;
 
 
-    end[0] = interpolaant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
+    end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
     end[1] = square.linked_grids_[2]->y;
     
     Line* line = new Line(start, end); 
@@ -333,11 +333,11 @@ void case1101_(Square& square)
     Const::vecDd end;
 
     // assert grid size =1 
-    start[0] = interpolaant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
+    start[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
     start[1] = square.linked_grids_[2]->y;
 
     end[0] = square.linked_grids_[2]->x;
-    end[1] = interpolaant_zero(square.linked_grids_[3]->y, square.linked_grids_[2]->y, square.linked_grids_[3]->phi, square.linked_grids_[2]->phi);
+    end[1] = interpolant_zero(square.linked_grids_[3]->y, square.linked_grids_[2]->y, square.linked_grids_[3]->phi, square.linked_grids_[2]->phi);
 
     Line* line = new Line(start, end); 
 
@@ -360,10 +360,10 @@ void case1110_(Square& square)
     Const::vecDd end;
     start[1] = square.linked_grids_[3]->y;
     // assert grid size =1 
-    start[0] = interpolaant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
+    start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
 
     end[0] = square.linked_grids_[2]->x;
-    end[1] = interpolaant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, square.linked_grids_[2]->phi, square.linked_grids_[3]->phi);
+    end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, square.linked_grids_[2]->phi, square.linked_grids_[3]->phi);
 
     Line* line = new Line(start, end); // change normal by swapping x and y
 

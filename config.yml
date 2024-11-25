@@ -1,0 +1,15 @@
+
+ray:
+  direction: default 
+
+geometry:
+  source_plane_bbox: [[0.0,5.0],[1.95,2.05]] #[[x_min,x_max],[y_min,y_max]]
+
+  substrate_bbox: [[0,10],[-10,0]] # [[x_min,x_max],[y_min,y_max]]
+
+  boundary_condition: periodic # not implemented yet
+
+process:
+
+  source_flux: 1e16 # m^-2s^-1
+  process_time: 30 #s

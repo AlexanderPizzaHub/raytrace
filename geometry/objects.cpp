@@ -58,8 +58,8 @@ Line::Line(Const::vecDd start, Const::vecDd end)
 
 Line::~Line()
 {
-    delete[] center_;
-    delete[] normal_;
+    //delete[] center_;
+    //delete[] normal_;
 }
 
 scalar* Line::getcenter()

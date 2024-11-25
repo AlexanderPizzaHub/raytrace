@@ -2,21 +2,27 @@
 #include <iostream>
 
 #pragma region RaySampler
-RaySampler::RaySampler() : distribution(0.0,1.0)
+RaySampler::RaySampler(Const::vecDd &xbound,Const::vecDd &ybound) : distribution(0.0,1.0)
 {
     std::random_device rd;
     generator.seed(rd());
+    for(int i = 0;i<Const::D;i++)
+    {
+    xbound_[i] = xbound[i];
+    ybound_[i] = ybound[i];
+    }
 };
 
 RaySampler::~RaySampler() {};
 
-void RaySampler::SamplePos(const Const::vecDd &xBound,const Const::vecDd &yBound, Const::vecDd &pos)
+void RaySampler::SamplePos(Const::vecDd &pos)
 {
-    pos[0] = distribution(generator) * (xBound[1] - xBound[0]) + xBound[0];
-    pos[1] = distribution(generator) * (yBound[1] - yBound[0]) + yBound[0];
+    pos[0] = distribution(generator) * (xbound_[1] - xbound_[0]) + xbound_[0];
+    pos[1] = distribution(generator) * (ybound_[1] - ybound_[0]) + ybound_[0];
 }
 void RaySampler::SampleDir(Const::vecDd &dir)
 {
+    //default is isotropic
     scalar theta = distribution(generator) * 2 * M_PI;
     dir[0] = cos(theta);
     dir[1] = sin(theta);
@@ -59,17 +65,32 @@ void RayOperator::UpdatePos(Ray &ray, const scalar dt)
 #pragma region Tracer
 Tracer::Tracer(Mesh* meshptr){
 meshptr_ = meshptr;
-splr_ = RaySampler();
 optr_ = RayOperator();
+
 };
 Tracer::~Tracer(){};
 
-Ray Tracer::InitNewRay()
+Ray Tracer::InitNewRay(RaySampler* splrptr)
 {
     Const::vecDd pos;
     Const::vecDd dir;
-    splr_.SamplePos(Const::vecDd{5.0,6.0}, Const::vecDd{5.0,6.0}, pos);
-    splr_.SampleDir(dir);
+    splrptr -> SamplePos(pos);
+    splrptr -> SampleDir(dir);
+    Ray ray(pos, dir, 1.0);
+    return ray;
+}
+
+void Tracer::AddNewSource(RaySampler* splrptr)
+{
+    splr_.emplace_back(splrptr);
+}
+
+Ray Tracer::InitNewRay(label splrindex)
+{
+    Const::vecDd pos;
+    Const::vecDd dir;
+    splr_[splrindex] -> SamplePos(pos);
+    splr_[splrindex] -> SampleDir(dir);
     Ray ray(pos, dir, 1.0);
     return ray;
 }
@@ -102,12 +123,20 @@ void Tracer::ItsctAllRefAreas(Ray &ray, RefArea* &hitrefarea, scalar &dt)
     //std::cout << hitrefarea << "!!!" <<std::endl;
 }
 
-void Tracer::ReInit(Ray& ray, Const::vecDd& xBound, Const::vecDd& yBound)
+void Tracer::ReInit(Ray& ray, RaySampler* splrptr)
 {
     ray.time_ = 0;
     ray.weight_ = 1;
-    splr_.SamplePos(xBound, yBound, ray.pos_);
-    splr_.SampleDir(ray.dir_);
+    splrptr -> SamplePos(ray.pos_);
+    splrptr -> SampleDir(ray.dir_);
+    ray.isValid_ = true;
+}
+void Tracer::ReInit(Ray& ray, label splrindex)
+{
+    ray.time_ = 0;
+    ray.weight_ = 1;
+    splr_[splrindex] -> SamplePos(ray.pos_);
+    splr_[splrindex] -> SampleDir(ray.dir_);
     ray.isValid_ = true;
 }
 
@@ -127,11 +156,16 @@ scalar Tracer::CalcDWeight(Ray &ray, RefArea &RefArea)
 void Tracer::UpdateAfterHit(Ray &ray, RefArea &refarea,scalar &dt)
 {
     scalar weightdecay = CalcDWeight(ray, refarea);
-    
     optr_.Decay(ray, weightdecay);
     optr_.UpdatePos(ray, dt);
     //std::cout << weightdecay << std::endl;
     refarea.WeightedHit(weightdecay);
+    Const::vecDd normal;
+    scalar* start = refarea.getnormal();
+    normal[0] = start[0];
+    normal[1] = start[1];
+
+    optr_.Reflect(ray, normal);
     //std::cout << "hit ..." << std::endl;
 }
 
@@ -151,7 +185,6 @@ void Tracer::CastOneRay(Ray &ray)
             //std::cout<< "hit!!!" << std::endl;
             //std::cout << hitRefArea << std::endl;
             //std::cout << hitRefArea->getweightstore() << std::endl;
-
             UpdateAfterHit(ray, *hitRefArea, dt);
             
         }
@@ -171,7 +204,7 @@ void Tracer::CastOneRay(Ray &ray)
     //std::cout << "Ray finished" << std::endl;
 }
 
-void Tracer::CastAllRays(label numrays)
+void Tracer::CastAllRays(label numrays, label sourceID)
 {
     label i;
     // pragma OMP here?
@@ -180,9 +213,10 @@ void Tracer::CastAllRays(label numrays)
     //Const::vecDd ybound{0.0,1.0};
     for(i = 0; i < numrays; i++)
     {   
-        Ray ray = InitNewRay();
+        std::cout << "Ray initializing" << std::endl;
+        Ray ray = InitNewRay(sourceID);
         //Tracer::ReInit(ray, xbound, ybound);
-        //std::cout << "Ray initialized" << std::endl;
+        std::cout << "Ray initialized" << std::endl;
         CastOneRay(ray);
         // delete ray?
     }

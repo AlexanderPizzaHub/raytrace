@@ -50,6 +50,11 @@ void RefArea::set_object(Line *lineptr)
     lineptr_ = lineptr;
 }
 
+scalar* RefArea::getnormal()
+{
+    return lineptr_->getnormal();
+}
+
 Line* RefArea::get_object()
 {
     return lineptr_;
@@ -116,31 +121,31 @@ void Mesh::CreateTestMesh()
     nx = 5; ny = 5;
     for(label i=0; i< nx; i++)
     {
-        gridptrs_.emplace_back(new GridCartesian{(scalar)i, 0, 1.0});
+        gridptrs_.emplace_back(new GridCartesian((scalar)i, 0.0, 1.0));
     }
-    gridptrs_.emplace_back(new GridCartesian{0, 1, 1.0});
-    gridptrs_.emplace_back(new GridCartesian{1, 1, 0.5});
-    gridptrs_.emplace_back(new GridCartesian{2, 1, 0.5});
-    gridptrs_.emplace_back(new GridCartesian{3, 1, 0.5});
-    gridptrs_.emplace_back(new GridCartesian{4, 1, 1.0});
+    gridptrs_.emplace_back(new GridCartesian(0.0, 1.0, 1.0));
+    gridptrs_.emplace_back(new GridCartesian(1.0, 1.0, 0.5));
+    gridptrs_.emplace_back(new GridCartesian(2.0, 1.0, 0.5));
+    gridptrs_.emplace_back(new GridCartesian(3.0, 1.0, 0.5));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 1.0, 1.0));
 
-    gridptrs_.emplace_back(new GridCartesian{0, 2, 0.5});
-    gridptrs_.emplace_back(new GridCartesian{1, 2, 0.2});
-    gridptrs_.emplace_back(new GridCartesian{2, 2, -0.2});
-    gridptrs_.emplace_back(new GridCartesian{3, 2, 0.2});
-    gridptrs_.emplace_back(new GridCartesian{4, 2, 0.5});
+    gridptrs_.emplace_back(new GridCartesian(0.0, 2.0, 0.5));
+    gridptrs_.emplace_back(new GridCartesian(1.0, 2.0, 0.2));
+    gridptrs_.emplace_back(new GridCartesian(2.0, 2.0, -0.2));
+    gridptrs_.emplace_back(new GridCartesian(3.0, 2.0, 0.2));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 2.0, 0.5));
 
-    gridptrs_.emplace_back(new GridCartesian{0, 3, 0.2});
-    gridptrs_.emplace_back(new GridCartesian{1, 3, -0.2});
-    gridptrs_.emplace_back(new GridCartesian{2, 3, -0.2});
-    gridptrs_.emplace_back(new GridCartesian{3, 3, -0.2});
-    gridptrs_.emplace_back(new GridCartesian{4, 3, 0.2});
+    gridptrs_.emplace_back(new GridCartesian(0.0, 3.0, 0.2));
+    gridptrs_.emplace_back(new GridCartesian(1.0, 3.0, -0.2));
+    gridptrs_.emplace_back(new GridCartesian(2.0, 3.0, -0.2));
+    gridptrs_.emplace_back(new GridCartesian(3.0, 3.0, -0.2));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 3.0, 0.2));
 
-    gridptrs_.emplace_back(new GridCartesian{0, 4, 0.2});
-    gridptrs_.emplace_back(new GridCartesian{1, 4, -0.5});
-    gridptrs_.emplace_back(new GridCartesian{2, 4, -0.5});
-    gridptrs_.emplace_back(new GridCartesian{3, 4, -0.5});
-    gridptrs_.emplace_back(new GridCartesian{4, 4, 0.2});
+    gridptrs_.emplace_back(new GridCartesian(0.0, 4.0, 0.2));
+    gridptrs_.emplace_back(new GridCartesian(1.0, 4.0, -0.5));
+    gridptrs_.emplace_back(new GridCartesian(2.0, 4.0, -0.5));
+    gridptrs_.emplace_back(new GridCartesian(3.0, 4.0, -0.5));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 4.0, 0.2));
 }
 
 // Link: line(refarea) <- square(cube) <- grid(mesh) 

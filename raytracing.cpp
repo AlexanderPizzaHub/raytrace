@@ -1,6 +1,7 @@
 #include <iostream>
 #include "raytracer/tracer.hpp"
 #include "geometry/mesh.hpp"
+#include "constants.hpp"
 #include <chrono>
 
 int testrun()
@@ -36,9 +37,11 @@ int testrun()
     */
     
     Tracer* tracer = new Tracer(mesh);
-    Const::vecDd xbound = {2.0,3.0}; 
-    Const::vecDd ybound = {7.0,7.0};
-    RaySampler* splrptr = new RaySampler(xbound,ybound);
+
+    RaySampler* splrptr = new RaySampler(Const::source_plane_xbox,Const::source_plane_ybox);
+    //Const::vecDd xbound={0.0,5.0};
+    //Const::vecDd ybound={1.95,2.05};
+    //RaySampler* splrptr = new RaySampler(xbound,ybound);
     tracer->AddNewSource(splrptr);
     //std::cout<<"finish 111"<<std::endl;
     tracer -> CastAllRays(100000,0);

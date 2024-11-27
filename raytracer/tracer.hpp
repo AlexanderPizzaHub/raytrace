@@ -14,7 +14,7 @@ class RaySampler
         void SamplePos(Const::vecDd &pos);
         void SampleDir(Const::vecDd &dir);
 
-        RaySampler(Const::vecDd& xbound, Const::vecDd& ybound);
+        RaySampler(const Const::vecDd& xbound,const Const::vecDd& ybound);
         ~RaySampler();
 
     private:

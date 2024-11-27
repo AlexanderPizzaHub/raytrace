@@ -2,7 +2,7 @@
 #include <iostream>
 
 #pragma region RaySampler
-RaySampler::RaySampler(Const::vecDd &xbound,Const::vecDd &ybound) : distribution(0.0,1.0)
+RaySampler::RaySampler(const Const::vecDd &xbound,const Const::vecDd &ybound) : distribution(0.0,1.0)
 {
     std::random_device rd;
     generator.seed(rd());
@@ -100,9 +100,8 @@ void Tracer::ItsctAllRefAreas(Ray &ray, RefArea* &hitrefarea, scalar &dt)
     scalar dt_ = Const::MAXIMUM_LIGHT_TIME;
     label numRefAreas = meshptr_->getnumRefAreas();
     //std::cout << hitrefarea << "???" <<std::endl;
-    label i;
     label I = 0;
-    for(i = 0; i < numRefAreas; i++)
+    for(label i = 0; i < numRefAreas; i++)
     {
         // DOUBLE CHECK THIS PART
         scalar dt_temp = meshptr_->getRefArea(i) -> Intersect(ray);

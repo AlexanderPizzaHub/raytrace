@@ -18,8 +18,8 @@ class Ray
 
         void CheckValid();
 
-        Ray(Const::vecDd pos, Const::vecDd dir);
-        Ray(Const::vecDd pos, Const::vecDd dir, scalar weight);
+        Ray(Const::vecDd& pos, Const::vecDd& dir);
+        Ray(Const::vecDd& pos, Const::vecDd& dir, scalar weight);
         Ray();
 };
 

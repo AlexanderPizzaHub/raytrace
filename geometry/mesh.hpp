@@ -31,7 +31,7 @@ class RefArea
 
         void ResetWeight(); // reset the weight to 0
         
-        scalar* getnormal();
+        Const::vecDd getnormal();
         scalar getweightstore();
         
         void set_object(Line *lineptr);

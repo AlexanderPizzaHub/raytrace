@@ -79,12 +79,6 @@ Ray Tracer::InitNewRay(RaySampler* splrptr)
     Ray ray(pos, dir, 1.0);
     return ray;
 }
-
-void Tracer::AddNewSource(RaySampler* splrptr)
-{
-    splr_.emplace_back(splrptr);
-}
-
 Ray Tracer::InitNewRay(label splrindex)
 {
     Const::vecDd pos;
@@ -94,6 +88,12 @@ Ray Tracer::InitNewRay(label splrindex)
     Ray ray(pos, dir, 1.0);
     return ray;
 }
+
+void Tracer::AddNewSource(RaySampler* splrptr)
+{
+    splr_.emplace_back(splrptr);
+}
+
 
 void Tracer::ItsctAllRefAreas(Ray &ray, RefArea* &hitrefarea, scalar &dt)
 {
@@ -160,12 +160,8 @@ void Tracer::UpdateAfterHit(Ray &ray, RefArea &refarea,scalar &dt)
     optr_.UpdatePos(ray, dt);
     //std::cout << weightdecay << std::endl;
     refarea.WeightedHit(weightdecay);
-    Const::vecDd normal;
-    scalar* start = refarea.getnormal();
-    normal[0] = start[0];
-    normal[1] = start[1];
-
-    optr_.Reflect(ray, normal);
+    Const::vecDd normal = refarea.getnormal();
+    optr_.Reflect(ray, normal );
     //std::cout << "hit ..." << std::endl;
 }
 
@@ -213,10 +209,10 @@ void Tracer::CastAllRays(label numrays, label sourceID)
     //Const::vecDd ybound{0.0,1.0};
     for(i = 0; i < numrays; i++)
     {   
-        std::cout << "Ray initializing" << std::endl;
+        //std::cout << "Ray initializing" << std::endl;
         Ray ray = InitNewRay(sourceID);
         //Tracer::ReInit(ray, xbound, ybound);
-        std::cout << "Ray initialized" << std::endl;
+        //std::cout << "Ray initialized" << std::endl;
         CastOneRay(ray);
         // delete ray?
     }

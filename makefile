@@ -12,7 +12,7 @@ raytracing.o: raytracing.cpp constants.hpp
 ray.o: ray/ray.cpp ray/ray.hpp constants.hpp
 	$(CC) $(CFLAGS) -c ray/ray.cpp 
 
-tracer.o: raytracer/tracer.cpp raytracer/tracer.hpp constants.hpp 
+tracer.o: raytracer/tracer.cpp raytracer/tracer.hpp raytracer/ray.hpp constants.hpp 
 	$(CC) $(CFLAGS) -c raytracer/tracer.cpp
 
 mesh.o: geometry/mesh.cpp geometry/mesh.hpp constants.hpp

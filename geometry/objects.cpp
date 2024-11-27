@@ -17,35 +17,19 @@ GridCartesian::~GridCartesian()
 #pragma region Line
 Line::Line(Line& line)
 {
-    scalar* center = line.getcenter();
-    scalar* normal = line.getnormal();
-    //std::copy(center, center + Const::D, center_);
-    //std::copy(normal, normal + Const::D, normal_);
-    for(label i=0; i<Const::D; i++)
-    {
-        center_[i] = center[i];
-        normal_[i] = normal[i];
-    }
+    center_ = line.getcenter();
+    normal_ = line.getnormal();
     radius_ = line.getradius();
-
-    delete center;
-    delete normal;
 }
 
-Line::Line(Const::vecDd center, scalar radius, Const::vecDd normal)
+Line::Line(Const::vecDd& center, scalar radius, Const::vecDd& normal)
 {
-    //std::copy(center, center + Const::D, center_);
-    //std::copy(radius, radius + Const::D, radius_);
-    //std::copy(normal, normal + Const::D, normal_);  // 能不能赋地址？
-    for(label i=0; i<Const::D; i++)
-    {
-        center_[i] = center[i];
-        normal_[i] = normal[i];
-    }
+    center_ = center;
+    normal_ = normal;
     radius_ = radius;
 }
 
-Line::Line(Const::vecDd start, Const::vecDd end)
+Line::Line(Const::vecDd& start, Const::vecDd& end)
 {
     center_[0] = (start[0] + end[0]) / 2;
     center_[1] = (start[1] + end[1]) / 2;
@@ -62,7 +46,7 @@ Line::~Line()
     //delete[] normal_;
 }
 
-scalar* Line::getcenter()
+Const::vecDd Line::getcenter()
 {
     return center_;
 }
@@ -72,7 +56,7 @@ scalar Line::getradius()
     return radius_;
 }
 
-scalar* Line::getnormal()
+Const::vecDd Line::getnormal()
 {
     return normal_;
 }

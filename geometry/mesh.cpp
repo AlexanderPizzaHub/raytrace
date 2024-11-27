@@ -50,7 +50,7 @@ void RefArea::set_object(Line *lineptr)
     lineptr_ = lineptr;
 }
 
-scalar* RefArea::getnormal()
+Const::vecDd RefArea::getnormal()
 {
     return lineptr_->getnormal();
 }
@@ -70,24 +70,7 @@ Mesh::Mesh(std::string inputpath, std::string outputpath)
     marchingcube_ = new MarchingCube2D();
 }
 Mesh::~Mesh()
-{
-    // this part is wrong
-    /*
-    for(auto &square : squareptrs_)
-    {
-        delete &square;
-    }
-    std::cout << "Mesh destructed" << std::endl;
-    for(auto &refarea : refareaptrs_)
-    {
-        delete &refarea;
-    }
-    for(auto &grid : gridptrs_)
-    {
-        delete &grid;
-    }
-    */
-}
+{}
 
 void Mesh::CreateMeshFromTxt()
 {
@@ -96,7 +79,7 @@ void Mesh::CreateMeshFromTxt()
 
     if(!ifs.is_open())
     {
-        std::cout << "File not found" << std::endl;
+        //std::cout << "File not found" << std::endl;
         return;
     }
 
@@ -165,7 +148,7 @@ void Mesh::ConstructTopo()
             //std::cout << nx << " " << ny << std::endl;
         }
     }
-    std::cout << squareptrs_.size() << std::endl;
+    //std::cout << squareptrs_.size() << std::endl;
 }
 
 bool Mesh::IdentifyEffectiveCube(Square& square)

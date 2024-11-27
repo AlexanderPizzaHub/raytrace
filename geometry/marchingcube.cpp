@@ -32,7 +32,7 @@ void case0001_(Square& square)
     */
     Const::vecDd start;
     Const::vecDd end;
-    std::cout <<"case0001" << std::endl;
+    //std::cout <<"case0001" << std::endl;
     start[1] = square.linked_grids_[3]->y;
     // assert grid size =1 
     start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
@@ -58,7 +58,7 @@ void case0010_(Square& square)
     Const::vecDd start;
     Const::vecDd end;
 
-    std::cout<<"case0010" << std::endl;
+    //std::cout<<"case0010" << std::endl;
     // assert grid size =1 
     start[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, square.linked_grids_[1]->phi, square.linked_grids_[2]->phi);
     start[1] = square.linked_grids_[2]->y;
@@ -84,7 +84,7 @@ void case0011_(Square& square)
     Const::vecDd start;
     Const::vecDd end;
 
-    std::cout << "case0011" << std::endl;
+    //std::cout << "case0011" << std::endl;
     // assert grid size =1 
     start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, square.linked_grids_[3]->phi, square.linked_grids_[0]->phi);
     start[1] = square.linked_grids_[3]->y;
@@ -111,7 +111,7 @@ void case0100_(Square& square)
     Const::vecDd start;
     Const::vecDd end;
 
-    std::cout << "case0100" << std::endl;
+    ///std::cout << "case0100" << std::endl;
     // assert grid size =1 
     start[0] = square.linked_grids_[0]->x;
     start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, square.linked_grids_[0]->phi, square.linked_grids_[1]->phi);
@@ -149,7 +149,7 @@ void case0110_(Square& square)
     ----------
     */
     //TODO NEED TO DEAL AMBIGUOUITY
-    std::cout << "case0110" << std::endl;
+    //std::cout << "case0110" << std::endl;
 
     Const::vecDd start;
     Const::vecDd end;
@@ -176,7 +176,7 @@ void case0111_(Square& square)
     -----------
     */
     //TODO NEED TO DEAL AMBIGUOUITY
-    std::cout << "case0111" << std::endl;
+    //std::cout << "case0111" << std::endl;
 
 
     Const::vecDd start;
@@ -205,7 +205,7 @@ void case1000_(Square& square)
     ----------
     */
     //TODO
-    std::cout << "case1000" << std::endl;
+    //std::cout << "case1000" << std::endl;
 
     Const::vecDd start;
     Const::vecDd end;
@@ -233,7 +233,7 @@ void case1001_(Square& square)
     ----------
     */
     //TODO NEED TO DEAL AMBIGUOUITY
-    std::cout << "case1001" << std::endl;
+    //std::cout << "case1001" << std::endl;
     Const::vecDd start;
     Const::vecDd end;
 
@@ -273,7 +273,7 @@ void case1011_(Square& square)
     -----------
     */
     //TODO NEED TO DEAL AMBIGUOUITY
-    std::cout << "case1011" << std::endl;
+    //std::cout << "case1011" << std::endl;
     Const::vecDd start;
     Const::vecDd end;
 
@@ -301,7 +301,7 @@ void case1100_(Square& square)
     ----------
     */
     //TODO NEED TO DEAL AMBIGUOUITY
-    std::cout << "case1100" << std::endl;
+    //std::cout << "case1100" << std::endl;
     Const::vecDd start;
     Const::vecDd end;
 
@@ -328,7 +328,7 @@ void case1101_(Square& square)
     ----------
     */
     //TODO NEED TO DEAL AMBIGUOUITY
-    std::cout << "case1101" << std::endl;
+    //std::cout << "case1101" << std::endl;
     Const::vecDd start;
     Const::vecDd end;
 
@@ -355,7 +355,7 @@ void case1110_(Square& square)
     ----------
     */
     //TODO NEED TO DEAL AMBIGUOUITY
-    std::cout << "case1110" << std::endl;
+    //std::cout << "case1110" << std::endl;
     Const::vecDd start;
     Const::vecDd end;
     start[1] = square.linked_grids_[3]->y;
@@ -431,7 +431,7 @@ void MarchingCube2D::SetRefArea(Square& square)
     lr = (label)(square.linked_grids_[2]->phi < 0);
     ur = (label)(square.linked_grids_[3]->phi < 0);
 
-std::cout << ul << " " << ll << " " << lr << " " << ur << std::endl;
+//std::cout << ul << " " << ll << " " << lr << " " << ur << std::endl;
     label index = ul * 8 + ll * 4 + lr * 2 + ur;
 
     methodptrs_[index](square);

@@ -14,7 +14,7 @@ int testrun1()
 
     if(!ifs.is_open())
     {
-        std::cout << "File not found" << std::endl;
+        //std::cout << "File not found" << std::endl;
         return 1;
     }
 
@@ -52,14 +52,14 @@ int testrun2()
         curgrid = curgrid->next;
     }
     
-    std::cout << "start tracing..."<<std::endl;
+    //std::cout << "start tracing..."<<std::endl;
     geom.allRaysCast(100000);
-    std::cout << "end tracing..."<<std::endl;
+    //std::cout << "end tracing..."<<std::endl;
 
     curgrid = geom.L0head;
     while(curgrid != nullptr)
     {
-        std::cout << "grid index: "<<curgrid->index << " hit counts: "<< curgrid->refAreaPtr->hitCounter << std::endl;
+        //std::cout << "grid index: "<<curgrid->index << " hit counts: "<< curgrid->refAreaPtr->hitCounter << std::endl;
         curgrid = curgrid->next;
     }
 

@@ -72,8 +72,8 @@ class Line
     public:
 
     Line(Line& line);
-    Line(Const::vecDd start, Const::vecDd end);
-    Line(Const::vecDd center, scalar radius, Const::vecDd normal);
+    Line(Const::vecDd& start, Const::vecDd& end);
+    Line(Const::vecDd& center, scalar radius, Const::vecDd& normal);
     ~Line();
 
     scalar Intersect(Ray& ray); //implement ray-line intersection. Return hit time
@@ -81,9 +81,9 @@ class Line
     // set the linked objects: as reference area, line may be linked with certain grids or cells
     std::vector<Square*> linked_objects_;  // detailed in future
 
-    scalar* getcenter();
+    Const::vecDd getcenter();
     scalar getradius();
-    scalar* getnormal();
+    Const::vecDd getnormal();
 
     void getendpoints(Const::vecDd& start, Const::vecDd& end);
 

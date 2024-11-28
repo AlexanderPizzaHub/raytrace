@@ -94,29 +94,29 @@ void Mesh::CreateMeshFromTxt()
 void Mesh::CreateTestMesh()
 {
     /*
-    1 1 1 1 1
-    1 0.5 0.5 0.5 1
-    0.5 0.2 0.2 0.2 0.5 
+    1.5 1.5 1.5 1.5 1.5
+    1.5 0.5 0.5 0.5 1.5
+    1.2 0.2 -0.2 0.2 1.2 
     0.2 -0.2 -0.2 -0.2 0.2
-    0.2 -0.5 -0.5 -0.5 0.2  
+    0.2 -0.2 -1.2 -0.2 0.2  
     */
 
     nx = 5; ny = 5;
     for(label i=0; i< nx; i++)
     {
-        gridptrs_.emplace_back(new GridCartesian((scalar)i, 0.0, 1.0));
+        gridptrs_.emplace_back(new GridCartesian((scalar)i, 0.0, 1.5));
     }
-    gridptrs_.emplace_back(new GridCartesian(0.0, 1.0, 1.0));
+    gridptrs_.emplace_back(new GridCartesian(0.0, 1.0, 1.5));
     gridptrs_.emplace_back(new GridCartesian(1.0, 1.0, 0.5));
     gridptrs_.emplace_back(new GridCartesian(2.0, 1.0, 0.5));
     gridptrs_.emplace_back(new GridCartesian(3.0, 1.0, 0.5));
-    gridptrs_.emplace_back(new GridCartesian(4.0, 1.0, 1.0));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 1.0, 1.5));
 
-    gridptrs_.emplace_back(new GridCartesian(0.0, 2.0, 0.5));
+    gridptrs_.emplace_back(new GridCartesian(0.0, 2.0, 1.2));
     gridptrs_.emplace_back(new GridCartesian(1.0, 2.0, 0.2));
     gridptrs_.emplace_back(new GridCartesian(2.0, 2.0, -0.2));
     gridptrs_.emplace_back(new GridCartesian(3.0, 2.0, 0.2));
-    gridptrs_.emplace_back(new GridCartesian(4.0, 2.0, 0.5));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 2.0, 1.2));
 
     gridptrs_.emplace_back(new GridCartesian(0.0, 3.0, 0.2));
     gridptrs_.emplace_back(new GridCartesian(1.0, 3.0, -0.2));
@@ -126,7 +126,7 @@ void Mesh::CreateTestMesh()
 
     gridptrs_.emplace_back(new GridCartesian(0.0, 4.0, 0.2));
     gridptrs_.emplace_back(new GridCartesian(1.0, 4.0, -0.5));
-    gridptrs_.emplace_back(new GridCartesian(2.0, 4.0, -0.5));
+    gridptrs_.emplace_back(new GridCartesian(2.0, 4.0, -1.2));
     gridptrs_.emplace_back(new GridCartesian(3.0, 4.0, -0.5));
     gridptrs_.emplace_back(new GridCartesian(4.0, 4.0, 0.2));
 }
@@ -203,6 +203,7 @@ void Mesh::SetMarchingCube(Square& square)
 void Mesh::ConstructAllRefAreas()
 {
     //std::cout <<"here" << std::endl;
+    refareaptrs_.clear();
     for(auto &square : squareptrs_)
     {   
         //std::cout << "Constructing RefArea" << std::endl;
@@ -224,9 +225,37 @@ label Mesh::getnumRefAreas()
     return refareaptrs_.size();
 }
 
+GridCartesian* Mesh::getGrid(label index)
+{
+    return gridptrs_[index];
+}
+
+label Mesh::getnumGrids()
+{
+    return gridptrs_.size();
+}
+
 void Mesh::ToSurface()
 {
     std::ofstream ofs(outputpath_,std::ios::trunc);
+    Const::vecDd start;
+    Const::vecDd end;
+    for(auto &refarea : refareaptrs_)
+    {
+        refarea->get_object()->getendpoints(start, end);
+        ofs << start[0] << " " 
+            << end[0] << " "
+            << start[1] << " " 
+            << end[1] << " " 
+            << refarea->getweightstore() 
+        << std::endl;
+    }
+    ofs.close();
+}
+
+void Mesh::ToSurface(std::string outputpath)
+{
+    std::ofstream ofs(outputpath,std::ios::trunc);
     Const::vecDd start;
     Const::vecDd end;
     for(auto &refarea : refareaptrs_)

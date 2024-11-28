@@ -1,6 +1,6 @@
 CC = g++
-PROM = raytracer.exe
-OBJ = raytracing.o raytracer/ray.o raytracer/tracer.o geometry/mesh.o geometry/objects.o geometry/marchingcube.o
+PROM = raytracer.o
+OBJ = raytracing.o raytracer/ray.o raytracer/tracer.o geometry/mesh.o geometry/objects.o geometry/marchingcube.o LS/evolve.o
 CFLAGS = -Wall -std=c++11
 
 $(PROM): $(OBJ)
@@ -23,6 +23,9 @@ objects.o: geometry/objects.cpp geometry/objects.hpp constants.hpp
 
 marchingcube.o: geometry/marchingcube.cpp geometry/marchingcube.hpp constants.hpp
 	$(CC) $(CFLAGS) -c geometry/marchingcube.cpp
+
+evolve.o: LS/evolve.cpp LS/evolve.hpp constants.hpp
+	$(CC) $(CFLAGS) -c LS/evolve.cpp
 
 clean:
 	rm -f $(PROM) $(OBJ)

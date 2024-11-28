@@ -69,7 +69,11 @@ class Mesh
         RefArea* getRefArea(label index);
         label getnumRefAreas();
 
+        GridCartesian* getGrid(label index);
+        label getnumGrids();
+
         void ToSurface(); // convert the mesh to surface and save it to file
+        void ToSurface(std::string outputpath); // convert the mesh to surface and save it to file
 
 
     private:

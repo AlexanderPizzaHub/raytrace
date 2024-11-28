@@ -434,6 +434,7 @@ void MarchingCube2D::SetRefArea(Square& square)
 //std::cout << ul << " " << ll << " " << lr << " " << ur << std::endl;
     label index = ul * 8 + ll * 4 + lr * 2 + ur;
 
+    square.linked_refareas_.clear();
     methodptrs_[index](square);
 }
 

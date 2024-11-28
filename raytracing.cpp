@@ -2,6 +2,7 @@
 #include "raytracer/tracer.hpp"
 #include "geometry/mesh.hpp"
 #include "constants.hpp"
+#include "LS/evolve.hpp"
 #include <chrono>
 
 int testrun()
@@ -13,47 +14,34 @@ int testrun()
     //std::cout <<"2" << std::endl;
     mesh -> ConstructTopo();
     //std::cout <<"3" << std::endl;
-    mesh -> ConstructAllRefAreas();
-    //std::cout << "RefAreas: " << mesh->getnumRefAreas() << std::endl;
-    for(label i=0; i<mesh -> getnumRefAreas(); i++)
-    {
-        RefArea* refarea = mesh -> getRefArea(i);
-        auto center = refarea->get_object()->getcenter();
-        //std::cout << center[0] << " "<<center[1] << std::endl;
-    }
-    //delete mesh;
-   
-    /*
-    Tracer tracer = Tracer(mesh);
-
-    tracer.CastAllRays(1000);
-    //std::cout << "finish" << std::endl;
-    for(label i=0; i<mesh -> getnumRefAreas(); i++)
-    {
-        RefArea* refarea = mesh -> getRefArea(i);
-        auto hit = refarea->getweightstore();
-        //std::cout << hit << std::endl;
-    }
-    */
-    
+    LevelSet::Evolve* evolve = new LevelSet::Evolve(mesh);
     Tracer* tracer = new Tracer(mesh);
-
     RaySampler* splrptr = new RaySampler(Const::source_plane_xbox,Const::source_plane_ybox);
-    //Const::vecDd xbound={0.0,5.0};
-    //Const::vecDd ybound={1.95,2.05};
-    //RaySampler* splrptr = new RaySampler(xbound,ybound);
-    tracer->AddNewSource(splrptr);
-    //std::cout<<"finish 111"<<std::endl;
-    tracer -> CastAllRays(100000,0);
-    //std::cout << "finish 222" << std::endl;
-    for(label i=0; i<mesh -> getnumRefAreas(); i++)
-    {
-        RefArea* refarea = mesh -> getRefArea(i);
-        auto hit = refarea->getweightstore();
-        //std::cout << hit << std::endl;
-    }
 
-    mesh -> ToSurface();
+    for(scalar t=0.0; t<4.0; t+=0.1)
+    {
+        std::cout << "time: " << t << std::endl;
+        mesh -> ConstructAllRefAreas();
+        for(label i=0; i<mesh -> getnumRefAreas(); i++)
+        {
+            RefArea* refarea = mesh -> getRefArea(i);
+            auto center = refarea->get_object()->getcenter();
+            //std::cout << center[0] << " "<<center[1] << std::endl;
+        }
+        tracer->AddNewSource(splrptr);
+        tracer -> CastAllRays(10000,0);
+        //std::cout << "finish 222" << std::endl;
+        for(label i=0; i<mesh -> getnumRefAreas(); i++)
+        {
+            RefArea* refarea = mesh -> getRefArea(i);
+            auto hit = refarea->getweightstore();
+        }
+
+        evolve -> evolve();
+        mesh -> ToSurface("results/output"+std::to_string(t)+".txt");
+        //std::cout << ".results/output"+std::to_string(t)+".txt"<<std::endl;
+    }
+    delete evolve;
     delete tracer;
    return 0;
 }

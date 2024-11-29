@@ -1,8 +1,8 @@
 #pragma once
 
 #include "mpi.h"
-#include "mesh.hpp"
-#include "objects.hpp"
+#include "geometry/mesh.hpp"
+#include "geometry/objects.hpp"
 
 namespace MpiTracer
 {
@@ -20,7 +20,7 @@ namespace MpiTracer
 
         private:
             Mesh* meshptr_;
-            double* sendbuffer_;
-            double* recvbuffer_;
+            double** sendbuffer_;
+            double** recvbuffer_;
     };
 }

@@ -16,10 +16,10 @@ namespace MpiTracer
         int nrefarea = meshptr_->getnumRefAreas();
 
         delete[] sendbuffer_;
-        sendbuffer_ = new double[nrefarea];
+        sendbuffer_ = new double* [nrefarea];
         for(int i = 0; i< nrefarea;i++)
         {   
-            sendbuffer_[i] = (meshptr_->getRefArea(i)->getweightstore());
+            *sendbuffer_[i] = (meshptr_->getRefArea(i)->getweightstore());
         }
     }
 
@@ -33,7 +33,7 @@ namespace MpiTracer
         }
         for(int i=0;i<nrefarea;i++)
         {
-            meshptr_->getRefArea(i)->WeightAdd(recvbuffer_[i]); 
+            meshptr_->getRefArea(i)->WeightAdd(*recvbuffer_[i]); 
         }
         delete[] recvbuffer_;
     }

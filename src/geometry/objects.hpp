@@ -2,7 +2,7 @@
 #define GEOMETRY_OBJECTS_HPP
 
 #include "mesh.hpp"
-#include "ray.hpp"
+#include "raytracer/ray.hpp"
 #include "constants.hpp"
 #include <vector>
 

@@ -4,7 +4,7 @@
 # compile CXX with /opt/homebrew/bin/mpic++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/dual/Documents/projects/raytrace/include
+CXX_INCLUDES = -I/Users/dual/Documents/projects/raytrace/src
 
 CXX_FLAGSarm64 =  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -std=gnu++11
 

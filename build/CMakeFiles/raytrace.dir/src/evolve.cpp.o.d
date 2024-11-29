@@ -1,8 +1,8 @@
 CMakeFiles/raytrace.dir/src/evolve.cpp.o: \
   /Users/dual/Documents/projects/raytrace/src/evolve.cpp \
-  /Users/dual/Documents/projects/raytrace/include/evolve.hpp \
-  /Users/dual/Documents/projects/raytrace/include/mesh.hpp \
-  /Users/dual/Documents/projects/raytrace/include/constants.hpp \
+  /Users/dual/Documents/projects/raytrace/src/evolve.hpp \
+  /Users/dual/Documents/projects/raytrace/src/mesh.hpp \
+  /Users/dual/Documents/projects/raytrace/src/constants.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/array \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__algorithm/equal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__algorithm/comp.h \
@@ -800,8 +800,8 @@ CMakeFiles/raytrace.dir/src/evolve.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__type_traits/noexcept_move_assign_container.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/string_view \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__fwd/string_view.h \
-  /Users/dual/Documents/projects/raytrace/include/objects.hpp \
-  /Users/dual/Documents/projects/raytrace/include/ray.hpp \
+  /Users/dual/Documents/projects/raytrace/src/objects.hpp \
+  /Users/dual/Documents/projects/raytrace/src/ray.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__bit_reference \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__format/formatter.h \
@@ -893,4 +893,4 @@ CMakeFiles/raytrace.dir/src/evolve.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/cstdarg \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/dual/Documents/projects/raytrace/include/marchingcube.hpp
+  /Users/dual/Documents/projects/raytrace/src/marchingcube.hpp

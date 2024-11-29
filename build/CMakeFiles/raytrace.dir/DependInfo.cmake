@@ -8,14 +8,14 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/dual/Documents/projects/raytrace/src/evolve.cpp" "CMakeFiles/raytrace.dir/src/evolve.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/evolve.cpp.o.d"
-  "/Users/dual/Documents/projects/raytrace/src/marchingcube.cpp" "CMakeFiles/raytrace.dir/src/marchingcube.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/marchingcube.cpp.o.d"
-  "/Users/dual/Documents/projects/raytrace/src/mesh.cpp" "CMakeFiles/raytrace.dir/src/mesh.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/mesh.cpp.o.d"
-  "/Users/dual/Documents/projects/raytrace/src/mpitracer.cpp" "CMakeFiles/raytrace.dir/src/mpitracer.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/mpitracer.cpp.o.d"
-  "/Users/dual/Documents/projects/raytrace/src/objects.cpp" "CMakeFiles/raytrace.dir/src/objects.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/objects.cpp.o.d"
-  "/Users/dual/Documents/projects/raytrace/src/ray.cpp" "CMakeFiles/raytrace.dir/src/ray.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/ray.cpp.o.d"
+  "/Users/dual/Documents/projects/raytrace/src/geometry/marchingcube.cpp" "CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.o.d"
+  "/Users/dual/Documents/projects/raytrace/src/geometry/mesh.cpp" "CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o.d"
+  "/Users/dual/Documents/projects/raytrace/src/geometry/objects.cpp" "CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o.d"
+  "/Users/dual/Documents/projects/raytrace/src/levelset/evolve.cpp" "CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.o.d"
   "/Users/dual/Documents/projects/raytrace/src/raytrace.cpp" "CMakeFiles/raytrace.dir/src/raytrace.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/raytrace.cpp.o.d"
-  "/Users/dual/Documents/projects/raytrace/src/tracer.cpp" "CMakeFiles/raytrace.dir/src/tracer.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/tracer.cpp.o.d"
+  "/Users/dual/Documents/projects/raytrace/src/raytracer/mpitracer.cpp" "CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.o.d"
+  "/Users/dual/Documents/projects/raytrace/src/raytracer/ray.cpp" "CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o.d"
+  "/Users/dual/Documents/projects/raytrace/src/raytracer/tracer.cpp" "CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o" "gcc" "CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o.d"
   )
 
 # Targets to which this target links.

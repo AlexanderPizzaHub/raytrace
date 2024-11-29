@@ -1,7 +1,7 @@
 CMakeFiles/raytrace.dir/src/ray.cpp.o: \
   /Users/dual/Documents/projects/raytrace/src/ray.cpp \
-  /Users/dual/Documents/projects/raytrace/include/ray.hpp \
-  /Users/dual/Documents/projects/raytrace/include/constants.hpp \
+  /Users/dual/Documents/projects/raytrace/src/ray.hpp \
+  /Users/dual/Documents/projects/raytrace/src/constants.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/array \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__algorithm/equal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__algorithm/comp.h \

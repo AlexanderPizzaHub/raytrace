@@ -1,9 +1,9 @@
 #include <iostream>
-#include "tracer.hpp"
-#include "mesh.hpp"
+#include "raytracer/tracer.hpp"
+#include "geometry/mesh.hpp"
 #include "constants.hpp"
-#include "evolve.hpp"
-#include "mpitracer.hpp"
+#include "levelset/evolve.hpp"
+#include "raytracer/mpitracer.hpp"
 #include "mpi.h"
 #include <chrono>
 

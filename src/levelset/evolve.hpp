@@ -1,7 +1,7 @@
 #ifndef LS_EVOLVE_HPP
 #define LS_EVOLVE_HPP
 
-#include "mesh.hpp"
+#include "geometry/mesh.hpp"
 
 namespace LevelSet
 {

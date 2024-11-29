@@ -1,8 +1,8 @@
 #ifndef RAYTRACER_TRACER_HPP
 #define RAYTRACER_TRACER_HPP
 
-#include "mesh.hpp"
-#include "ray.hpp"
+#include "geometry/mesh.hpp"
+#include "raytracer/ray.hpp"
 #include "constants.hpp"
 
 #include <random>

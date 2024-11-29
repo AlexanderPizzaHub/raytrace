@@ -174,149 +174,101 @@ raytrace/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/build
 .PHONY : raytrace/fast
 
-src/evolve.o: src/evolve.cpp.o
-.PHONY : src/evolve.o
+src/geometry/marchingcube.o: src/geometry/marchingcube.cpp.o
+.PHONY : src/geometry/marchingcube.o
 
 # target to build an object file
-src/evolve.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/evolve.cpp.o
-.PHONY : src/evolve.cpp.o
+src/geometry/marchingcube.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.o
+.PHONY : src/geometry/marchingcube.cpp.o
 
-src/evolve.i: src/evolve.cpp.i
-.PHONY : src/evolve.i
+src/geometry/marchingcube.i: src/geometry/marchingcube.cpp.i
+.PHONY : src/geometry/marchingcube.i
 
 # target to preprocess a source file
-src/evolve.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/evolve.cpp.i
-.PHONY : src/evolve.cpp.i
+src/geometry/marchingcube.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.i
+.PHONY : src/geometry/marchingcube.cpp.i
 
-src/evolve.s: src/evolve.cpp.s
-.PHONY : src/evolve.s
+src/geometry/marchingcube.s: src/geometry/marchingcube.cpp.s
+.PHONY : src/geometry/marchingcube.s
 
 # target to generate assembly for a file
-src/evolve.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/evolve.cpp.s
-.PHONY : src/evolve.cpp.s
+src/geometry/marchingcube.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.s
+.PHONY : src/geometry/marchingcube.cpp.s
 
-src/marchingcube.o: src/marchingcube.cpp.o
-.PHONY : src/marchingcube.o
+src/geometry/mesh.o: src/geometry/mesh.cpp.o
+.PHONY : src/geometry/mesh.o
 
 # target to build an object file
-src/marchingcube.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/marchingcube.cpp.o
-.PHONY : src/marchingcube.cpp.o
+src/geometry/mesh.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o
+.PHONY : src/geometry/mesh.cpp.o
 
-src/marchingcube.i: src/marchingcube.cpp.i
-.PHONY : src/marchingcube.i
+src/geometry/mesh.i: src/geometry/mesh.cpp.i
+.PHONY : src/geometry/mesh.i
 
 # target to preprocess a source file
-src/marchingcube.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/marchingcube.cpp.i
-.PHONY : src/marchingcube.cpp.i
+src/geometry/mesh.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.i
+.PHONY : src/geometry/mesh.cpp.i
 
-src/marchingcube.s: src/marchingcube.cpp.s
-.PHONY : src/marchingcube.s
+src/geometry/mesh.s: src/geometry/mesh.cpp.s
+.PHONY : src/geometry/mesh.s
 
 # target to generate assembly for a file
-src/marchingcube.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/marchingcube.cpp.s
-.PHONY : src/marchingcube.cpp.s
+src/geometry/mesh.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.s
+.PHONY : src/geometry/mesh.cpp.s
 
-src/mesh.o: src/mesh.cpp.o
-.PHONY : src/mesh.o
+src/geometry/objects.o: src/geometry/objects.cpp.o
+.PHONY : src/geometry/objects.o
 
 # target to build an object file
-src/mesh.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/mesh.cpp.o
-.PHONY : src/mesh.cpp.o
+src/geometry/objects.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o
+.PHONY : src/geometry/objects.cpp.o
 
-src/mesh.i: src/mesh.cpp.i
-.PHONY : src/mesh.i
+src/geometry/objects.i: src/geometry/objects.cpp.i
+.PHONY : src/geometry/objects.i
 
 # target to preprocess a source file
-src/mesh.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/mesh.cpp.i
-.PHONY : src/mesh.cpp.i
+src/geometry/objects.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/geometry/objects.cpp.i
+.PHONY : src/geometry/objects.cpp.i
 
-src/mesh.s: src/mesh.cpp.s
-.PHONY : src/mesh.s
+src/geometry/objects.s: src/geometry/objects.cpp.s
+.PHONY : src/geometry/objects.s
 
 # target to generate assembly for a file
-src/mesh.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/mesh.cpp.s
-.PHONY : src/mesh.cpp.s
+src/geometry/objects.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/geometry/objects.cpp.s
+.PHONY : src/geometry/objects.cpp.s
 
-src/mpitracer.o: src/mpitracer.cpp.o
-.PHONY : src/mpitracer.o
+src/levelset/evolve.o: src/levelset/evolve.cpp.o
+.PHONY : src/levelset/evolve.o
 
 # target to build an object file
-src/mpitracer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/mpitracer.cpp.o
-.PHONY : src/mpitracer.cpp.o
+src/levelset/evolve.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.o
+.PHONY : src/levelset/evolve.cpp.o
 
-src/mpitracer.i: src/mpitracer.cpp.i
-.PHONY : src/mpitracer.i
-
-# target to preprocess a source file
-src/mpitracer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/mpitracer.cpp.i
-.PHONY : src/mpitracer.cpp.i
-
-src/mpitracer.s: src/mpitracer.cpp.s
-.PHONY : src/mpitracer.s
-
-# target to generate assembly for a file
-src/mpitracer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/mpitracer.cpp.s
-.PHONY : src/mpitracer.cpp.s
-
-src/objects.o: src/objects.cpp.o
-.PHONY : src/objects.o
-
-# target to build an object file
-src/objects.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/objects.cpp.o
-.PHONY : src/objects.cpp.o
-
-src/objects.i: src/objects.cpp.i
-.PHONY : src/objects.i
+src/levelset/evolve.i: src/levelset/evolve.cpp.i
+.PHONY : src/levelset/evolve.i
 
 # target to preprocess a source file
-src/objects.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/objects.cpp.i
-.PHONY : src/objects.cpp.i
+src/levelset/evolve.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.i
+.PHONY : src/levelset/evolve.cpp.i
 
-src/objects.s: src/objects.cpp.s
-.PHONY : src/objects.s
-
-# target to generate assembly for a file
-src/objects.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/objects.cpp.s
-.PHONY : src/objects.cpp.s
-
-src/ray.o: src/ray.cpp.o
-.PHONY : src/ray.o
-
-# target to build an object file
-src/ray.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/ray.cpp.o
-.PHONY : src/ray.cpp.o
-
-src/ray.i: src/ray.cpp.i
-.PHONY : src/ray.i
-
-# target to preprocess a source file
-src/ray.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/ray.cpp.i
-.PHONY : src/ray.cpp.i
-
-src/ray.s: src/ray.cpp.s
-.PHONY : src/ray.s
+src/levelset/evolve.s: src/levelset/evolve.cpp.s
+.PHONY : src/levelset/evolve.s
 
 # target to generate assembly for a file
-src/ray.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/ray.cpp.s
-.PHONY : src/ray.cpp.s
+src/levelset/evolve.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.s
+.PHONY : src/levelset/evolve.cpp.s
 
 src/raytrace.o: src/raytrace.cpp.o
 .PHONY : src/raytrace.o
@@ -342,29 +294,77 @@ src/raytrace.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytrace.cpp.s
 .PHONY : src/raytrace.cpp.s
 
-src/tracer.o: src/tracer.cpp.o
-.PHONY : src/tracer.o
+src/raytracer/mpitracer.o: src/raytracer/mpitracer.cpp.o
+.PHONY : src/raytracer/mpitracer.o
 
 # target to build an object file
-src/tracer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/tracer.cpp.o
-.PHONY : src/tracer.cpp.o
+src/raytracer/mpitracer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.o
+.PHONY : src/raytracer/mpitracer.cpp.o
 
-src/tracer.i: src/tracer.cpp.i
-.PHONY : src/tracer.i
+src/raytracer/mpitracer.i: src/raytracer/mpitracer.cpp.i
+.PHONY : src/raytracer/mpitracer.i
 
 # target to preprocess a source file
-src/tracer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/tracer.cpp.i
-.PHONY : src/tracer.cpp.i
+src/raytracer/mpitracer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.i
+.PHONY : src/raytracer/mpitracer.cpp.i
 
-src/tracer.s: src/tracer.cpp.s
-.PHONY : src/tracer.s
+src/raytracer/mpitracer.s: src/raytracer/mpitracer.cpp.s
+.PHONY : src/raytracer/mpitracer.s
 
 # target to generate assembly for a file
-src/tracer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/tracer.cpp.s
-.PHONY : src/tracer.cpp.s
+src/raytracer/mpitracer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.s
+.PHONY : src/raytracer/mpitracer.cpp.s
+
+src/raytracer/ray.o: src/raytracer/ray.cpp.o
+.PHONY : src/raytracer/ray.o
+
+# target to build an object file
+src/raytracer/ray.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o
+.PHONY : src/raytracer/ray.cpp.o
+
+src/raytracer/ray.i: src/raytracer/ray.cpp.i
+.PHONY : src/raytracer/ray.i
+
+# target to preprocess a source file
+src/raytracer/ray.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.i
+.PHONY : src/raytracer/ray.cpp.i
+
+src/raytracer/ray.s: src/raytracer/ray.cpp.s
+.PHONY : src/raytracer/ray.s
+
+# target to generate assembly for a file
+src/raytracer/ray.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.s
+.PHONY : src/raytracer/ray.cpp.s
+
+src/raytracer/tracer.o: src/raytracer/tracer.cpp.o
+.PHONY : src/raytracer/tracer.o
+
+# target to build an object file
+src/raytracer/tracer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o
+.PHONY : src/raytracer/tracer.cpp.o
+
+src/raytracer/tracer.i: src/raytracer/tracer.cpp.i
+.PHONY : src/raytracer/tracer.i
+
+# target to preprocess a source file
+src/raytracer/tracer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.i
+.PHONY : src/raytracer/tracer.cpp.i
+
+src/raytracer/tracer.s: src/raytracer/tracer.cpp.s
+.PHONY : src/raytracer/tracer.s
+
+# target to generate assembly for a file
+src/raytracer/tracer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/raytrace.dir/build.make CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.s
+.PHONY : src/raytracer/tracer.cpp.s
 
 # Help Target
 help:
@@ -379,30 +379,30 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... raytrace"
-	@echo "... src/evolve.o"
-	@echo "... src/evolve.i"
-	@echo "... src/evolve.s"
-	@echo "... src/marchingcube.o"
-	@echo "... src/marchingcube.i"
-	@echo "... src/marchingcube.s"
-	@echo "... src/mesh.o"
-	@echo "... src/mesh.i"
-	@echo "... src/mesh.s"
-	@echo "... src/mpitracer.o"
-	@echo "... src/mpitracer.i"
-	@echo "... src/mpitracer.s"
-	@echo "... src/objects.o"
-	@echo "... src/objects.i"
-	@echo "... src/objects.s"
-	@echo "... src/ray.o"
-	@echo "... src/ray.i"
-	@echo "... src/ray.s"
+	@echo "... src/geometry/marchingcube.o"
+	@echo "... src/geometry/marchingcube.i"
+	@echo "... src/geometry/marchingcube.s"
+	@echo "... src/geometry/mesh.o"
+	@echo "... src/geometry/mesh.i"
+	@echo "... src/geometry/mesh.s"
+	@echo "... src/geometry/objects.o"
+	@echo "... src/geometry/objects.i"
+	@echo "... src/geometry/objects.s"
+	@echo "... src/levelset/evolve.o"
+	@echo "... src/levelset/evolve.i"
+	@echo "... src/levelset/evolve.s"
 	@echo "... src/raytrace.o"
 	@echo "... src/raytrace.i"
 	@echo "... src/raytrace.s"
-	@echo "... src/tracer.o"
-	@echo "... src/tracer.i"
-	@echo "... src/tracer.s"
+	@echo "... src/raytracer/mpitracer.o"
+	@echo "... src/raytracer/mpitracer.i"
+	@echo "... src/raytracer/mpitracer.s"
+	@echo "... src/raytracer/ray.o"
+	@echo "... src/raytracer/ray.i"
+	@echo "... src/raytracer/ray.s"
+	@echo "... src/raytracer/tracer.o"
+	@echo "... src/raytracer/tracer.i"
+	@echo "... src/raytracer/tracer.s"
 .PHONY : help
 
 

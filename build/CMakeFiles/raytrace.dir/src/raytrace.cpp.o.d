@@ -942,12 +942,12 @@ CMakeFiles/raytrace.dir/src/raytrace.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__format/formatter_tuple.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/print \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/unistd.h \
-  /Users/dual/Documents/projects/raytrace/include/tracer.hpp \
-  /Users/dual/Documents/projects/raytrace/include/mesh.hpp \
-  /Users/dual/Documents/projects/raytrace/include/constants.hpp \
-  /Users/dual/Documents/projects/raytrace/include/objects.hpp \
-  /Users/dual/Documents/projects/raytrace/include/ray.hpp \
-  /Users/dual/Documents/projects/raytrace/include/marchingcube.hpp \
+  /Users/dual/Documents/projects/raytrace/src/raytracer/tracer.hpp \
+  /Users/dual/Documents/projects/raytrace/src/geometry/mesh.hpp \
+  /Users/dual/Documents/projects/raytrace/src/constants.hpp \
+  /Users/dual/Documents/projects/raytrace/src/geometry/objects.hpp \
+  /Users/dual/Documents/projects/raytrace/src/raytracer/ray.hpp \
+  /Users/dual/Documents/projects/raytrace/src/geometry/marchingcube.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/random \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__random/bernoulli_distribution.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__random/uniform_real_distribution.h \
@@ -996,8 +996,8 @@ CMakeFiles/raytrace.dir/src/raytrace.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__random/seed_seq.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__random/student_t_distribution.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__random/weibull_distribution.h \
-  /Users/dual/Documents/projects/raytrace/include/evolve.hpp \
-  /Users/dual/Documents/projects/raytrace/include/mpitracer.hpp \
+  /Users/dual/Documents/projects/raytrace/src/levelset/evolve.hpp \
+  /Users/dual/Documents/projects/raytrace/src/raytracer/mpitracer.hpp \
   /opt/homebrew/Cellar/open-mpi/5.0.5/include/mpi.h \
   /opt/homebrew/Cellar/open-mpi/5.0.5/include/mpi_portable_platform.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/chrono \

@@ -4,13 +4,13 @@ project(RayTrace)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_CXX_COMPILER=mpic++)
+set(DESTINATION .)
 
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2 -Wall -fopt-info-vec-optimized")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -g -Wall -pedantic-errors")
 
 include_directories(
-    ${PROJECT_SOURCE_DIR}/include
+    ${PROJECT_SOURCE_DIR}/src
     /opt/homebrew/Cellar/open-mpi/5.0.5/include
 )
 
@@ -21,6 +21,7 @@ link_directories(
 file(
     GLOB SOURCE
     src/*.cpp
+    src/*/*.cpp
 )
 
 add_executable(
@@ -28,4 +29,5 @@ add_executable(
     ${SOURCE}
 )
 
-install(TARGETS raytrace DESTINATION ..)
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
+install(TARGETS raytrace DESTINATION bin)

@@ -1,6 +1,6 @@
-CMakeFiles/raytrace.dir/src/mesh.cpp.o: \
-  /Users/dual/Documents/projects/raytrace/src/mesh.cpp \
-  /Users/dual/Documents/projects/raytrace/src/mesh.hpp \
+CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o: \
+  /Users/dual/Documents/projects/raytrace/src/geometry/mesh.cpp \
+  /Users/dual/Documents/projects/raytrace/src/geometry/mesh.hpp \
   /Users/dual/Documents/projects/raytrace/src/constants.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/array \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__algorithm/equal.h \
@@ -799,8 +799,8 @@ CMakeFiles/raytrace.dir/src/mesh.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__type_traits/noexcept_move_assign_container.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/string_view \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__fwd/string_view.h \
-  /Users/dual/Documents/projects/raytrace/src/objects.hpp \
-  /Users/dual/Documents/projects/raytrace/src/ray.hpp \
+  /Users/dual/Documents/projects/raytrace/src/geometry/objects.hpp \
+  /Users/dual/Documents/projects/raytrace/src/raytracer/ray.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__bit_reference \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__format/formatter.h \
@@ -892,7 +892,7 @@ CMakeFiles/raytrace.dir/src/mesh.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/cstdarg \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/dual/Documents/projects/raytrace/src/marchingcube.hpp \
+  /Users/dual/Documents/projects/raytrace/src/geometry/marchingcube.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/filesystem \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__filesystem/copy_options.h \

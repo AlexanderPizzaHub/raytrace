@@ -1,0 +1,7 @@
+/Users/dual/Documents/projects/raytrace/build/CMakeFiles/raytrace.dir
+/Users/dual/Documents/projects/raytrace/build/CMakeFiles/edit_cache.dir
+/Users/dual/Documents/projects/raytrace/build/CMakeFiles/rebuild_cache.dir
+/Users/dual/Documents/projects/raytrace/build/CMakeFiles/list_install_components.dir
+/Users/dual/Documents/projects/raytrace/build/CMakeFiles/install.dir
+/Users/dual/Documents/projects/raytrace/build/CMakeFiles/install/local.dir
+/Users/dual/Documents/projects/raytrace/build/CMakeFiles/install/strip.dir

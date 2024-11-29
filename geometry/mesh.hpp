@@ -27,6 +27,7 @@ class RefArea
 
         //void Hit(); // increase the hit counter
         void WeightedHit(scalar dWeight); // increase the weight
+        void WeightAdd(scalar dweight);
         //void WeightedHit(scalar dWeight, Const::vecDd position); // increase the weight. Hitpoint information is used
 
         void ResetWeight(); // reset the weight to 0

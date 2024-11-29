@@ -3,6 +3,7 @@
 #include "geometry/mesh.hpp"
 #include "constants.hpp"
 #include "LS/evolve.hpp"
+#include "mpi/mpitracer.hpp"
 #include <chrono>
 
 int testrun()
@@ -14,6 +15,7 @@ int testrun()
     //std::cout <<"2" << std::endl;
     mesh -> ConstructTopo();
     //std::cout <<"3" << std::endl;
+
     LevelSet::Evolve* evolve = new LevelSet::Evolve(mesh);
     Tracer* tracer = new Tracer(mesh);
     RaySampler* splrptr = new RaySampler(Const::source_plane_xbox,Const::source_plane_ybox);
@@ -44,6 +46,41 @@ int testrun()
     delete evolve;
     delete tracer;
    return 0;
+}
+
+int testmpi()
+{
+    // 从文件中读grids然后跑程序
+    MPI_Init(NULL, NULL);
+
+    int rank;
+    int size;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+    Mesh* mesh =new Mesh("./sparsefieldgrids.txt", "./output.txt");
+    //std::cout <<"1" << std::endl;
+    mesh -> CreateTestMesh();
+    //std::cout <<"2" << std::endl;
+    mesh -> ConstructTopo();
+    //std::cout <<"3" << std::endl;
+    mesh -> ConstructAllRefAreas();
+
+    MpiTracer::MpiTracer* mpitracer = new MpiTracer::MpiTracer(*mesh);
+    LevelSet::Evolve* evolve = new LevelSet::Evolve(mesh);
+    Tracer* tracer = new Tracer(mesh);
+    RaySampler* splrptr = new RaySampler(Const::source_plane_xbox,Const::source_plane_ybox);
+
+    tracer->AddNewSource(splrptr);
+    tracer -> CastAllRays(20000,0);
+
+    mpitracer -> CommunicateRefArea();
+    //evolve -> evolve();
+    mesh -> ToSurface("results/output"+std::to_string(t)+".txt");
+    //std::cout << ".results/output"+std::to_string(t)+".txt"<<std::endl;
+    delete evolve;
+    delete tracer;
+    return 0;
 }
 
 

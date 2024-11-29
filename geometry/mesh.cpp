@@ -40,6 +40,11 @@ void RefArea::ResetWeight()
     weightstore_ = 0;
 }
 
+void RefArea::WeightAdd(scalar dweight)
+{
+    weightstore_ += dweight;
+}
+
 scalar RefArea::getweightstore()
 {
     return weightstore_;

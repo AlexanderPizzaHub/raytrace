@@ -116,20 +116,20 @@ CMakeFiles/raytrace.dir/src/geometry/objects.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/geometry/objects.cpp.s"
 	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\CODES\raytrace\src\geometry\objects.cpp -o CMakeFiles\raytrace.dir\src\geometry\objects.cpp.s
 
-CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.obj: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
-CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.obj: F:/CODES/raytrace/src/levelset/evolve.cpp
-CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.obj"
-	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.obj -MF CMakeFiles\raytrace.dir\src\levelset\evolve.cpp.obj.d -o CMakeFiles\raytrace.dir\src\levelset\evolve.cpp.obj -c F:\CODES\raytrace\src\levelset\evolve.cpp
+CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: CMakeFiles/raytrace.dir/flags.make
+CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
+CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: F:/CODES/raytrace/src/levelset/levelset.cpp
+CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj"
+	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj -MF CMakeFiles\raytrace.dir\src\levelset\levelset.cpp.obj.d -o CMakeFiles\raytrace.dir\src\levelset\levelset.cpp.obj -c F:\CODES\raytrace\src\levelset\levelset.cpp
 
-CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.i"
-	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\CODES\raytrace\src\levelset\evolve.cpp > CMakeFiles\raytrace.dir\src\levelset\evolve.cpp.i
+CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.i"
+	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\CODES\raytrace\src\levelset\levelset.cpp > CMakeFiles\raytrace.dir\src\levelset\levelset.cpp.i
 
-CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.s"
-	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\CODES\raytrace\src\levelset\evolve.cpp -o CMakeFiles\raytrace.dir\src\levelset\evolve.cpp.s
+CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.s"
+	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\CODES\raytrace\src\levelset\levelset.cpp -o CMakeFiles\raytrace.dir\src\levelset\levelset.cpp.s
 
 CMakeFiles/raytrace.dir/src/raytrace.cpp.obj: CMakeFiles/raytrace.dir/flags.make
 CMakeFiles/raytrace.dir/src/raytrace.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
@@ -146,26 +146,11 @@ CMakeFiles/raytrace.dir/src/raytrace.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/raytrace.cpp.s"
 	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\CODES\raytrace\src\raytrace.cpp -o CMakeFiles\raytrace.dir\src\raytrace.cpp.s
 
-CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.obj: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
-CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.obj: F:/CODES/raytrace/src/raytracer/mpitracer.cpp
-CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.obj"
-	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.obj -MF CMakeFiles\raytrace.dir\src\raytracer\mpitracer.cpp.obj.d -o CMakeFiles\raytrace.dir\src\raytracer\mpitracer.cpp.obj -c F:\CODES\raytrace\src\raytracer\mpitracer.cpp
-
-CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.i"
-	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\CODES\raytrace\src\raytracer\mpitracer.cpp > CMakeFiles\raytrace.dir\src\raytracer\mpitracer.cpp.i
-
-CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.s"
-	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\CODES\raytrace\src\raytracer\mpitracer.cpp -o CMakeFiles\raytrace.dir\src\raytracer\mpitracer.cpp.s
-
 CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj: CMakeFiles/raytrace.dir/flags.make
 CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
 CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj: F:/CODES/raytrace/src/raytracer/ray.cpp
 CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj"
 	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj -MF CMakeFiles\raytrace.dir\src\raytracer\ray.cpp.obj.d -o CMakeFiles\raytrace.dir\src\raytracer\ray.cpp.obj -c F:\CODES\raytrace\src\raytracer\ray.cpp
 
 CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.i: cmake_force
@@ -180,7 +165,7 @@ CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj: CMakeFiles/raytrace.dir/fl
 CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
 CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj: F:/CODES/raytrace/src/raytracer/tracer.cpp
 CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj"
 	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj -MF CMakeFiles\raytrace.dir\src\raytracer\tracer.cpp.obj.d -o CMakeFiles\raytrace.dir\src\raytracer\tracer.cpp.obj -c F:\CODES\raytrace\src\raytracer\tracer.cpp
 
 CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.i: cmake_force
@@ -196,9 +181,8 @@ raytrace_OBJECTS = \
 "CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj" \
-"CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.obj" \
+"CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/raytrace.cpp.obj" \
-"CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj"
 
@@ -208,16 +192,15 @@ raytrace_EXTERNAL_OBJECTS =
 raytrace.exe: CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj
-raytrace.exe: CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.obj
+raytrace.exe: CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/raytrace.cpp.obj
-raytrace.exe: CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/build.make
 raytrace.exe: CMakeFiles/raytrace.dir/linkLibs.rsp
 raytrace.exe: CMakeFiles/raytrace.dir/objects1.rsp
 raytrace.exe: CMakeFiles/raytrace.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable raytrace.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable raytrace.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\raytrace.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

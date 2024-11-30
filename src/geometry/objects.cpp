@@ -2,11 +2,11 @@
 #include <cmath>
 
 #pragma region GridCartesian
-GridCartesian::GridCartesian(scalar x_, scalar y_, scalar phi_)
+GridCartesian::GridCartesian(scalar x_, scalar y_, label index_)
 {
     x = x_;
     y = y_;
-    phi = phi_;
+    index = index_;
 }
 
 GridCartesian::~GridCartesian()

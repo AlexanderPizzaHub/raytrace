@@ -65,7 +65,7 @@ class Tracer
         void CastAllRays(label numrays, label sourceID); // cast rays to the Geometry
         
         // after tracing
-        void NormalizeFlux(); // align the flux on surface with flux on source plane
+        void NormalizeFlux(scalar numrays); // align the flux on surface with flux on source plane
         void CalcAllRate(); // distribute flux on refarea to grids. This will use the linking information of refarea
 
 
@@ -74,6 +74,7 @@ class Tracer
 
         std::vector<RaySampler*> splr_;
         RayOperator optr_;
+
 };
 
 #endif 

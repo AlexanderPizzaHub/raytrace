@@ -3,8 +3,11 @@ cmake .. -D CMAKE_CXX_COMPILER=mpic++ #出现mpi的linker command failed就用mp
 make
 
 ### TODO
-1. 参考面通量与源面对齐（normalize）
-2. 参考面通量分给网格点
+1. 参考面通量与源面对齐（normalize） √
+2. 参考面通量分给网格点 √
+
+2.5. 光线与法向相同-> 正通量?正速度? 不同,负速度?
+    不同粒子应该是要分别做光追,分别计算速度的.把最后的速度累加起来.
 
 3. MPI
 

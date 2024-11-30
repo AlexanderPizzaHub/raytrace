@@ -25,6 +25,8 @@ namespace Const
     const std::string ray_direction = "default";
     const vecDd source_plane_xbox = {0.0,5.0};
     const vecDd source_plane_ybox = {1.95,2.05};
+    const vecDd source_plane_xbox2 = {5.0,10.0};
+    const vecDd source_plane_ybox2 = {7.95,8.05};
 
     const vecDd substrate_xbox = {0.0,10.0};
     const vecDd substrate_ybox = {-10.0,0.0};

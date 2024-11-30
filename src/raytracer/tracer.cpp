@@ -217,14 +217,33 @@ void Tracer::CastAllRays(label numrays, label sourceID)
     }
 }
 
-void Tracer::NormalizeFlux()
+/*
+    1. 把参考面上的总通量和源面对齐
+    2. 在参考面上各自计算对流速度
+    3. 把每个参考面上的速度分配给关联的网格
+*/
+  
+void Tracer::NormalizeFlux(scalar numrays)
 {
-    // to be implemented
+    for(label i = 0; i < meshptr_->getnumRefAreas(); i++)
+    {
+        RefArea* refarea = meshptr_->getRefArea(i);
+        scalar flux = refarea->getweightstore();
+        refarea->SetWeight(flux / numrays);
+    }
 }
 
+// 这个应该丢给物理化学模块，暂时先放在这里
 void Tracer::CalcAllRate()
 {
-    // to be implemented
+    scalar uniform_rate = 5.5; // for test 
+    for(label i = 0; i < meshptr_->getnumRefAreas(); i++)
+    {
+        RefArea* refarea = meshptr_->getRefArea(i);
+        refarea->SetRate(uniform_rate*refarea->getweightstore());
+    } 
 }
+
+
 
 #pragma endregion

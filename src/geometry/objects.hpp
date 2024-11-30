@@ -22,8 +22,6 @@ class Grid
     scalar coordX;
     scalar coordY;
     label index;
-
-    scalar phi;
 };
 
 class GridCartesian
@@ -34,9 +32,9 @@ class GridCartesian
    public:
    scalar x;
    scalar y;
-   scalar phi;
+   label index;
 
-    GridCartesian(scalar x_, scalar y_, scalar phi_);
+    GridCartesian(scalar x_, scalar y_,label index_);
     ~GridCartesian();
 };
 

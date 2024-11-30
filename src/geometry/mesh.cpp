@@ -1,4 +1,5 @@
 #include "mesh.hpp"
+#include "levelset/levelset.hpp"
 #include <fstream>
 #include <iostream>
 #include <memory>
@@ -35,9 +36,9 @@ void RefArea::WeightedHit(scalar dWeight, Const::vecDd position)
 }
 */
 
-void RefArea::ResetWeight()
+void RefArea::SetWeight(scalar weight)
 {
-    weightstore_ = 0;
+    weightstore_ = weight;
 }
 
 void RefArea::WeightAdd(scalar dweight)
@@ -63,6 +64,16 @@ Const::vecDd RefArea::getnormal()
 Line* RefArea::get_object()
 {
     return lineptr_;
+}
+
+void RefArea::SetRate(scalar rate)
+{
+    rate_ = rate;
+}
+
+scalar RefArea::getrate()
+{
+    return rate_;
 }
 
 #pragma endregion
@@ -109,33 +120,42 @@ void Mesh::CreateTestMesh()
     nx = 5; ny = 5;
     for(label i=0; i< nx; i++)
     {
-        gridptrs_.emplace_back(new GridCartesian((scalar)i, 0.0, 1.5));
+        gridptrs_.emplace_back(new GridCartesian((scalar)i, 0.0, i));
     }
-    gridptrs_.emplace_back(new GridCartesian(0.0, 1.0, 1.5));
-    gridptrs_.emplace_back(new GridCartesian(1.0, 1.0, 0.5));
-    gridptrs_.emplace_back(new GridCartesian(2.0, 1.0, 0.5));
-    gridptrs_.emplace_back(new GridCartesian(3.0, 1.0, 0.5));
-    gridptrs_.emplace_back(new GridCartesian(4.0, 1.0, 1.5));
+    gridptrs_.emplace_back(new GridCartesian(0.0, 1.0, 5));
+    gridptrs_.emplace_back(new GridCartesian(1.0, 1.0, 6));
+    gridptrs_.emplace_back(new GridCartesian(2.0, 1.0, 7));
+    gridptrs_.emplace_back(new GridCartesian(3.0, 1.0, 8));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 1.0, 9));
 
-    gridptrs_.emplace_back(new GridCartesian(0.0, 2.0, 1.2));
-    gridptrs_.emplace_back(new GridCartesian(1.0, 2.0, 0.2));
-    gridptrs_.emplace_back(new GridCartesian(2.0, 2.0, -0.2));
-    gridptrs_.emplace_back(new GridCartesian(3.0, 2.0, 0.2));
-    gridptrs_.emplace_back(new GridCartesian(4.0, 2.0, 1.2));
+    gridptrs_.emplace_back(new GridCartesian(0.0, 2.0, 10));
+    gridptrs_.emplace_back(new GridCartesian(1.0, 2.0, 11));
+    gridptrs_.emplace_back(new GridCartesian(2.0, 2.0, 12));
+    gridptrs_.emplace_back(new GridCartesian(3.0, 2.0, 13));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 2.0, 14));
 
-    gridptrs_.emplace_back(new GridCartesian(0.0, 3.0, 0.2));
-    gridptrs_.emplace_back(new GridCartesian(1.0, 3.0, -0.2));
-    gridptrs_.emplace_back(new GridCartesian(2.0, 3.0, -0.2));
-    gridptrs_.emplace_back(new GridCartesian(3.0, 3.0, -0.2));
-    gridptrs_.emplace_back(new GridCartesian(4.0, 3.0, 0.2));
+    gridptrs_.emplace_back(new GridCartesian(0.0, 3.0, 15));
+    gridptrs_.emplace_back(new GridCartesian(1.0, 3.0, 16));
+    gridptrs_.emplace_back(new GridCartesian(2.0, 3.0, 17));
+    gridptrs_.emplace_back(new GridCartesian(3.0, 3.0, 18));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 3.0, 19));
 
-    gridptrs_.emplace_back(new GridCartesian(0.0, 4.0, 0.2));
-    gridptrs_.emplace_back(new GridCartesian(1.0, 4.0, -0.5));
-    gridptrs_.emplace_back(new GridCartesian(2.0, 4.0, -1.2));
-    gridptrs_.emplace_back(new GridCartesian(3.0, 4.0, -0.5));
-    gridptrs_.emplace_back(new GridCartesian(4.0, 4.0, 0.2));
+    gridptrs_.emplace_back(new GridCartesian(0.0, 4.0, 20));
+    gridptrs_.emplace_back(new GridCartesian(1.0, 4.0, 21));
+    gridptrs_.emplace_back(new GridCartesian(2.0, 4.0, 22));
+    gridptrs_.emplace_back(new GridCartesian(3.0, 4.0, 23));
+    gridptrs_.emplace_back(new GridCartesian(4.0, 4.0, 24));
 }
 
+void Mesh::CreateTestMesh2(label nx,label ny,label mid)
+{
+    this->nx = nx;
+    this->ny = ny;
+    for(scalar i=0; i< ny; i++)
+    {
+        for(scalar j=0;j<nx;j++) gridptrs_.emplace_back(new GridCartesian((scalar)j, (scalar)i, i*ny+j));
+    }
+}
 // Link: line(refarea) <- square(cube) <- grid(mesh) 
 void Mesh::ConstructTopo()
 {
@@ -156,21 +176,22 @@ void Mesh::ConstructTopo()
     //std::cout << squareptrs_.size() << std::endl;
 }
 
-bool Mesh::IdentifyEffectiveCube(Square& square)
+bool Mesh::IdentifyEffectiveCube(LevelSet::LevelSetFunction& levelset, Square& square)
 {
-    bool ispos = square.linked_grids_[0]->phi > 0;
-    //std::cout << gridptrs_[upperleft]->phi << " " 
-    //<< gridptrs_[upperleft+1]->phi << " " <<
-    // gridptrs_[upperleft+nx]->phi << " " <<
-    // gridptrs_[upperleft+nx+1]->phi << " "  <<
-    //std::endl;
+    bool ispos = levelset.getlsf(square.linked_grids_[0]->index) > 0;
+    //std::cout << levelset.getlsf(square.linked_grids_[0]->index) << " "
+    //<< levelset.getlsf(square.linked_grids_[1]->index) << " "
+    // << levelset.getlsf(square.linked_grids_[2]->index) << " "
+    // << levelset.getlsf(square.linked_grids_[3]->index) << std::endl;
     if(ispos)
     {
         if(
-            square.linked_grids_[1]->phi < 0 || 
-            square.linked_grids_[2]->phi < 0 || 
-            square.linked_grids_[3]->phi < 0)
+            levelset.getlsf(square.linked_grids_[1]->index) < 0 || 
+            levelset.getlsf(square.linked_grids_[2]->index) < 0 || 
+            levelset.getlsf(square.linked_grids_[3]->index) < 0)
         {
+            //std::cout << "Identified" << std::endl;
+            //std::cout << levelset.getlsf(square.linked_grids_[1]->index) << " " << levelset.getlsf(square.linked_grids_[2]->index) << " " << levelset.getlsf(square.linked_grids_[3]->index) << std::endl;
             return true;
         }
         else
@@ -181,10 +202,12 @@ bool Mesh::IdentifyEffectiveCube(Square& square)
     else
     {
         if(
-            square.linked_grids_[1]->phi > 0 || 
-            square.linked_grids_[2]->phi > 0 || 
-            square.linked_grids_[3]->phi > 0)
+            levelset.getlsf(square.linked_grids_[1]->index) > 0 || 
+            levelset.getlsf(square.linked_grids_[2]->index) > 0 || 
+            levelset.getlsf(square.linked_grids_[3]->index) > 0)
         {
+            //std::cout << "Identified" << std::endl;
+            //std::cout << levelset.getlsf(square.linked_grids_[1]->index) << " " << levelset.getlsf(square.linked_grids_[2]->index) << " " << levelset.getlsf(square.linked_grids_[3]->index) << std::endl;
             return true;
         }
         else
@@ -195,9 +218,9 @@ bool Mesh::IdentifyEffectiveCube(Square& square)
 }
 
 
-void Mesh::SetMarchingCube(Square& square)
+void Mesh::SetMarchingCube(LevelSet::LevelSetFunction& levelset, Square& square)
 {
-    marchingcube_->SetRefArea(square);
+    marchingcube_->SetRefArea(levelset, square);
     
     for(auto &refarea : square.linked_refareas_)
     {
@@ -205,17 +228,18 @@ void Mesh::SetMarchingCube(Square& square)
     }
 }
 
-void Mesh::ConstructAllRefAreas()
+void Mesh::ConstructAllRefAreas(LevelSet::LevelSetFunction& levelset)
 {
     //std::cout <<"here" << std::endl;
     refareaptrs_.clear();
     for(auto &square : squareptrs_)
     {   
         //std::cout << "Constructing RefArea" << std::endl;
-        //std::cout << gridptrs_[square->linked_upperleft_grid_index_]->phi << std::endl;
-        if(IdentifyEffectiveCube(*square))
+        //std::cout << gridptrs_[square->linked_upperleft_grid_index_]->index) << std::endl;
+        if(IdentifyEffectiveCube(levelset, *square))
         {
-            SetMarchingCube(*square);
+            //std::cout << "Identified" << std::endl;
+            SetMarchingCube(levelset, *square);
         }
     }
 }
@@ -238,6 +262,16 @@ GridCartesian* Mesh::getGrid(label index)
 label Mesh::getnumGrids()
 {
     return gridptrs_.size();
+}
+
+Square* Mesh::getSquare(label index)
+{
+    return squareptrs_[index];
+}
+
+label Mesh::getnumSquares()
+{
+    return squareptrs_.size();
 }
 
 void Mesh::ToSurface()

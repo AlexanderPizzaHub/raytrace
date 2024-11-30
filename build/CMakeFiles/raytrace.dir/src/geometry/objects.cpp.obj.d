@@ -89,6 +89,8 @@ CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj: \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/hash_bytes.h \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/basic_string.tcc \
  F:\CODES\raytrace\src\geometry\marchingcube.hpp \
+ F:/CODES/raytrace/src/levelset/levelset.hpp \
+ F:/CODES/raytrace/src/geometry/mesh.hpp \
  E:/msys2/ucrt64/include/c++/14.2.0/vector \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/stl_vector.h \

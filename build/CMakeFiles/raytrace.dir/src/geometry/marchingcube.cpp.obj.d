@@ -89,6 +89,8 @@ CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj: \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/basic_string.tcc \
  F:\CODES\raytrace\src\geometry\objects.hpp \
  F:\CODES\raytrace\src\geometry\mesh.hpp \
+ F:/CODES/raytrace/src/levelset/levelset.hpp \
+ F:/CODES/raytrace/src/geometry/mesh.hpp \
  E:/msys2/ucrt64/include/c++/14.2.0/vector \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/stl_vector.h \

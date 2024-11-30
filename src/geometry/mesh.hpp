@@ -4,6 +4,7 @@
 #include "constants.hpp"
 #include "objects.hpp"
 #include "marchingcube.hpp"
+#include "levelset/levelset.hpp"
 #include <string>
 #include <vector>
 
@@ -29,8 +30,10 @@ class RefArea
         void WeightedHit(scalar dWeight); // increase the weight
         void WeightAdd(scalar dweight);
         //void WeightedHit(scalar dWeight, Const::vecDd position); // increase the weight. Hitpoint information is used
-
-        void ResetWeight(); // reset the weight to 0
+        void SetWeight(scalar weight); 
+        
+        void SetRate(scalar rate);
+        scalar getrate();
         
         Const::vecDd getnormal();
         scalar getweightstore();
@@ -43,6 +46,7 @@ class RefArea
     private:
         Line* lineptr_;
         scalar weightstore_;
+        scalar rate_;
         //label hitcounter_; // --> integers storing the number of hits
          // --> store the weight of the ray
 };
@@ -55,20 +59,25 @@ class Mesh
         ~Mesh();
 
         void CreateMeshFromTxt();
-        void CreateTestMesh();
+        
+        void CreateTestMesh(); // for testing
+        void CreateTestMesh2(label nx,label ny,label mid); // for testing
 
         // related to refarea construction
-        bool IdentifyEffectiveCube(Square& square);
-        void SetMarchingCube(Square& square);
+        bool IdentifyEffectiveCube(LevelSet::LevelSetFunction& levelset, Square& square);
+        void SetMarchingCube(LevelSet::LevelSetFunction& levelset, Square& square);
 
         //void ConstructRefArea(Square& square);
 
         // geometry and topology set up
         void ConstructTopo(); // implement geometry topology
-        void ConstructAllRefAreas(); // construct all reference area and set the linkings.
+        void ConstructAllRefAreas(LevelSet::LevelSetFunction& levelset); // construct all reference area and set the linkings.
 
         RefArea* getRefArea(label index);
         label getnumRefAreas();
+
+        Square* getSquare(label index);
+        label getnumSquares();
 
         GridCartesian* getGrid(label index);
         label getnumGrids();

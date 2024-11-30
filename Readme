@@ -1,3 +1,7 @@
+mkdir build && cd build 
+cmake .. -D CMAKE_CXX_COMPILER=mpic++ #出现mpi的linker command failed就用mpic++来编译
+make
+
 ### TODO
 1. 参考面通量与源面对齐（normalize）
 2. 参考面通量分给网格点

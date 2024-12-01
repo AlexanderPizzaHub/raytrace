@@ -96,7 +96,8 @@ CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/stl_bvector.h \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/vector.tcc \
- F:/CODES/raytrace/src/geometry/marchingcube.hpp \
+ F:/CODES/raytrace/src/geometry/objects.hpp \
+ F:/CODES/raytrace/src/levelset/marchingcube.hpp \
  F:/CODES/raytrace/src/levelset/levelset.hpp \
  E:/msys2/ucrt64/include/c++/14.2.0/iostream \
  E:/msys2/ucrt64/include/c++/14.2.0/ostream \
@@ -142,4 +143,10 @@ CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/basic_ios.tcc \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/ostream.tcc \
  E:/msys2/ucrt64/include/c++/14.2.0/istream \
- E:/msys2/ucrt64/include/c++/14.2.0/bits/istream.tcc
+ E:/msys2/ucrt64/include/c++/14.2.0/bits/istream.tcc \
+ E:/msys2/ucrt64/include/c++/14.2.0/cmath E:/msys2/ucrt64/include/math.h \
+ E:/msys2/ucrt64/include/c++/14.2.0/fstream \
+ E:/msys2/ucrt64/include/c++/14.2.0/bits/codecvt.h \
+ E:/msys2/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+ E:/msys2/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++io.h \
+ E:/msys2/ucrt64/include/c++/14.2.0/bits/fstream.tcc

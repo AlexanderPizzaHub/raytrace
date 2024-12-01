@@ -46,18 +46,15 @@ class Square
 
     public:
 
-    Square(Square& square);
+    //Square(Square& square);
     //Square(Const::vecDd lowerleft, Const::vecDd upperright);
     Square(Const::vecDi lowerleft, Const::vecDi upperright); // initialize by index 
-    Square(GridCartesian* ul, GridCartesian* ll, GridCartesian* lr, GridCartesian* ur); // initialize by grid pointers
+    Square(GridCartesian& ul, GridCartesian& ll, GridCartesian& lr, GridCartesian& ur); // initialize by grid pointers
     ~Square();
 
     scalar Intersect(Ray& ray); //implement ray-square intersection. Return hit time
 
-    // set the linked objects: as reference area, square may be linked with certain grids or cells
-    //label linked_upperleft_grid_index_; 
     std::vector<GridCartesian*> linked_grids_; // 0: upperleft, 1: lowerleft, 2: lowerright, 3: upperright
-    std::vector<RefArea*> linked_refareas_; 
 
 };
 
@@ -68,16 +65,11 @@ class Line
     1D object, used as the reference area in 2D space.
     */
     public:
-
-    Line(Line& line);
-    Line(Const::vecDd& start, Const::vecDd& end);
+    Line();
+    //Line(Line& line);  // 神奇Bug：加上这句会导致static_assertion faild.
+    Line(const Const::vecDd& start, const Const::vecDd& end);
     Line(Const::vecDd& center, scalar radius, Const::vecDd& normal);
     ~Line();
-
-    scalar Intersect(Ray& ray); //implement ray-line intersection. Return hit time
-
-    // set the linked objects: as reference area, line may be linked with certain grids or cells
-    std::vector<Square*> linked_objects_;  // detailed in future
 
     Const::vecDd getcenter();
     scalar getradius();
@@ -85,7 +77,7 @@ class Line
 
     void getendpoints(Const::vecDd& start, Const::vecDd& end);
 
-    private:
+    protected:
     Const::vecDd center_;
     scalar radius_;
     Const::vecDd normal_;

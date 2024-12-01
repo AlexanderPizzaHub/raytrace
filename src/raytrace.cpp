@@ -8,15 +8,16 @@
 int testrun()
 {
     // 从文件中读grids然后跑程序
-    Mesh* mesh =new Mesh("./sparsefieldgrids.txt", "./output.txt");
+    Mesh* mesh =new Mesh("./sparsefieldgrids.txt");
     mesh -> CreateTestMesh2(10,10,5);
     mesh -> ConstructTopo();
 
+    LevelSet::LevelSetFunction* levelset = new LevelSet::LevelSetFunction(mesh);
     //std::cout << mesh->getnumSquares() << std::endl;
 
-    Tracer* tracer = new Tracer(mesh);
+    Tracer* tracer = new Tracer(mesh,levelset);
     
-    LevelSet::LevelSetFunction* levelset = new LevelSet::LevelSetFunction(mesh);
+    
 
     //std::cout <<"000  " <<mesh->getnumGrids() <<std::endl;
     label mid = 5;
@@ -35,10 +36,10 @@ int testrun()
     RaySampler* splrptr2 = new RaySampler(Const::source_plane_xbox2,Const::source_plane_ybox2);
     tracer->AddNewSource(splrptr);
     tracer->AddNewSource(splrptr2);
-    for(scalar t=0.0; t<20.0; t+=dt)
+    for(scalar t=0.0; t<200.0; t+=dt)
     {
         std::cout << "time: " << t << std::endl;
-        mesh -> ConstructAllRefAreas(*levelset);
+        levelset->ConstructAllRefAreas();
         tracer -> CastAllRays(100000,0);
         //tracer -> CastAllRays(10000,1);
         tracer -> NormalizeFlux(100000);
@@ -46,7 +47,7 @@ int testrun()
         tracer -> CalcAllRate();
         levelset -> VelocityExtension();
         levelset -> Evolve(dt);
-        mesh -> ToSurface("../results/output"+std::to_string(t)+".txt");
+        levelset -> ToSurface("../results/output"+std::to_string(t)+".txt");
         //std::cout << ".results/output"+std::to_string(t)+".txt"<<std::endl;
     }
    return 0;

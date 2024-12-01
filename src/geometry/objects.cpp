@@ -15,13 +15,17 @@ GridCartesian::~GridCartesian()
 
 
 #pragma region Line
+
+Line::Line()
+{}
+/*
 Line::Line(Line& line)
 {
     center_ = line.getcenter();
     normal_ = line.getnormal();
     radius_ = line.getradius();
 }
-
+*/
 Line::Line(Const::vecDd& center, scalar radius, Const::vecDd& normal)
 {
     center_ = center;
@@ -29,7 +33,7 @@ Line::Line(Const::vecDd& center, scalar radius, Const::vecDd& normal)
     radius_ = radius;
 }
 
-Line::Line(Const::vecDd& start, Const::vecDd& end)
+Line::Line(const Const::vecDd& start, const Const::vecDd& end)
 {
     center_[0] = (start[0] + end[0]) / 2;
     center_[1] = (start[1] + end[1]) / 2;
@@ -61,23 +65,6 @@ Const::vecDd Line::getnormal()
     return normal_;
 }
 
-scalar Line::Intersect(Ray& ray)
-{
-    scalar dt_ = - (normal_[0]*(ray.pos_[0]-center_[0]) + normal_[1]*(ray.pos_[1]-center_[1])) 
-    / (normal_[0]*ray.dir_[0] + normal_[1]*ray.dir_[1]);
-    Const::vecDd hitPoint = {ray.pos_[0] + dt_ * ray.dir_[0], ray.pos_[1] + dt_ * ray.dir_[1]};
-    if (dt_ < 0 || dt_ > Const::MAXIMUM_LIGHT_TIME ||
-    (hitPoint[0]-center_[0])*(hitPoint[0]-center_[0]) + 
-    (hitPoint[1]-center_[1])*(hitPoint[1]-center_[1]) > radius_*radius_
-    )
-    {
-        return -1.0; // no hit
-    }
-    else
-    {
-        return dt_;
-    }
-}
 
 void Line::getendpoints(Const::vecDd& start, Const::vecDd& end)
 {
@@ -91,22 +78,18 @@ void Line::getendpoints(Const::vecDd& start, Const::vecDd& end)
 #pragma endregion
 
 #pragma region Square
-Square::Square(Square& square)
-{
-    //TODO
-}
 
 Square::Square(Const::vecDi lowerleft, Const::vecDi upperright)
 {
     // TOFO
 }
 
-Square::Square(GridCartesian* ul, GridCartesian* ll, GridCartesian* lr, GridCartesian* ur)
+Square::Square(GridCartesian& ul, GridCartesian& ll, GridCartesian& lr, GridCartesian& ur)
 {
-    linked_grids_.emplace_back(ul);
-    linked_grids_.emplace_back(ll);
-    linked_grids_.emplace_back(lr);
-    linked_grids_.emplace_back(ur);
+    linked_grids_.emplace_back(&ul);
+    linked_grids_.emplace_back(&ll);
+    linked_grids_.emplace_back(&lr);
+    linked_grids_.emplace_back(&ur);
 
 }
 

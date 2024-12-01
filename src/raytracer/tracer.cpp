@@ -1,4 +1,5 @@
 #include "tracer.hpp"
+#include "levelset/levelset.hpp"
 #include <iostream>
 
 #pragma region RaySampler
@@ -63,8 +64,10 @@ void RayOperator::UpdatePos(Ray &ray, const scalar dt)
 #pragma endregion
 
 #pragma region Tracer
-Tracer::Tracer(Mesh* meshptr){
+Tracer::Tracer(Mesh* meshptr, LevelSet::LevelSetFunction* lsfptr)
+{
 meshptr_ = meshptr;
+lsfptr_ = lsfptr;
 optr_ = RayOperator();
 
 };
@@ -95,16 +98,16 @@ void Tracer::AddNewSource(RaySampler* splrptr)
 }
 
 
-void Tracer::ItsctAllRefAreas(Ray &ray, RefArea* &hitrefarea, scalar &dt)
+void Tracer::ItsctAllRefAreas(Ray &ray, LevelSet::RefArea* &hitrefarea, scalar &dt)
 {
     scalar dt_ = Const::MAXIMUM_LIGHT_TIME;
-    label numRefAreas = meshptr_->getnumRefAreas();
+    label numRefAreas = lsfptr_->getnumRefAreas();
     //std::cout << hitrefarea << "???" <<std::endl;
     label I = 0;
     for(label i = 0; i < numRefAreas; i++)
     {
         // DOUBLE CHECK THIS PART
-        scalar dt_temp = meshptr_->getRefArea(i) -> Intersect(ray);
+        scalar dt_temp = lsfptr_->getRefArea(i) -> Intersect(ray);
         if(dt_temp > 0.0 && dt_temp < dt_)
         {
             dt_ = dt_temp;
@@ -115,7 +118,7 @@ void Tracer::ItsctAllRefAreas(Ray &ray, RefArea* &hitrefarea, scalar &dt)
 
     if(dt_ + ray.time_< Const::MAXIMUM_LIGHT_TIME)
     {
-        hitrefarea = (meshptr_->getRefArea(I));
+        hitrefarea = (lsfptr_->getRefArea(I));
         dt = dt_;
     }
 
@@ -139,7 +142,7 @@ void Tracer::ReInit(Ray& ray, label splrindex)
     ray.isValid_ = true;
 }
 
-scalar Tracer::CalcDWeight(Ray &ray, RefArea &RefArea)
+scalar Tracer::CalcDWeight(Ray &ray, LevelSet::RefArea &RefArea)
 {   
     if(ray.weight_ < 1.0)
     {
@@ -152,7 +155,7 @@ scalar Tracer::CalcDWeight(Ray &ray, RefArea &RefArea)
     
 }
 
-void Tracer::UpdateAfterHit(Ray &ray, RefArea &refarea,scalar &dt)
+void Tracer::UpdateAfterHit(Ray &ray, LevelSet::RefArea &refarea,scalar &dt)
 {
     scalar weightdecay = CalcDWeight(ray, refarea);
     optr_.Decay(ray, weightdecay);
@@ -166,7 +169,7 @@ void Tracer::UpdateAfterHit(Ray &ray, RefArea &refarea,scalar &dt)
 
 void Tracer::CastOneRay(Ray &ray)
 {
-    RefArea* hitRefArea;
+    LevelSet::RefArea* hitRefArea;
     scalar dt = Const::MAXIMUM_LIGHT_TIME;
     while(ray.isValid_)
     {
@@ -225,9 +228,9 @@ void Tracer::CastAllRays(label numrays, label sourceID)
   
 void Tracer::NormalizeFlux(scalar numrays)
 {
-    for(label i = 0; i < meshptr_->getnumRefAreas(); i++)
+    for(label i = 0; i < lsfptr_->getnumRefAreas(); i++)
     {
-        RefArea* refarea = meshptr_->getRefArea(i);
+        LevelSet::RefArea* refarea = lsfptr_->getRefArea(i);
         scalar flux = refarea->getweightstore();
         refarea->SetWeight(flux / numrays);
     }
@@ -237,9 +240,9 @@ void Tracer::NormalizeFlux(scalar numrays)
 void Tracer::CalcAllRate()
 {
     scalar uniform_rate = 5.5; // for test 
-    for(label i = 0; i < meshptr_->getnumRefAreas(); i++)
+    for(label i = 0; i < lsfptr_->getnumRefAreas(); i++)
     {
-        RefArea* refarea = meshptr_->getRefArea(i);
+        LevelSet::RefArea* refarea = lsfptr_->getRefArea(i);
         refarea->SetRate(uniform_rate*refarea->getweightstore());
     } 
 }

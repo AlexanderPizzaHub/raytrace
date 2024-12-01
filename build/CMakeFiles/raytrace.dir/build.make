@@ -71,26 +71,11 @@ include CMakeFiles/raytrace.dir/flags.make
 CMakeFiles/raytrace.dir/codegen:
 .PHONY : CMakeFiles/raytrace.dir/codegen
 
-CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
-CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj: F:/CODES/raytrace/src/geometry/marchingcube.cpp
-CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj"
-	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj -MF CMakeFiles\raytrace.dir\src\geometry\marchingcube.cpp.obj.d -o CMakeFiles\raytrace.dir\src\geometry\marchingcube.cpp.obj -c F:\CODES\raytrace\src\geometry\marchingcube.cpp
-
-CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.i"
-	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\CODES\raytrace\src\geometry\marchingcube.cpp > CMakeFiles\raytrace.dir\src\geometry\marchingcube.cpp.i
-
-CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.s"
-	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\CODES\raytrace\src\geometry\marchingcube.cpp -o CMakeFiles\raytrace.dir\src\geometry\marchingcube.cpp.s
-
 CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj: CMakeFiles/raytrace.dir/flags.make
 CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
 CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj: F:/CODES/raytrace/src/geometry/mesh.cpp
 CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj"
 	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj -MF CMakeFiles\raytrace.dir\src\geometry\mesh.cpp.obj.d -o CMakeFiles\raytrace.dir\src\geometry\mesh.cpp.obj -c F:\CODES\raytrace\src\geometry\mesh.cpp
 
 CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.i: cmake_force
@@ -105,7 +90,7 @@ CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj: CMakeFiles/raytrace.dir/fl
 CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
 CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj: F:/CODES/raytrace/src/geometry/objects.cpp
 CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj"
 	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj -MF CMakeFiles\raytrace.dir\src\geometry\objects.cpp.obj.d -o CMakeFiles\raytrace.dir\src\geometry\objects.cpp.obj -c F:\CODES\raytrace\src\geometry\objects.cpp
 
 CMakeFiles/raytrace.dir/src/geometry/objects.cpp.i: cmake_force
@@ -120,7 +105,7 @@ CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: CMakeFiles/raytrace.dir/f
 CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
 CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: F:/CODES/raytrace/src/levelset/levelset.cpp
 CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj"
 	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj -MF CMakeFiles\raytrace.dir\src\levelset\levelset.cpp.obj.d -o CMakeFiles\raytrace.dir\src\levelset\levelset.cpp.obj -c F:\CODES\raytrace\src\levelset\levelset.cpp
 
 CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.i: cmake_force
@@ -130,6 +115,21 @@ CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.i: cmake_force
 CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.s"
 	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\CODES\raytrace\src\levelset\levelset.cpp -o CMakeFiles\raytrace.dir\src\levelset\levelset.cpp.s
+
+CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj: CMakeFiles/raytrace.dir/flags.make
+CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
+CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj: F:/CODES/raytrace/src/levelset/marchingcube.cpp
+CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj: CMakeFiles/raytrace.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj"
+	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj -MF CMakeFiles\raytrace.dir\src\levelset\marchingcube.cpp.obj.d -o CMakeFiles\raytrace.dir\src\levelset\marchingcube.cpp.obj -c F:\CODES\raytrace\src\levelset\marchingcube.cpp
+
+CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.i"
+	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\CODES\raytrace\src\levelset\marchingcube.cpp > CMakeFiles\raytrace.dir\src\levelset\marchingcube.cpp.i
+
+CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.s"
+	E:\msys2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\CODES\raytrace\src\levelset\marchingcube.cpp -o CMakeFiles\raytrace.dir\src\levelset\marchingcube.cpp.s
 
 CMakeFiles/raytrace.dir/src/raytrace.cpp.obj: CMakeFiles/raytrace.dir/flags.make
 CMakeFiles/raytrace.dir/src/raytrace.cpp.obj: CMakeFiles/raytrace.dir/includes_CXX.rsp
@@ -178,10 +178,10 @@ CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.s: cmake_force
 
 # Object files for target raytrace
 raytrace_OBJECTS = \
-"CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj" \
+"CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/raytrace.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj" \
 "CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj"
@@ -189,10 +189,10 @@ raytrace_OBJECTS = \
 # External object files for target raytrace
 raytrace_EXTERNAL_OBJECTS =
 
-raytrace.exe: CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj
+raytrace.exe: CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/raytrace.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj
 raytrace.exe: CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj

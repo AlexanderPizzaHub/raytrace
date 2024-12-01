@@ -173,30 +173,6 @@ raytrace/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/build
 .PHONY : raytrace/fast
 
-src/geometry/marchingcube.obj: src/geometry/marchingcube.cpp.obj
-.PHONY : src/geometry/marchingcube.obj
-
-# target to build an object file
-src/geometry/marchingcube.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj
-.PHONY : src/geometry/marchingcube.cpp.obj
-
-src/geometry/marchingcube.i: src/geometry/marchingcube.cpp.i
-.PHONY : src/geometry/marchingcube.i
-
-# target to preprocess a source file
-src/geometry/marchingcube.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.i
-.PHONY : src/geometry/marchingcube.cpp.i
-
-src/geometry/marchingcube.s: src/geometry/marchingcube.cpp.s
-.PHONY : src/geometry/marchingcube.s
-
-# target to generate assembly for a file
-src/geometry/marchingcube.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.s
-.PHONY : src/geometry/marchingcube.cpp.s
-
 src/geometry/mesh.obj: src/geometry/mesh.cpp.obj
 .PHONY : src/geometry/mesh.obj
 
@@ -268,6 +244,30 @@ src/levelset/levelset.s: src/levelset/levelset.cpp.s
 src/levelset/levelset.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.s
 .PHONY : src/levelset/levelset.cpp.s
+
+src/levelset/marchingcube.obj: src/levelset/marchingcube.cpp.obj
+.PHONY : src/levelset/marchingcube.obj
+
+# target to build an object file
+src/levelset/marchingcube.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj
+.PHONY : src/levelset/marchingcube.cpp.obj
+
+src/levelset/marchingcube.i: src/levelset/marchingcube.cpp.i
+.PHONY : src/levelset/marchingcube.i
+
+# target to preprocess a source file
+src/levelset/marchingcube.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.i
+.PHONY : src/levelset/marchingcube.cpp.i
+
+src/levelset/marchingcube.s: src/levelset/marchingcube.cpp.s
+.PHONY : src/levelset/marchingcube.s
+
+# target to generate assembly for a file
+src/levelset/marchingcube.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.s
+.PHONY : src/levelset/marchingcube.cpp.s
 
 src/raytrace.obj: src/raytrace.cpp.obj
 .PHONY : src/raytrace.obj
@@ -354,9 +354,6 @@ help:
 	@echo ... list_install_components
 	@echo ... rebuild_cache
 	@echo ... raytrace
-	@echo ... src/geometry/marchingcube.obj
-	@echo ... src/geometry/marchingcube.i
-	@echo ... src/geometry/marchingcube.s
 	@echo ... src/geometry/mesh.obj
 	@echo ... src/geometry/mesh.i
 	@echo ... src/geometry/mesh.s
@@ -366,6 +363,9 @@ help:
 	@echo ... src/levelset/levelset.obj
 	@echo ... src/levelset/levelset.i
 	@echo ... src/levelset/levelset.s
+	@echo ... src/levelset/marchingcube.obj
+	@echo ... src/levelset/marchingcube.i
+	@echo ... src/levelset/marchingcube.s
 	@echo ... src/raytrace.obj
 	@echo ... src/raytrace.i
 	@echo ... src/raytrace.s

@@ -4,8 +4,10 @@
 #include "geometry/mesh.hpp"
 #include "raytracer/ray.hpp"
 #include "constants.hpp"
-
+#include "levelset/levelset.hpp"
 #include <random>
+
+using namespace LevelSet;
 
 // 两个提供给光线的享元, 代表产生光线的光源
 class RaySampler
@@ -41,7 +43,7 @@ class RayOperator
 class Tracer
 {
     public:
-        Tracer(Mesh* meshptr);
+        Tracer(Mesh* meshptr, LevelSet::LevelSetFunction* lsfptr);
         ~Tracer();
 
         void AddNewSource(RaySampler* splrptr);
@@ -50,13 +52,13 @@ class Tracer
         Ray InitNewRay(label splrindex);
 
         // upon tracing
-        void ItsctAllRefAreas(Ray &ray, RefArea* &hitRefArea, scalar &dt);
+        void ItsctAllRefAreas(Ray &ray, LevelSet::RefArea* &hitRefArea, scalar &dt);
 
         // upon intersection
         void ReInit(Ray& ray, RaySampler* splrptr);
         void ReInit(Ray& ray, label splrindex);
-        scalar CalcDWeight(Ray &ray, RefArea &refarea);
-        void UpdateAfterHit(Ray &ray, RefArea &refarea,scalar &dt);
+        scalar CalcDWeight(Ray &ray, LevelSet::RefArea &refarea);
+        void UpdateAfterHit(Ray &ray, LevelSet::RefArea &refarea,scalar &dt);
 
         // trace single ray
         void CastOneRay(Ray &ray);
@@ -71,6 +73,7 @@ class Tracer
 
     private:
         Mesh* meshptr_;
+        LevelSet::LevelSetFunction* lsfptr_;
 
         std::vector<RaySampler*> splr_;
         RayOperator optr_;

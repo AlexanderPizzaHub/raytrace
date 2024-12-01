@@ -1,12 +1,6 @@
 [
 {
   "directory": "F:/CODES/raytrace/build",
-  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\geometry\\marchingcube.cpp.obj -c F:\\CODES\\raytrace\\src\\geometry\\marchingcube.cpp",
-  "file": "F:/CODES/raytrace/src/geometry/marchingcube.cpp",
-  "output": "CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj"
-},
-{
-  "directory": "F:/CODES/raytrace/build",
   "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\geometry\\mesh.cpp.obj -c F:\\CODES\\raytrace\\src\\geometry\\mesh.cpp",
   "file": "F:/CODES/raytrace/src/geometry/mesh.cpp",
   "output": "CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj"
@@ -22,6 +16,12 @@
   "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\levelset\\levelset.cpp.obj -c F:\\CODES\\raytrace\\src\\levelset\\levelset.cpp",
   "file": "F:/CODES/raytrace/src/levelset/levelset.cpp",
   "output": "CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj"
+},
+{
+  "directory": "F:/CODES/raytrace/build",
+  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\levelset\\marchingcube.cpp.obj -c F:\\CODES\\raytrace\\src\\levelset\\marchingcube.cpp",
+  "file": "F:/CODES/raytrace/src/levelset/marchingcube.cpp",
+  "output": "CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.obj"
 },
 {
   "directory": "F:/CODES/raytrace/build",

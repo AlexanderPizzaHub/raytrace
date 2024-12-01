@@ -20,11 +20,14 @@ void RaySampler::SamplePos(Const::vecDd &pos)
 {
     pos[0] = distribution(generator) * (xbound_[1] - xbound_[0]) + xbound_[0];
     pos[1] = distribution(generator) * (ybound_[1] - ybound_[0]) + ybound_[0];
+    //pos[0] = 0.5 * (xbound_[1] - xbound_[0]) + xbound_[0];
+    //pos[1] = 0.5 * (ybound_[1] - ybound_[0]) + ybound_[0];
 }
 void RaySampler::SampleDir(Const::vecDd &dir)
 {
     //default is isotropic
     scalar theta = distribution(generator) * 2 * M_PI;
+    //scalar theta = M_PI;
     dir[0] = cos(theta);
     dir[1] = sin(theta);
     //if(dir[1]>0)

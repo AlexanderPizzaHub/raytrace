@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(DESTINATION .)
 
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2 -Wall -fopt-info-vec-optimized -lstdc++")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -g -Wall -pedantic-errors -lstdc++")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -Wall -fopt-info-vec-optimized -lstdc++")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O3  -Wall -pedantic-errors -lstdc++")
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/src

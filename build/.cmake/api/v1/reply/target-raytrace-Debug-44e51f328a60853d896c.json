@@ -59,7 +59,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=gnu++11"
+					"fragment" : "-g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11"
 				}
 			],
 			"includes" : 
@@ -117,6 +117,10 @@
 	{
 		"commandFragments" : 
 		[
+			{
+				"fragment" : "-g -O0 -g -Wall -pedantic-errors -lstdc++",
+				"role" : "flags"
+			},
 			{
 				"fragment" : "",
 				"role" : "flags"

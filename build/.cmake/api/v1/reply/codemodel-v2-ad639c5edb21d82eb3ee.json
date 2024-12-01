@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-040d62ed6fa8ad7396fd.json",
+					"jsonFile" : "directory-.-Debug-040d62ed6fa8ad7396fd.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.10"
@@ -20,7 +20,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -40,7 +40,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "raytrace::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-raytrace-776d53c0cb548caf4410.json",
+					"jsonFile" : "target-raytrace-Debug-44e51f328a60853d896c.json",
 					"name" : "raytrace",
 					"projectIndex" : 0
 				}

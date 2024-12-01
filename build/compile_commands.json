@@ -1,49 +1,43 @@
 [
 {
   "directory": "F:/CODES/raytrace/build",
-  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\geometry\\marchingcube.cpp.obj -c F:\\CODES\\raytrace\\src\\geometry\\marchingcube.cpp",
+  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\geometry\\marchingcube.cpp.obj -c F:\\CODES\\raytrace\\src\\geometry\\marchingcube.cpp",
   "file": "F:/CODES/raytrace/src/geometry/marchingcube.cpp",
   "output": "CMakeFiles/raytrace.dir/src/geometry/marchingcube.cpp.obj"
 },
 {
   "directory": "F:/CODES/raytrace/build",
-  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\geometry\\mesh.cpp.obj -c F:\\CODES\\raytrace\\src\\geometry\\mesh.cpp",
+  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\geometry\\mesh.cpp.obj -c F:\\CODES\\raytrace\\src\\geometry\\mesh.cpp",
   "file": "F:/CODES/raytrace/src/geometry/mesh.cpp",
   "output": "CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj"
 },
 {
   "directory": "F:/CODES/raytrace/build",
-  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\geometry\\objects.cpp.obj -c F:\\CODES\\raytrace\\src\\geometry\\objects.cpp",
+  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\geometry\\objects.cpp.obj -c F:\\CODES\\raytrace\\src\\geometry\\objects.cpp",
   "file": "F:/CODES/raytrace/src/geometry/objects.cpp",
   "output": "CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj"
 },
 {
   "directory": "F:/CODES/raytrace/build",
-  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\levelset\\evolve.cpp.obj -c F:\\CODES\\raytrace\\src\\levelset\\evolve.cpp",
-  "file": "F:/CODES/raytrace/src/levelset/evolve.cpp",
-  "output": "CMakeFiles/raytrace.dir/src/levelset/evolve.cpp.obj"
+  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\levelset\\levelset.cpp.obj -c F:\\CODES\\raytrace\\src\\levelset\\levelset.cpp",
+  "file": "F:/CODES/raytrace/src/levelset/levelset.cpp",
+  "output": "CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj"
 },
 {
   "directory": "F:/CODES/raytrace/build",
-  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\raytrace.cpp.obj -c F:\\CODES\\raytrace\\src\\raytrace.cpp",
+  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\raytrace.cpp.obj -c F:\\CODES\\raytrace\\src\\raytrace.cpp",
   "file": "F:/CODES/raytrace/src/raytrace.cpp",
   "output": "CMakeFiles/raytrace.dir/src/raytrace.cpp.obj"
 },
 {
   "directory": "F:/CODES/raytrace/build",
-  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\raytracer\\mpitracer.cpp.obj -c F:\\CODES\\raytrace\\src\\raytracer\\mpitracer.cpp",
-  "file": "F:/CODES/raytrace/src/raytracer/mpitracer.cpp",
-  "output": "CMakeFiles/raytrace.dir/src/raytracer/mpitracer.cpp.obj"
-},
-{
-  "directory": "F:/CODES/raytrace/build",
-  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\raytracer\\ray.cpp.obj -c F:\\CODES\\raytrace\\src\\raytracer\\ray.cpp",
+  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\raytracer\\ray.cpp.obj -c F:\\CODES\\raytrace\\src\\raytracer\\ray.cpp",
   "file": "F:/CODES/raytrace/src/raytracer/ray.cpp",
   "output": "CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.obj"
 },
 {
   "directory": "F:/CODES/raytrace/build",
-  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\raytracer\\tracer.cpp.obj -c F:\\CODES\\raytrace\\src\\raytracer\\tracer.cpp",
+  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O0 -g -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\raytracer\\tracer.cpp.obj -c F:\\CODES\\raytrace\\src\\raytracer\\tracer.cpp",
   "file": "F:/CODES/raytrace/src/raytracer/tracer.cpp",
   "output": "CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.obj"
 }

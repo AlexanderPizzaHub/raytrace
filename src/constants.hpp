@@ -23,10 +23,11 @@ namespace Const
     以下部分之后替换为yaml
     */
     const std::string ray_direction = "default";
-    const vecDd source_plane_xbox = {0.0,5.0};
-    const vecDd source_plane_ybox = {1.95,2.05};
-    const vecDd source_plane_xbox2 = {5.0,10.0};
-    const vecDd source_plane_ybox2 = {7.95,8.05};
+    const vecDd source_plane_xbox = {25.0,25.0};
+    //const vecDd source_plane_ybox = {9.95,10.05};
+    const vecDd source_plane_ybox = {20.95,30.05};
+    const vecDd source_plane_xbox2 = {75.0,85.0};
+    const vecDd source_plane_ybox2 = {70.95,80.05};
 
     const vecDd substrate_xbox = {0.0,10.0};
     const vecDd substrate_ybox = {-10.0,0.0};

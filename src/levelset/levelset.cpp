@@ -46,7 +46,7 @@ scalar RefArea::Intersect(Ray& ray)
 
 void RefArea::WeightedHit(scalar dWeight)
 {
-    //std::cout << "hit" << std::endl;
+    //std::cout << "hit " << dWeight  << std::endl;
     weightstore_ += dWeight;
     //std::cout <<getweightstore() <<std::endl;
 }
@@ -79,6 +79,10 @@ Const::vecDd RefArea::getnormal()
     return normal_;
 }
 
+void RefArea::AddRate(scalar rate)
+{
+    rate_ += rate;
+}
 
 void RefArea::SetRate(scalar rate)
 {
@@ -113,7 +117,16 @@ void LevelSetFunction::Evolve(scalar dt)
     label numgrids_active = levelsetfunction_.size();
     for(label i = 0; i<numgrids_active; i++)
     {
+        //std::cout << "velocity" << velocityfield_[i] << std::endl;
         levelsetfunction_[i] -= velocityfield_[i]*dt;
+    }
+}
+
+void LevelSetFunction::ClearWeights()
+{
+    for(RefArea refarea: refareas_)
+    {
+        refarea.SetWeight(0.0);
     }
 }
 

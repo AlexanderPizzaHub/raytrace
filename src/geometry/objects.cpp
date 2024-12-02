@@ -42,6 +42,7 @@ Line::Line(const Const::vecDd& start, const Const::vecDd& end)
 
     normal_[0] = (end[1] - start[1]) / radius_ / 2.0;
     normal_[1] = (start[0] - end[0]) / radius_ / 2.0;
+    // 右手定则
 }
 
 Line::~Line()

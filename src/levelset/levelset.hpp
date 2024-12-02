@@ -34,6 +34,7 @@ namespace LevelSet
             //void WeightedHit(scalar dWeight, Const::vecDd position); // increase the weight. Hitpoint information is used
             void SetWeight(scalar weight); 
             
+            void AddRate(scalar rate);
             void SetRate(scalar rate);
             scalar getrate();
             
@@ -71,6 +72,7 @@ namespace LevelSet
             label getnumRefAreas();
 
 
+            void ClearWeights();
             void ClearVelocity();
             void VelocityExtension();
             void Evolve(scalar dt);

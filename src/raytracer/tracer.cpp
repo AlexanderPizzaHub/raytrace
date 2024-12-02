@@ -53,7 +53,7 @@ void RayOperator::Reflect(Ray &ray, Const::vecDd& normal)
 void RayOperator::Decay(Ray &ray, const scalar dWeight)
 {
     // additive or multiplicative
-    ray.weight_ -= dWeight;
+    ray.weight_ -= std::abs(dWeight);
     //ray.weight_ *= dWeight;
 }
 
@@ -147,13 +147,14 @@ void Tracer::ReInit(Ray& ray, label splrindex)
 
 scalar Tracer::CalcDWeight(Ray &ray, LevelSet::RefArea &RefArea)
 {   
-    if(ray.weight_ < 1.0)
+    scalar dweight = 1.0 * (RefArea.getnormal()[0] * ray.dir_[0] + RefArea.getnormal()[1] * ray.dir_[1]);
+    if(ray.weight_ < std::abs(dweight))
     {
-        return ray.weight_;
+        return dweight > 0.0 ? ray.weight_ : -ray.weight_;
     }
     else
     {
-        return 1.0;
+        return dweight;
     }
     
 }
@@ -212,6 +213,7 @@ void Tracer::CastAllRays(label numrays, label sourceID)
     //Ray ray = InitNewRay();
     //Const::vecDd xbound{0.0,1.0};
     //Const::vecDd ybound{0.0,1.0};
+    lsfptr_->ClearWeights();
     for(i = 0; i < numrays; i++)
     {   
         //std::cout << "Ray initializing" << std::endl;
@@ -246,7 +248,9 @@ void Tracer::CalcAllRate()
     for(label i = 0; i < lsfptr_->getnumRefAreas(); i++)
     {
         LevelSet::RefArea* refarea = lsfptr_->getRefArea(i);
-        refarea->SetRate(uniform_rate*refarea->getweightstore());
+        //std::cout << "rate: " << uniform_rate*refarea->getweightstore() << std::endl;
+        //refarea->SetRate(uniform_rate*refarea->getweightstore());
+        refarea -> AddRate(uniform_rate*refarea->getweightstore()/(refarea->getradius()/2.0+Const::SMALL));
     } 
 }
 

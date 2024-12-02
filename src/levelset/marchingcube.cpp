@@ -53,7 +53,7 @@ void case0001_(LevelSet::LevelSetFunction& levelset, Square& square)
  // change normal by swapping x and y
 
     
-    AddRefArea(start,end,levelset,square);
+    AddRefArea(end,start,levelset,square);
 }
 
 void case0010_(LevelSet::LevelSetFunction& levelset, Square& square)
@@ -106,7 +106,7 @@ void case0011_(LevelSet::LevelSetFunction& levelset, Square& square)
  
 
     
-    AddRefArea(start,end,levelset,square);
+    AddRefArea(end,start,levelset,square);
 }
 
 void case0100_(LevelSet::LevelSetFunction& levelset, Square& square)
@@ -201,7 +201,7 @@ void case0111_(LevelSet::LevelSetFunction& levelset, Square& square)
  
 
     
-    AddRefArea(start,end,levelset,square);
+    AddRefArea(end,start,levelset,square);
 
 }
 
@@ -257,7 +257,7 @@ void case1001_(LevelSet::LevelSetFunction& levelset, Square& square)
  
 
     
-    AddRefArea(start,end,levelset,square);
+    AddRefArea(end,start,levelset,square);
 }
 
 void case1010_(LevelSet::LevelSetFunction& levelset, Square& square)
@@ -298,7 +298,7 @@ void case1011_(LevelSet::LevelSetFunction& levelset, Square& square)
  
 
     
-    AddRefArea(start,end,levelset,square);
+    AddRefArea(end,start,levelset,square);
 }
 
 void case1100_(LevelSet::LevelSetFunction& levelset, Square& square)
@@ -349,7 +349,7 @@ void case1101_(LevelSet::LevelSetFunction& levelset, Square& square)
     end[0] = square.linked_grids_[2]->x;
     end[1] = interpolant_zero(square.linked_grids_[3]->y, square.linked_grids_[2]->y,levelset.getlsf( square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[2]->index));
     
-    AddRefArea(start,end,levelset,square);
+    AddRefArea(end,start,levelset,square);
 }
 
 void case1110_(LevelSet::LevelSetFunction& levelset, Square& square)

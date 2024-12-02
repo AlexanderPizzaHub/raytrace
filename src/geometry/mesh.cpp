@@ -75,9 +75,9 @@ void Mesh::CreateTestMesh2(label nx,label ny,label mid)
 {
     this->nx = nx;
     this->ny = ny;
-    for(scalar i=0; i< ny; i++)
+    for(label i=0; i< ny; i++)
     {
-        for(scalar j=0;j<nx;j++) grids_.emplace_back(GridCartesian((scalar)j, (scalar)i, i*ny+j));
+        for(label j=0;j<nx;j++) grids_.emplace_back(GridCartesian((scalar)j, (scalar)i, i*ny+j));
     }
 }
 // Link: line(refarea) <- square(cube) <- grid(mesh) 

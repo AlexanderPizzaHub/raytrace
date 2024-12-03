@@ -204,6 +204,7 @@ void Tracer::CastAllRays(label numrays, label sourceID)
 {
     label i;
     // pragma OMP here?
+    // 可能先给所有光线排内存比较好
     // Ray ray = InitNewRay();
     // Const::vecDd xbound{0.0,1.0};
     // Const::vecDd ybound{0.0,1.0};
@@ -236,7 +237,7 @@ void Tracer::NormalizeFlux(scalar numrays)
 }
 
 // 这个应该丢给物理化学模块，暂时先放在这里
-void Tracer::CalcAllRate()
+void Tracer::CalcAllRateAdd()
 {
     scalar uniform_rate = 5.5; // for test
     for (label i = 0; i < lsfptr_->getnumRefAreas(); i++)

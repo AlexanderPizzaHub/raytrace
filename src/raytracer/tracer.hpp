@@ -66,7 +66,7 @@ public:
 
     // after tracing
     void NormalizeFlux(scalar numrays); // align the flux on surface with flux on source plane
-    void CalcAllRate();                 // distribute flux on refarea to grids. This will use the linking information of refarea
+    void CalcAllRateAdd();                 // distribute flux on refarea to grids. This will use the linking information of refarea
 
 private:
     Mesh *meshptr_;

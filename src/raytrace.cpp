@@ -47,11 +47,11 @@ int testrun()
 
         tracer->CastAllRays(100000, 0);
         tracer->NormalizeFlux(10000);
-        tracer->CalcAllRate();
+        tracer->CalcAllRateAdd();
 
         tracer->CastAllRays(100000, 1);
         tracer->NormalizeFlux(10000);
-        tracer->CalcAllRate();
+        tracer->CalcAllRateAdd();
         // std::cout << "2222" <<std::endl;
 
         levelset->VelocityExtension();

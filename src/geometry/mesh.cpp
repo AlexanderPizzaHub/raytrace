@@ -10,24 +10,25 @@ Mesh::Mesh(std::string inputpath)
     inputpath_ = inputpath;
 }
 Mesh::~Mesh()
-{}
+{
+}
 
 void Mesh::CreateMeshFromTxt()
 {
     std::ifstream ifs;
     ifs.open(inputpath_);
 
-    if(!ifs.is_open())
+    if (!ifs.is_open())
     {
-        //std::cout << "File not found" << std::endl;
+        // std::cout << "File not found" << std::endl;
         return;
     }
 
     std::string buff;
-    while(std::getline(ifs, buff))
+    while (std::getline(ifs, buff))
     {
         // read the file and construct the mesh
-        //TODO
+        // TODO
     }
 }
 
@@ -36,13 +37,14 @@ void Mesh::CreateTestMesh()
     /*
     1.5 1.5 1.5 1.5 1.5
     1.5 0.5 0.5 0.5 1.5
-    1.2 0.2 -0.2 0.2 1.2 
+    1.2 0.2 -0.2 0.2 1.2
     0.2 -0.2 -0.2 -0.2 0.2
-    0.2 -0.2 -1.2 -0.2 0.2  
+    0.2 -0.2 -1.2 -0.2 0.2
     */
 
-    nx = 5; ny = 5;
-    for(label i=0; i< nx; i++)
+    nx = 5;
+    ny = 5;
+    for (label i = 0; i < nx; i++)
     {
         grids_.emplace_back(GridCartesian((scalar)i, 0.0, i));
     }
@@ -71,35 +73,34 @@ void Mesh::CreateTestMesh()
     grids_.emplace_back(GridCartesian(4.0, 4.0, 24));
 }
 
-void Mesh::CreateTestMesh2(label nx,label ny,label mid)
+void Mesh::CreateTestMesh2(label nx, label ny, label mid)
 {
     this->nx = nx;
     this->ny = ny;
-    for(label i=0; i< ny; i++)
+    for (label i = 0; i < ny; i++)
     {
-        for(label j=0;j<nx;j++) grids_.emplace_back(GridCartesian((scalar)j, (scalar)i, i*ny+j));
+        for (label j = 0; j < nx; j++)
+            grids_.emplace_back(GridCartesian((scalar)j, (scalar)i, i * ny + j));
     }
 }
-// Link: line(refarea) <- square(cube) <- grid(mesh) 
+// Link: line(refarea) <- square(cube) <- grid(mesh)
 void Mesh::ConstructTopo()
 {
     // square -> grid
-    for(label i=0 ; i<nx-1; i++)
+    for (label i = 0; i < nx - 1; i++)
     {
-        for(label j=0; j<ny-1; j++)
+        for (label j = 0; j < ny - 1; j++)
         {
-  
-            squares_.emplace_back(Square(grids_[i*nx+j], grids_[(i+1)*nx+j], grids_[(i+1)*nx+j+1], grids_[i*nx+j+1]));
-            //std::cout << "Square pushed" << std::endl;
-            //std::cout << nx << " " << ny << std::endl;
+
+            squares_.emplace_back(Square(grids_[i * nx + j], grids_[(i + 1) * nx + j], grids_[(i + 1) * nx + j + 1], grids_[i * nx + j + 1]));
+            // std::cout << "Square pushed" << std::endl;
+            // std::cout << nx << " " << ny << std::endl;
         }
     }
-    //std::cout << squareptrs_.size() << std::endl;
+    // std::cout << squareptrs_.size() << std::endl;
 }
 
-
-
-GridCartesian* Mesh::getGrid(label index)
+GridCartesian *Mesh::getGrid(label index)
 {
     return &(grids_[index]);
 }
@@ -109,7 +110,7 @@ label Mesh::getnumGrids()
     return grids_.size();
 }
 
-Square* Mesh::getSquare(label index)
+Square *Mesh::getSquare(label index)
 {
     return &(squares_[index]);
 }

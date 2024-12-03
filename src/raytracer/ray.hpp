@@ -5,22 +5,22 @@
 
 class Ray
 {
-    public:
-        Const::vecDd pos_; // current position of Ray
-        scalar time_; // current time of Ray
-        Const::vecDd dir_; // direction of Ray
+public:
+    Const::vecDd pos_; // current position of Ray
+    scalar time_;      // current time of Ray
+    Const::vecDd dir_; // direction of Ray
 
-        // material properties
-        scalar weight_;
+    // material properties
+    scalar weight_;
 
-        // if still valid
-        bool isValid_;
+    // if still valid
+    bool isValid_;
 
-        void CheckValid();
+    void CheckValid();
 
-        Ray(Const::vecDd& pos, Const::vecDd& dir);
-        Ray(Const::vecDd& pos, Const::vecDd& dir, scalar weight);
-        Ray();
+    Ray(Const::vecDd &pos, Const::vecDd &dir);
+    Ray(Const::vecDd &pos, Const::vecDd &dir, scalar weight);
+    Ray();
 };
 
 #endif // RAY_HPP

@@ -12,72 +12,68 @@ using namespace LevelSet;
 // 两个提供给光线的享元, 代表产生光线的光源
 class RaySampler
 {
-    public:
-        void SamplePos(Const::vecDd &pos);
-        void SampleDir(Const::vecDd &dir);
+public:
+    void SamplePos(Const::vecDd &pos);
+    void SampleDir(Const::vecDd &dir);
 
-        RaySampler(const Const::vecDd& xbound,const Const::vecDd& ybound);
-        ~RaySampler();
+    RaySampler(const Const::vecDd &xbound, const Const::vecDd &ybound);
+    ~RaySampler();
 
-    private:
-        Const::vecDd xbound_;
-        Const::vecDd ybound_;
-        std::mt19937 generator;
-        std::uniform_real_distribution<scalar> distribution;
+private:
+    Const::vecDd xbound_;
+    Const::vecDd ybound_;
+    std::mt19937 generator;
+    std::uniform_real_distribution<scalar> distribution;
 };
 
 class RayOperator
 {
-    public:
-        void Reflect(Ray &ray,Const::vecDd &normal);
+public:
+    void Reflect(Ray &ray, Const::vecDd &normal);
 
-        void Decay(Ray &ray, const scalar dweight);
-        void UpdatePos(Ray &ray, const scalar dt);
+    void Decay(Ray &ray, const scalar dweight);
+    void UpdatePos(Ray &ray, const scalar dt);
 
-
-        RayOperator();
-        ~RayOperator();
+    RayOperator();
+    ~RayOperator();
 };
-
 
 class Tracer
 {
-    public:
-        Tracer(Mesh* meshptr, LevelSet::LevelSetFunction* lsfptr);
-        ~Tracer();
+public:
+    Tracer(Mesh *meshptr, LevelSet::LevelSetFunction *lsfptr);
+    ~Tracer();
 
-        void AddNewSource(RaySampler* splrptr);
+    void AddNewSource(RaySampler *splrptr);
 
-        Ray InitNewRay(RaySampler* splrptr);
-        Ray InitNewRay(label splrindex);
+    Ray InitNewRay(RaySampler *splrptr);
+    Ray InitNewRay(label splrindex);
 
-        // upon tracing
-        void ItsctAllRefAreas(Ray &ray, LevelSet::RefArea* &hitRefArea, scalar &dt);
+    // upon tracing
+    void ItsctAllRefAreas(Ray &ray, LevelSet::RefArea *&hitRefArea, scalar &dt);
 
-        // upon intersection
-        void ReInit(Ray& ray, RaySampler* splrptr);
-        void ReInit(Ray& ray, label splrindex);
-        scalar CalcDWeight(Ray &ray, LevelSet::RefArea &refarea);
-        void UpdateAfterHit(Ray &ray, LevelSet::RefArea &refarea,scalar &dt);
+    // upon intersection
+    void ReInit(Ray &ray, RaySampler *splrptr);
+    void ReInit(Ray &ray, label splrindex);
+    scalar CalcDWeight(Ray &ray, LevelSet::RefArea &refarea);
+    void UpdateAfterHit(Ray &ray, LevelSet::RefArea &refarea, scalar &dt);
 
-        // trace single ray
-        void CastOneRay(Ray &ray);
-        
-        // trace all
-        void CastAllRays(label numrays, label sourceID); // cast rays to the Geometry
-        
-        // after tracing
-        void NormalizeFlux(scalar numrays); // align the flux on surface with flux on source plane
-        void CalcAllRate(); // distribute flux on refarea to grids. This will use the linking information of refarea
+    // trace single ray
+    void CastOneRay(Ray &ray);
 
+    // trace all
+    void CastAllRays(label numrays, label sourceID); // cast rays to the Geometry
 
-    private:
-        Mesh* meshptr_;
-        LevelSet::LevelSetFunction* lsfptr_;
+    // after tracing
+    void NormalizeFlux(scalar numrays); // align the flux on surface with flux on source plane
+    void CalcAllRate();                 // distribute flux on refarea to grids. This will use the linking information of refarea
 
-        std::vector<RaySampler*> splr_;
-        RayOperator optr_;
+private:
+    Mesh *meshptr_;
+    LevelSet::LevelSetFunction *lsfptr_;
 
+    std::vector<RaySampler *> splr_;
+    RayOperator optr_;
 };
 
-#endif 
+#endif

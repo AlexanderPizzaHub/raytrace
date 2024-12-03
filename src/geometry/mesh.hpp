@@ -12,39 +12,32 @@ class GridCartesian;
 
 class Mesh
 {
-    public:
-        
-        Mesh(std::string inputpath); //read from file. currently use .txt
-        ~Mesh();
+public:
+    Mesh(std::string inputpath); // read from file. currently use .txt
+    ~Mesh();
 
-        void CreateMeshFromTxt();
-        
-        void CreateTestMesh(); // for testing
-        void CreateTestMesh2(label nx,label ny,label mid); // for testing
+    void CreateMeshFromTxt();
 
-        //void ConstructRefArea(Square& square);
+    void CreateTestMesh();                               // for testing
+    void CreateTestMesh2(label nx, label ny, label mid); // for testing
 
-        // geometry and topology set up
-        void ConstructTopo(); // implement geometry topology
+    // void ConstructRefArea(Square& square);
 
-        Square* getSquare(label index);
-        label getnumSquares();
+    // geometry and topology set up
+    void ConstructTopo(); // implement geometry topology
 
-        GridCartesian* getGrid(label index);
-        label getnumGrids();
+    Square *getSquare(label index);
+    label getnumSquares();
 
-        label nx, ny;
+    GridCartesian *getGrid(label index);
+    label getnumGrids();
 
+    label nx, ny;
 
-    private:
-        std::string inputpath_;
-        std::vector<GridCartesian> grids_;
-        std::vector<Square> squares_;
-        
-        
-
-        
+private:
+    std::string inputpath_;
+    std::vector<GridCartesian> grids_;
+    std::vector<Square> squares_;
 };
-
 
 #endif // GEOMETRY_HPP

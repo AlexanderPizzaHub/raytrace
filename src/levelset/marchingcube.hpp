@@ -11,18 +11,17 @@ class Square;
 namespace LevelSet
 {
 
-class LevelSetFunction;
+    class LevelSetFunction;
 
-class MarchingCube2D
-{
+    class MarchingCube2D
+    {
     public:
         MarchingCube2D();
         ~MarchingCube2D();
 
-        void (*methodptrs_[16])(LevelSet::LevelSetFunction& levelset, Square& square);
+        void (*methodptrs_[16])(LevelSet::LevelSetFunction &levelset, Square &square);
 
-        void SetRefArea(LevelSet::LevelSetFunction& levelset, Square& square);
+        void SetRefArea(LevelSet::LevelSetFunction &levelset, Square &square);
+    };
 
-};
-    
-    } // namespace LevelSet
+} // namespace LevelSet

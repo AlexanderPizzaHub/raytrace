@@ -8,30 +8,31 @@ namespace hrle
 
     enum gridstate
     {
-        UNDEFINED = -2,
-        DEFINED = -1
+        UNDEFINED_POS = -1,
+        UNDEFINED_NEG = -2,
+        DEFINED = -3
     };
 
     class RunTypeCode
     {
         public:
             gridstate state_;
-            label index_;
+            int index_; // index=-1 if undefined
 
-            RunTypeCode(gridstate state, label index);
+            RunTypeCode(gridstate state, int index);
             ~RunTypeCode();
     };
 
     class RLE
     {
     public:
-        std::vector<label> startindices_;
+        std::vector<int> startindices_;
         std::vector<RunTypeCode> runtypes_;
-        std::vector<label> runbreaks_;
+        std::vector<int> runbreaks_; //ascending order
 
-        std::array<label, 2> extent_; // [min,max] box
+        std::array<int, 2> extent_; // [min,max] box
 
-        RLE(std::array<label,2> extent); // constructor defined by a bounding box
+        RLE(std::array<int,2> extent); // constructor defined by a bounding box
         ~RLE();
     };
 
@@ -39,19 +40,20 @@ namespace hrle
     class HRLE
     {
         public:
-            HRLE(std::array<std::array<label,2>,Const::D> extents);
+            HRLE(std::array<std::array<int,2>,Const::D> extents);
             ~HRLE();
 
             std::vector<RLE> rles_;
 
-            void GetCellNeighbors(label index, std::vector<label> &neighbors);
+            void GetCellNeighbors(int index, std::vector<int> &neighbors);
             
-            void Iterator(label startindex); // stop once for undefined run, stop once for each position on defined run
+            void Iterator(int startindex); // stop once for undefined run, stop once for each position on defined run
 
-            label CartesianToIndex(Const::vecDi &coord);
-            void IndexToCartesian(label index, Const::vecDi &coord);
+            int CartesianToIndex(Const::vecDi &coord);
+            void IndexToCartesian(int index, Const::vecDi &coord);
 
-            void InsertGrid(Const::vecDi &coord); // new value appended to the end of the LSF, and RLE is changed accordingly by coordinate
+            void InsertDefinedGrid(Const::vecDi &coord); // new value appended to the end of the LSF, and RLE is changed accordingly by coordinate
+            void HRLE::InsertUndefinedGrid(Const::vecDi &startcoordX, int length, gridstate state);
             void RemoveGrid(Const::vecDi &coord); 
 
 

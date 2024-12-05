@@ -1,8 +1,8 @@
-#include "hrle.hpp" 
+#include "hrle.hpp"
 
 #include <vector>
 #include <array>
-
+#include <iostream>
 
 using namespace hrle;
 
@@ -19,9 +19,8 @@ RunTypeCode::~RunTypeCode()
 
 #pragma endregion
 
-
 #pragma region RLE
-RLE::RLE(std::array<int,2> extent)
+RLE::RLE(std::array<int, 2> extent)
 {
     extent_ = extent;
 }
@@ -33,21 +32,21 @@ RLE::~RLE()
 
 #pragma region HRLE
 
-HRLE::HRLE(std::array<std::array<int,2>,Const::D> extents)
+HRLE::HRLE(std::array<std::array<int, 2>, Const::D> extents)
 {
     rles_.reserve(Const::D);
-    for(int i = 0; i < Const::D; i++)
+    for (int i = 0; i < Const::D; i++)
     {
         rles_.push_back(RLE(extents[i]));
-        rles_[i].startindices_.push_back(0);
-        rles_[i].runtypes_.push_back(RunTypeCode(gridstate::UNDEFINED_POS,-1));
-        rles_[i].runbreaks_.push_back(extents[i][0]);
-        rles_[i].runbreaks_.push_back(extents[i][1]);
-
+        //rles_[i].startindices_.push_back(0);
+        //rles_[i].runtypes_.push_back(RunTypeCode(gridstate::UNDEFINED_POS, -1));
+        //rles_[i].runbreaks_.push_back(extents[i][0]);
     }
+    //rles_[0].startindices_.push_back(0);
+    maxdataindex.fill(0);
 }
 
-
+/*
 void insdefgd(RLE& rle, int targetcoord, int targetindex, int startindex, int endindex)
 {
     // 仍然假设排好序, 只会加在尾部
@@ -67,52 +66,105 @@ void insdefgd(RLE& rle, int targetcoord, int targetindex, int startindex, int en
             rle.runtypes_.push_back(RunTypeCode(gridstate::DEFINED, (runbreaks[endindex]-runbreaks[endindex-1]) + rle.runtypes_[endindex-1].index_));
         }
 }
+*/
 
-
-void HRLE::InsertDefinedGrid(Const::vecDi &coord)
+void HRLE::AddNewLayer(int dim, int layerindex, gridstate state)
 {
-    // 不会写这个
-    // 插入时一定是在尾部插入。直接判断最后一个slot就好
-    // 反正y方向肯定加在最后一截，x方向也是
+    /*
+在指定维度添加一层新的编码.
+dim=0 -> y axis
+dim=1 -> x axis
+*/
+    if(rles_[dim].startindices_.size() < layerindex + 1)
+        rles_[dim].startindices_.resize(layerindex + 1);
+    rles_[dim].startindices_[layerindex] = rles_[dim].runtypes_.size();
+    rles_[dim].runtypes_.push_back(RunTypeCode(state, -1)); // 默认生成一节未定义
+    //std::cout << "## " << dim << " " << rles_[dim].runbreaks_.size()<<std::endl;
+}
 
-
-    /// TODO!!!!!!!!!!!!!!!!!!!!!
-    if(coord[1] = rles_[1].runbreaks_.back())
+void HRLE::AddDefinedSection(int dim, int startcoord)
+{
+    int nbreaks = rles_[dim].runbreaks_.size();
+    if(nbreaks > 1)
     {
-        rles_[1].runbreaks_.back() += 1; 
+        maxdataindex[dim] += rles_[dim].runbreaks_[nbreaks - 1] - rles_[dim].runbreaks_[nbreaks - 2];
+        //std::cout <<  "here!! "<< rles_[dim].runbreaks_[nbreaks - 1] - rles_[dim].runbreaks_[nbreaks - 2] << std::endl;
     }
-    if(coord[1] > rles_[1].runbreaks_.back())
+    //std::cout << "!!" << std::endl;
+    
+    rles_[dim].runbreaks_.push_back(startcoord);
+    rles_[dim].runtypes_.push_back(RunTypeCode(DEFINED, maxdataindex[dim]));
+    std::cout << maxdataindex[0] << " "<< maxdataindex[1] << std::endl;
+}
+
+void HRLE::AddUndefinedSection(int dim, int startcoord, gridstate state)
+{
+    rles_[dim].runbreaks_.push_back(startcoord);
+    rles_[dim].runtypes_.push_back(RunTypeCode(state, -1));
+}
+
+int HRLE::CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim)
+{
+    // 这里的dim跟笛卡尔坐标一致,x->0, y->1, z->2
+    // hrle的dim, z->0, y->1, x->2
+    // cartdim从2开始
+    // Q:如果把hrle的dim和笛卡尔坐标的dim改成一致，会不会影响性能？
+    int coord = coords[cartdim];
+    int hrledim = Const::D - 1 - cartdim;
+
+    if (cartdim < 0)
     {
-        // 需要新加一块run type
-        rles_[1].runbreaks_.push_back(coord[1]);
+        // 说明已经到了数据表上
+        std::cout << "return here 1: "<< layerindex << std::endl;
+        return layerindex;
     }
-
-
-    int slot_y = -1;
-    for (int runbreak : rles_[0].runbreaks_)
+    else
     {
-        if (coord[0] >= runbreak)
+        RLE &rle = rles_[hrledim];
+        // 在维度dim上找位置
+        if (rle.runbreaks_.size() == 0) 
         {
-            slot_y++;
+            // 用来检测空HRLE
+            //std::cout << "return here" << std::endl;
+            return -1; // 说明没有已定义的
+        }
+        else
+        {
+            // 找到它对应哪一个runtype
+            int idtf_runtype = rle.startindices_[layerindex];
+            std::cout << "!!@@## "<< idtf_runtype << std::endl; 
+
+            int runtype_lend = idtf_runtype;
+            int runtype_rend = (layerindex >= rle.startindices_.size() - 1) ? rle.runtypes_.size() : rle.startindices_[layerindex + 1];
+
+            for (int breakpos = runtype_lend; breakpos < runtype_rend; breakpos++)
+            {
+                //std::cout << "$$$ "<< coord <<" "<< rle.runbreaks_[breakpos] << std::endl; 
+                if (coord > rle.runbreaks_[breakpos])
+                    idtf_runtype++;
+                else
+                    break;
+            }
+            // 如果未定义，返回
+            std::cout <<"check here "<< rle.runtypes_[idtf_runtype].state_  << "runtype ind " << idtf_runtype << std::endl;
+            if (rle.runtypes_[idtf_runtype].state_ != DEFINED)
+                return rle.runtypes_[idtf_runtype].state_;
+            else
+            {
+                // 找到它在哪一层次级网格
+                int sublayerindex = coords[cartdim] - rles_[hrledim].runbreaks_[idtf_runtype] + rles_[hrledim].runtypes_[idtf_runtype].index_;
+                /*
+                进入这一层网格的编码，找它的位置
+                */
+                return CartesianToIndex(coords, sublayerindex, cartdim - 1);
+            }
         }
     }
-
 }
-
-void HRLE::InsertUndefinedGrid(Const::vecDi &startcoordX, int length, gridstate state)
-{
-    // 插一个runtype和runbreak就可以了
-    rles_[0].runbreaks_.push_back(startcoordX[0]);
-    rles_[0].runtypes_.push_back(RunTypeCode(state, -1));
-
-}
-
 
 // 计划： 初始化HRLE还是手摇。写一个获取领域的函数，以及从老HRLE生成新HRLE的函数
 // 之后再写插入和删除的函数
 // 从老HRLE生成新的，就按字典序遍历，然后插入defined或者undefined就可以了。
-
-
 
 HRLE::~HRLE()
 {

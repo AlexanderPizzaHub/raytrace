@@ -17,7 +17,7 @@ int main()
     hrle.AddNewLayer(0, 0, UNDEFINED_POS);
     //hrle.AddUndefinedSection(0, -3, UNDEFINED_POS);
     hrle.AddDefinedSection(0, -1);
-    hrle.AddUndefinedSection(0,6, UNDEFINED_NEG);
+    hrle.AddUndefinedSection(0,6, UNDEFINED_POS);
     
 
     // int dim = 0;
@@ -42,11 +42,58 @@ int main()
     hrle.AddDefinedSection(1, 0);
     hrle.AddUndefinedSection(1, 3, UNDEFINED_POS);
 
+    /*
+    RLE& rle0 = hrle.rles_[0];
+    std::cout << "indecies: " << rle0.startindices_[0] << std::endl;
+    std::cout << "runbreaks: "  << std::endl;
+    for(auto i : rle0.runbreaks_)
+    {
+        std::cout << i << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "runtypes: " << std::endl;
+
+    for(auto i : rle0.runtypes_)
+    {
+        std::cout << i.state_ << " " << i.index_ << std::endl;
+    }
+
+    RLE& rle1 = hrle.rles_[1];
+
+
+    std::cout << "indecies: " << std::endl;
+    for(auto i : rle1.startindices_)
+    {
+        std::cout << i << " ";
+    }
+
+    std::cout << std::endl;
+
+    std::cout << "runbreaks: "  << std::endl;
+
+    for(auto i : rle1.runbreaks_)
+    {
+        std::cout << i << " ";
+    }
+
+    std::cout << std::endl;
+
+    std::cout << "runtypes: " << std::endl;
+
+    for(auto i : rle1.runtypes_)
+    {
+        std::cout << i.state_ << " " << i.index_ << std::endl;
+    }
+
+    std::cout << "indecies: " << rle1.startindices_[1] << std::endl;
+    */
+
 
     
     int index;
     Const::vecDi coords;
-    for (int i = -3; i < 8; i++)
+    for (int i = -3; i < 1; i++)
     {
         for (int j = -6; j < 5; j++)
         {
@@ -57,6 +104,7 @@ int main()
             std::cout << j << " " << " " << i<< " " <<index << std::endl;
         }
     }
+    
 
     return 0;
 }

@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/raytrace.dir/src/HRLE/hrle.cpp.obj"
   "CMakeFiles/raytrace.dir/src/HRLE/hrle.cpp.obj.d"
+  "CMakeFiles/raytrace.dir/src/HRLE/unittest.cpp.obj"
+  "CMakeFiles/raytrace.dir/src/HRLE/unittest.cpp.obj.d"
   "CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj"
   "CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj.d"
   "CMakeFiles/raytrace.dir/src/geometry/objects.cpp.obj"

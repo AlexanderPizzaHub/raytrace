@@ -7,6 +7,12 @@
 },
 {
   "directory": "F:/CODES/raytrace/build",
+  "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O3  -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\HRLE\\unittest.cpp.obj -c F:\\CODES\\raytrace\\src\\HRLE\\unittest.cpp",
+  "file": "F:/CODES/raytrace/src/HRLE/unittest.cpp",
+  "output": "CMakeFiles/raytrace.dir/src/HRLE/unittest.cpp.obj"
+},
+{
+  "directory": "F:/CODES/raytrace/build",
   "command": "E:\\msys2\\ucrt64\\bin\\g++.exe  @CMakeFiles/raytrace.dir/includes_CXX.rsp -g -O3  -Wall -pedantic-errors -lstdc++ -std=gnu++11 -o CMakeFiles\\raytrace.dir\\src\\geometry\\mesh.cpp.obj -c F:\\CODES\\raytrace\\src\\geometry\\mesh.cpp",
   "file": "F:/CODES/raytrace/src/geometry/mesh.cpp",
   "output": "CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.obj"

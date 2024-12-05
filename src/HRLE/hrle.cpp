@@ -3,6 +3,7 @@
 #include <vector>
 #include <array>
 #include <iostream>
+#include <cassert>
 
 using namespace hrle;
 
@@ -110,12 +111,14 @@ int HRLE::CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim)
     // cartdim从2开始
     // Q:如果把hrle的dim和笛卡尔坐标的dim改成一致，会不会影响性能？
     int coord = coords[cartdim];
+    //std::cout << "search coord: " << coord << " layerindex: " << layerindex << " dim: " << cartdim << std::endl;
     int hrledim = Const::D - 1 - cartdim;
 
     if (cartdim < 0)
     {
         // 说明已经到了数据表上
-        std::cout << "return here 1: "<< layerindex << std::endl;
+        //std::cout << "return here 1: "<< layerindex << std::endl;
+        assert(layerindex >= 0);
         return layerindex;
     }
     else
@@ -132,27 +135,40 @@ int HRLE::CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim)
         {
             // 找到它对应哪一个runtype
             int idtf_runtype = rle.startindices_[layerindex];
-            std::cout << "!!@@## "<< idtf_runtype << std::endl; 
+            //std::cout << "!!@@## "<< idtf_runtype << std::endl; 
 
-            int runtype_lend = idtf_runtype;
-            int runtype_rend = (layerindex >= rle.startindices_.size() - 1) ? rle.runtypes_.size() : rle.startindices_[layerindex + 1];
+            int runtype_lend = idtf_runtype;// - layerindex;
+            int runtype_rend = (layerindex < rle.startindices_.size() - 1) ? rle.startindices_[layerindex + 1] : rle.runtypes_.size()-1;
+            //std::cout << rle.runtypes_.size() << " !@# " << rle.startindices_.size() - 1<<std::endl;
+            //std::cout << "dim, layerindex, left and right ends: " << hrledim << " " << layerindex << " "<< runtype_lend << " " << runtype_rend << std::endl;
+            //std::cout << rle.runbreaks_.size() << " " << rle.runtypes_.size() << std::endl;
+            //std::cout << "run breaks: " << rle.runbreaks_[runtype_lend] << " " << rle.runbreaks_[runtype_rend] << std::endl;
+            assert(runtype_lend >= 0);
+            assert(runtype_rend >= 0);
+            //assert(runtype_rend <= rle.runbreaks_.size()-1);
 
-            for (int breakpos = runtype_lend; breakpos < runtype_rend; breakpos++)
+            int breakpos = runtype_lend - layerindex;
+            for (breakpos; breakpos < runtype_rend - layerindex; breakpos++)
             {
                 //std::cout << "$$$ "<< coord <<" "<< rle.runbreaks_[breakpos] << std::endl; 
-                if (coord > rle.runbreaks_[breakpos])
+                if (coord >= rle.runbreaks_[breakpos])
                     idtf_runtype++;
                 else
                     break;
             }
             // 如果未定义，返回
-            std::cout <<"check here "<< rle.runtypes_[idtf_runtype].state_  << "runtype ind " << idtf_runtype << std::endl;
+            //std::cout <<"check here "<< rle.runtypes_[idtf_runtype].state_  << " runtype ind " << idtf_runtype << std::endl;
+            assert(idtf_runtype >= 0 && idtf_runtype < rle.runtypes_.size());
             if (rle.runtypes_[idtf_runtype].state_ != DEFINED)
                 return rle.runtypes_[idtf_runtype].state_;
             else
             {
                 // 找到它在哪一层次级网格
-                int sublayerindex = coords[cartdim] - rles_[hrledim].runbreaks_[idtf_runtype] + rles_[hrledim].runtypes_[idtf_runtype].index_;
+                int sublayerindex = coord - rle.runbreaks_[breakpos-1] + rle.runtypes_[idtf_runtype].index_;
+                
+                //std::cout << "sublayerindex: " << sublayerindex << " coords: " << coord << " runbreaks: " << rle.runbreaks_[breakpos] << " index: " << rles_[hrledim].runtypes_[idtf_runtype].index_ << "dim "<< cartdim << std::endl;
+                assert(sublayerindex >= 0);
+                
                 /*
                 进入这一层网格的编码，找它的位置
                 */

@@ -197,6 +197,30 @@ src/HRLE/hrle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/HRLE/hrle.cpp.s
 .PHONY : src/HRLE/hrle.cpp.s
 
+src/HRLE/unittest.obj: src/HRLE/unittest.cpp.obj
+.PHONY : src/HRLE/unittest.obj
+
+# target to build an object file
+src/HRLE/unittest.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/HRLE/unittest.cpp.obj
+.PHONY : src/HRLE/unittest.cpp.obj
+
+src/HRLE/unittest.i: src/HRLE/unittest.cpp.i
+.PHONY : src/HRLE/unittest.i
+
+# target to preprocess a source file
+src/HRLE/unittest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/HRLE/unittest.cpp.i
+.PHONY : src/HRLE/unittest.cpp.i
+
+src/HRLE/unittest.s: src/HRLE/unittest.cpp.s
+.PHONY : src/HRLE/unittest.s
+
+# target to generate assembly for a file
+src/HRLE/unittest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/src/HRLE/unittest.cpp.s
+.PHONY : src/HRLE/unittest.cpp.s
+
 src/geometry/mesh.obj: src/geometry/mesh.cpp.obj
 .PHONY : src/geometry/mesh.obj
 
@@ -381,6 +405,9 @@ help:
 	@echo ... src/HRLE/hrle.obj
 	@echo ... src/HRLE/hrle.i
 	@echo ... src/HRLE/hrle.s
+	@echo ... src/HRLE/unittest.obj
+	@echo ... src/HRLE/unittest.i
+	@echo ... src/HRLE/unittest.s
 	@echo ... src/geometry/mesh.obj
 	@echo ... src/geometry/mesh.i
 	@echo ... src/geometry/mesh.s

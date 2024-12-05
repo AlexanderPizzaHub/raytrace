@@ -84,12 +84,12 @@ clean: CMakeFiles/raytrace.dir/clean
 CMakeFiles/raytrace.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\raytrace.dir\build.make CMakeFiles/raytrace.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target raytrace"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=F:\CODES\raytrace\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target raytrace"
 .PHONY : CMakeFiles/raytrace.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/raytrace.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start F:\CODES\raytrace\build\CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\CODES\raytrace\build\CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/raytrace.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start F:\CODES\raytrace\build\CMakeFiles 0
 .PHONY : CMakeFiles/raytrace.dir/rule

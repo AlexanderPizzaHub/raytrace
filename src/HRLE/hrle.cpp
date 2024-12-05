@@ -178,9 +178,9 @@ int HRLE::CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim)
     }
 }
 
-// 计划： 初始化HRLE还是手摇。写一个获取领域的函数，以及从老HRLE生成新HRLE的函数
-// 之后再写插入和删除的函数
-// 从老HRLE生成新的，就按字典序遍历，然后插入defined或者undefined就可以了。
+// 计划： 初始化HRLE还是手摇。写一个从老HRLE生成新HRLE的函数.
+//然后，写更新函数。
+
 
 HRLE::~HRLE()
 {

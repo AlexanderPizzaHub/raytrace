@@ -1,5 +1,6 @@
 #include "hrle.hpp"
 
+
 #include <vector>
 #include <array>
 #include <iostream>
@@ -47,27 +48,6 @@ HRLE::HRLE(std::array<std::array<int, 2>, Const::D> extents)
     maxdataindex.fill(0);
 }
 
-/*
-void insdefgd(RLE& rle, int targetcoord, int targetindex, int startindex, int endindex)
-{
-    // 仍然假设排好序, 只会加在尾部
-    std::vector<int>& runbreaks = rle.runbreaks_;
-    if(targetcoord == runbreaks[endindex])
-    {
-            // 把最后一个runbreak右移一位
-            runbreaks[endindex] += 1;
-        }
-        else
-        {
-            // 生成一个新的runbreak和runtype
-            // assert targetcoord > rle.runbreaks_[endindex]
-            //rle.runbreaks_.insert(rle.runbreaks_.begin() + endindex, targetcoord + 1);
-            //rle.runtypes_.insert(rle.runtypes_.begin() + endindex, RunTypeCode(gridstate::UNDEFINED,0));
-            runbreaks.push_back(targetcoord + 1);
-            rle.runtypes_.push_back(RunTypeCode(gridstate::DEFINED, (runbreaks[endindex]-runbreaks[endindex-1]) + rle.runtypes_[endindex-1].index_));
-        }
-}
-*/
 
 void HRLE::AddNewLayer(int dim, int layerindex, gridstate state)
 {
@@ -180,6 +160,20 @@ int HRLE::CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim)
 
 // 计划： 初始化HRLE还是手摇。写一个从老HRLE生成新HRLE的函数.
 //然后，写更新函数。
+
+
+// 程序可能要重新翻一遍，整理一下基础的数据结构
+Square HRLE::GetSquare(Const::vecDi &coords)
+{
+    //std::cout << "get square" << std::endl;
+    int index_ur = CartesianToIndex(Const::vecDi{coords[0],coords[1]+1}, 0, 1);
+    int index_ll = CartesianToIndex(Const::vecDi{coords[0],coords[1]}, 0, 1);
+    int index_lr = CartesianToIndex(Const::vecDi{coords[0]+1,coords[1]}, 0, 1);
+    int index_ul = CartesianToIndex(Const::vecDi{coords[0]+1,coords[1]+1}, 0, 1);
+
+    Square square();
+    return square;
+}
 
 
 HRLE::~HRLE()

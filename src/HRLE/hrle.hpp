@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../constants.hpp"
+#include "geometry/objects.hpp"
 #include <vector>
 
 namespace hrle
@@ -49,7 +50,9 @@ namespace hrle
             void AddDefinedSection(int dim, int startcoord); // new value appended to the end of the LSF, and RLE is changed accordingly by coordinate
             void AddUndefinedSection(int dim, int startcoord, gridstate state);
 
-            void GetCellNeighbors(int index, std::vector<int> &neighbors);
+            void ConstructAllSquares();
+
+            Square GetSquare(Const::vecDi& coords); //以后会优化到vector中
         
             void Iterator(int startindex); // stop once for undefined run, stop once for each position on defined run
 

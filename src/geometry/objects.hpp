@@ -48,12 +48,14 @@ public:
     // Square(Square& square);
     // Square(Const::vecDd lowerleft, Const::vecDd upperright);
     Square(Const::vecDi lowerleft, Const::vecDi upperright);                            // initialize by index
-    Square(GridCartesian &ul, GridCartesian &ll, GridCartesian &lr, GridCartesian &ur); // initialize by grid pointers
+    //Square(GridCartesian &ul, GridCartesian &ll, GridCartesian &lr, GridCartesian &ur); // initialize by grid pointers
+    Square(label ul, label ll, label lr, label ur); // initialize by grid pointers
     ~Square();
 
     scalar Intersect(Ray &ray); // implement ray-square intersection. Return hit time
 
-    std::vector<GridCartesian *> linked_grids_; // 0: upperleft, 1: lowerleft, 2: lowerright, 3: upperright
+    //std::vector<GridCartesian *> linked_grids_; // 0: upperleft, 1: lowerleft, 2: lowerright, 3: upperright
+    std::vector<label> linked_grids_; // 0: upperleft, 1: lowerleft, 2: lowerright, 3: upperright
 };
 
 class Line

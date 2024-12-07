@@ -92,7 +92,7 @@ void Mesh::ConstructTopo()
         for (label j = 0; j < ny - 1; j++)
         {
 
-            squares_.emplace_back(Square(grids_[i * nx + j], grids_[(i + 1) * nx + j], grids_[(i + 1) * nx + j + 1], grids_[i * nx + j + 1]));
+            squares_.emplace_back(Square(i * nx + j,(i + 1) * nx + j, (i + 1) * nx + j + 1, i * nx + j + 1));
             // std::cout << "Square pushed" << std::endl;
             // std::cout << nx << " " << ny << std::endl;
         }

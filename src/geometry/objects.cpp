@@ -83,12 +83,21 @@ Square::Square(Const::vecDi lowerleft, Const::vecDi upperright)
     // TOFO
 }
 
+/*
 Square::Square(GridCartesian &ul, GridCartesian &ll, GridCartesian &lr, GridCartesian &ur)
 {
     linked_grids_.emplace_back(&ul);
     linked_grids_.emplace_back(&ll);
     linked_grids_.emplace_back(&lr);
     linked_grids_.emplace_back(&ur);
+}
+*/
+Square::Square(label ul, label ll, label lr, label ur)
+{
+    linked_grids_.emplace_back(ul);
+    linked_grids_.emplace_back(ll);
+    linked_grids_.emplace_back(lr);
+    linked_grids_.emplace_back(ur);
 }
 
 Square::~Square()

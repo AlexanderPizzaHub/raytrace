@@ -42,8 +42,8 @@ namespace LevelSet
         Const::vecDd getnormal();
         scalar getweightstore();
 
-        void set_object(Line *lineptr);
-        Line *get_object();
+        //void set_object(Line *lineptr);
+        //Line *get_object();
 
     private:
         // Line* lineptr_;

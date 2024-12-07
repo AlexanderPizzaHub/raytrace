@@ -15,7 +15,7 @@ int testrun()
     mesh->ConstructTopo();
 
     LevelSet::LevelSetFunction *levelset = new LevelSet::LevelSetFunction(mesh);
-    // std::cout << mesh->getnumSquares() << std::endl;
+    std::cout << mesh->getnumSquares() << std::endl;
 
     Tracer *tracer = new Tracer(mesh, levelset);
 

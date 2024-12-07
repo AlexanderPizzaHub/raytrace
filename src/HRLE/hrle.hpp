@@ -52,7 +52,7 @@ namespace hrle
 
             //void ConstructAllSquares();
 
-            Square GetSquare(Const::vecDi& coords); //以后会优化到vector中
+            void CreateSquare(Const::vecDi& coords); //以后会优化到vector中
         
             //void Iterator(int startindex); // stop once for undefined run, stop once for each position on defined run
 
@@ -68,6 +68,7 @@ namespace hrle
             std::vector<RLE> rles_;
             std::array<int,Const::D> maxdataindex_;
             std::vector<std::array<int, Const::D> > activegrids_;
+            std::vector<Square> activeSquares_;
 
     };
 

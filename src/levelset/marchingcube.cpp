@@ -24,6 +24,16 @@ void AddRefArea(Const::vecDd &start, Const::vecDd &end, LevelSet::LevelSetFuncti
     refarea->linked_square_.emplace_back(&square);
 }
 
+void interpolate_point(LevelSet::LevelSetFunction &levelset, Square &square, Const::vecDd& point, label gridid0, label gridid1, int dim)
+{
+    point[dim] = interpolant_zero(levelset.GetActiveGrid(gridid0)[dim], levelset.GetActiveGrid(gridid1)[dim], levelset.getlsf(gridid0), levelset.getlsf(gridid1));
+}
+
+void set_point(LevelSet::LevelSetFunction &levelset, Square &square, Const::vecDd& point, label gridid, int dim)
+{
+    point[dim] = levelset.GetActiveGrid(gridid)[dim];
+}
+
 void case0000_(LevelSet::LevelSetFunction &levelset, Square &square)
 {
     return;
@@ -41,14 +51,20 @@ void case0001_(LevelSet::LevelSetFunction &levelset, Square &square)
     Const::vecDd start;
     Const::vecDd end;
     // std::cout <<"case0001" << std::endl;
-    start[1] = square.linked_grids_[3]->y;
+    ////start[1] = levelset.GetActiveGrid(square.linked_grids_[3])[1];
     // assert grid size =1
-    start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[0]->index));
+    ////start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[0]->index));
 
-    end[0] = square.linked_grids_[2]->x;
-    end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, levelset.getlsf(square.linked_grids_[2]->index), levelset.getlsf(square.linked_grids_[3]->index));
+    ////end[0] = square.linked_grids_[2]->x;
+    ////end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, levelset.getlsf(square.linked_grids_[2]->index), levelset.getlsf(square.linked_grids_[3]->index));
 
     // change normal by swapping x and y
+
+    set_point(levelset, square, start, 3, 1);
+    interpolate_point(levelset, square, start, 3, 0, 0);
+
+    set_point(levelset, square, end, 2, 0);
+    interpolate_point(levelset, square, end, 2, 3, 1);
 
     AddRefArea(end, start, levelset, square);
 }
@@ -67,11 +83,17 @@ void case0010_(LevelSet::LevelSetFunction &levelset, Square &square)
 
     // std::cout<<"case0010" << std::endl;
     //  assert grid size =1
-    start[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
-    start[1] = square.linked_grids_[2]->y;
+    ////start[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
+    ////start[1] = square.linked_grids_[2]->y;
 
-    end[0] = square.linked_grids_[2]->x;
-    end[1] = interpolant_zero(square.linked_grids_[3]->y, square.linked_grids_[2]->y, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[2]->index));
+    ////end[0] = square.linked_grids_[2]->x;
+    ////end[1] = interpolant_zero(square.linked_grids_[3]->y, square.linked_grids_[2]->y, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[2]->index));
+    set_point(levelset, square, start, 2, 1);
+    interpolate_point(levelset, square, start, 1, 2, 0);
+
+    set_point(levelset, square, end, 2, 0);
+    interpolate_point(levelset, square, end, 2, 3, 1);
+
 
     AddRefArea(start, end, levelset, square);
 }
@@ -90,11 +112,17 @@ void case0011_(LevelSet::LevelSetFunction &levelset, Square &square)
 
     // std::cout << "case0011" << std::endl;
     //  assert grid size =1
-    start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[0]->index));
-    start[1] = square.linked_grids_[3]->y;
+    ////start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[0]->index));
+    ////start[1] = square.linked_grids_[3]->y;
 
-    end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
-    end[1] = square.linked_grids_[2]->y;
+    ////end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
+    ////end[1] = square.linked_grids_[2]->y;
+
+    set_point(levelset, square, start, 3, 1);
+    interpolate_point(levelset, square, start, 3, 0, 0);
+
+    set_point(levelset, square, end, 2, 1);
+    interpolate_point(levelset, square, end, 1, 2, 0);
 
     AddRefArea(end, start, levelset, square);
 }
@@ -113,11 +141,17 @@ void case0100_(LevelSet::LevelSetFunction &levelset, Square &square)
 
     /// std::cout << "case0100" << std::endl;
     // assert grid size =1
-    start[0] = square.linked_grids_[0]->x;
-    start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
+    ////start[0] = square.linked_grids_[0]->x;
+    ////start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
 
-    end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
-    end[1] = square.linked_grids_[1]->y;
+    ////end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
+    ////end[1] = square.linked_grids_[1]->y;
+
+    set_point(levelset, square, start, 0, 0);
+    interpolate_point(levelset, square, start, 0, 1, 1);
+
+    set_point(levelset, square, end, 1, 1);
+    interpolate_point(levelset, square, end, 1, 2, 0);
 
     AddRefArea(start, end, levelset, square);
 }
@@ -149,11 +183,17 @@ void case0110_(LevelSet::LevelSetFunction &levelset, Square &square)
 
     Const::vecDd start;
     Const::vecDd end;
-    start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
-    start[0] = square.linked_grids_[0]->x;
+    //start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
+    //start[0] = square.linked_grids_[0]->x;
 
-    end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, levelset.getlsf(square.linked_grids_[2]->index), levelset.getlsf(square.linked_grids_[3]->index));
-    end[0] = square.linked_grids_[2]->x;
+    //end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, levelset.getlsf(square.linked_grids_[2]->index), levelset.getlsf(square.linked_grids_[3]->index));
+    //end[0] = square.linked_grids_[2]->x;
+
+    set_point(levelset, square, start, 0, 0);
+    interpolate_point(levelset, square, start, 0, 1, 1);
+
+    set_point(levelset, square, end, 2, 0);
+    interpolate_point(levelset, square, end, 2, 3, 1);
 
     AddRefArea(start, end, levelset, square);
 }
@@ -172,11 +212,17 @@ void case0111_(LevelSet::LevelSetFunction &levelset, Square &square)
 
     Const::vecDd start;
     Const::vecDd end;
-    start[0] = interpolant_zero(square.linked_grids_[0]->x, square.linked_grids_[3]->x, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[3]->index));
-    start[1] = square.linked_grids_[0]->y;
+    //start[0] = interpolant_zero(square.linked_grids_[0]->x, square.linked_grids_[3]->x, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[3]->index));
+    //start[1] = square.linked_grids_[0]->y;
 
-    end[0] = square.linked_grids_[1]->x;
-    end[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
+    //end[0] = square.linked_grids_[1]->x;
+    //end[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
+
+    set_point(levelset, square, start, 0, 1);
+    interpolate_point(levelset, square, start, 0, 3, 0);
+
+    set_point(levelset, square, end, 1, 0);
+    interpolate_point(levelset, square, end, 0, 1, 1);
 
     AddRefArea(end, start, levelset, square);
 }
@@ -195,11 +241,18 @@ void case1000_(LevelSet::LevelSetFunction &levelset, Square &square)
 
     Const::vecDd start;
     Const::vecDd end;
-    start[0] = interpolant_zero(square.linked_grids_[0]->x, square.linked_grids_[3]->x, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[3]->index));
-    start[1] = square.linked_grids_[0]->y;
+    //start[0] = interpolant_zero(square.linked_grids_[0]->x, square.linked_grids_[3]->x, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[3]->index));
+    //start[1] = square.linked_grids_[0]->y;
 
-    end[0] = square.linked_grids_[1]->x;
-    end[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
+    //end[0] = square.linked_grids_[1]->x;
+    //end[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
+
+    set_point(levelset, square, start, 0, 1);
+    interpolate_point(levelset, square, start, 0, 3, 0);
+
+    set_point(levelset, square, end, 1, 0);
+
+    interpolate_point(levelset, square, end, 0, 1, 1);
 
     AddRefArea(start, end, levelset, square);
 }
@@ -218,11 +271,17 @@ void case1001_(LevelSet::LevelSetFunction &levelset, Square &square)
     Const::vecDd start;
     Const::vecDd end;
 
-    start[0] = square.linked_grids_[0]->x;
-    start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
+    //start[0] = square.linked_grids_[0]->x;
+    //start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
 
-    end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, levelset.getlsf(square.linked_grids_[2]->index), levelset.getlsf(square.linked_grids_[3]->index));
-    end[0] = square.linked_grids_[2]->x;
+    //end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, levelset.getlsf(square.linked_grids_[2]->index), levelset.getlsf(square.linked_grids_[3]->index));
+    //end[0] = square.linked_grids_[2]->x;
+
+    set_point(levelset, square, start, 0, 0);
+    interpolate_point(levelset, square, start, 0, 1, 1);
+
+    set_point(levelset, square, end, 2, 0);
+    interpolate_point(levelset, square, end, 2, 3, 1);
 
     AddRefArea(end, start, levelset, square);
 }
@@ -255,11 +314,17 @@ void case1011_(LevelSet::LevelSetFunction &levelset, Square &square)
     Const::vecDd end;
 
     // assert grid size =1
-    start[0] = square.linked_grids_[0]->x;
-    start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
+    //start[0] = square.linked_grids_[0]->x;
+    //start[1] = interpolant_zero(square.linked_grids_[0]->y, square.linked_grids_[1]->y, levelset.getlsf(square.linked_grids_[0]->index), levelset.getlsf(square.linked_grids_[1]->index));
 
-    end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
-    end[1] = square.linked_grids_[1]->y;
+    //end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
+    //end[1] = square.linked_grids_[1]->y;
+
+    set_point(levelset, square, start, 0, 0);
+    interpolate_point(levelset, square, start, 0, 1, 1);
+
+    set_point(levelset, square, end, 1, 1);
+    interpolate_point(levelset, square, end, 1, 2, 0);
 
     AddRefArea(end, start, levelset, square);
 }
@@ -278,11 +343,17 @@ void case1100_(LevelSet::LevelSetFunction &levelset, Square &square)
     Const::vecDd start;
     Const::vecDd end;
 
-    start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[0]->index));
-    start[1] = square.linked_grids_[3]->y;
+    //start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[0]->index));
+    //start[1] = square.linked_grids_[3]->y;
 
-    end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
-    end[1] = square.linked_grids_[2]->y;
+    //end[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
+    //end[1] = square.linked_grids_[2]->y;
+
+    set_point(levelset, square, start, 3, 1);
+    interpolate_point(levelset, square, start, 3, 0, 0);
+
+    set_point(levelset, square, end, 2, 1);
+    interpolate_point(levelset, square, end, 1, 2, 0);
 
     AddRefArea(start, end, levelset, square);
 }
@@ -302,11 +373,17 @@ void case1101_(LevelSet::LevelSetFunction &levelset, Square &square)
     Const::vecDd end;
 
     // assert grid size =1
-    start[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
-    start[1] = square.linked_grids_[2]->y;
+    //start[0] = interpolant_zero(square.linked_grids_[1]->x, square.linked_grids_[2]->x, levelset.getlsf(square.linked_grids_[1]->index), levelset.getlsf(square.linked_grids_[2]->index));
+    //start[1] = square.linked_grids_[2]->y;
 
-    end[0] = square.linked_grids_[2]->x;
-    end[1] = interpolant_zero(square.linked_grids_[3]->y, square.linked_grids_[2]->y, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[2]->index));
+    //end[0] = square.linked_grids_[2]->x;
+    //end[1] = interpolant_zero(square.linked_grids_[3]->y, square.linked_grids_[2]->y, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[2]->index));
+
+    set_point(levelset, square, start, 2, 1);
+    interpolate_point(levelset, square, start, 1, 2, 0);
+
+    set_point(levelset, square, end, 2, 0);
+    interpolate_point(levelset, square, end, 2, 3, 1);
 
     AddRefArea(end, start, levelset, square);
 }
@@ -324,14 +401,20 @@ void case1110_(LevelSet::LevelSetFunction &levelset, Square &square)
     // std::cout << "case1110" << std::endl;
     Const::vecDd start;
     Const::vecDd end;
-    start[1] = square.linked_grids_[3]->y;
+    //start[1] = square.linked_grids_[3]->y;
     // assert grid size =1
-    start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[0]->index));
+    //start[0] = interpolant_zero(square.linked_grids_[3]->x, square.linked_grids_[0]->x, levelset.getlsf(square.linked_grids_[3]->index), levelset.getlsf(square.linked_grids_[0]->index));
 
-    end[0] = square.linked_grids_[2]->x;
-    end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, levelset.getlsf(square.linked_grids_[2]->index), levelset.getlsf(square.linked_grids_[3]->index));
+    //end[0] = square.linked_grids_[2]->x;
+    //end[1] = interpolant_zero(square.linked_grids_[2]->y, square.linked_grids_[3]->y, levelset.getlsf(square.linked_grids_[2]->index), levelset.getlsf(square.linked_grids_[3]->index));
 
     // change normal by swapping x and y
+
+    set_point(levelset, square, start, 3, 1);
+    interpolate_point(levelset, square, start, 3, 0, 0);
+
+    set_point(levelset, square, end, 2, 0);
+    interpolate_point(levelset, square, end, 2, 3, 1);
 
     AddRefArea(start, end, levelset, square);
 }
@@ -368,11 +451,12 @@ LevelSet::MarchingCube2D::~MarchingCube2D()
 
 void LevelSet::MarchingCube2D::SetRefArea(LevelSet::LevelSetFunction &levelset, Square &square)
 {
+    // 这里square都是修改过的边角的
     label ul, ll, lr, ur;
-    ul = (label)(levelset.getlsf(square.linked_grids_[0]->index) < 0);
-    ll = (label)(levelset.getlsf(square.linked_grids_[1]->index) < 0);
-    lr = (label)(levelset.getlsf(square.linked_grids_[2]->index) < 0);
-    ur = (label)(levelset.getlsf(square.linked_grids_[3]->index) < 0);
+    ul = (label)(levelset.getlsf(square.linked_grids_[0]) < 0);
+    ll = (label)(levelset.getlsf(square.linked_grids_[1]) < 0);
+    lr = (label)(levelset.getlsf(square.linked_grids_[2]) < 0);
+    ur = (label)(levelset.getlsf(square.linked_grids_[3]) < 0);
 
     // std::cout << ul << " " << ll << " " << lr << " " << ur << std::endl;
     label index = ul * 8 + ll * 4 + lr * 2 + ur;

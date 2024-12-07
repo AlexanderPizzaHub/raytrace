@@ -1,3 +1,0 @@
-E:\CMake\bin\cmake.exe -E rm -f CMakeFiles\raytrace.dir/objects.a
-E:\msys2\ucrt64\bin\ar.exe qc CMakeFiles\raytrace.dir/objects.a @CMakeFiles\raytrace.dir\objects1.rsp
-E:\msys2\ucrt64\bin\g++.exe -g -O3  -Wall -pedantic-errors -lstdc++ -Wl,--whole-archive CMakeFiles\raytrace.dir/objects.a -Wl,--no-whole-archive -o raytrace.exe -Wl,--out-implib,libraytrace.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\raytrace.dir\linkLibs.rsp

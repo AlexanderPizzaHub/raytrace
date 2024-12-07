@@ -1,4 +1,4 @@
-#include "hrle.hpp"
+#include "HRLE/hrle.hpp"
 
 
 #include <vector>
@@ -45,7 +45,7 @@ HRLE::HRLE(std::array<std::array<int, 2>, Const::D> extents)
         //rles_[i].runbreaks_.push_back(extents[i][0]);
     }
     //rles_[0].startindices_.push_back(0);
-    maxdataindex.fill(0);
+    maxdataindex_.fill(0);
 }
 
 
@@ -68,14 +68,14 @@ void HRLE::AddDefinedSection(int dim, int startcoord)
     int nbreaks = rles_[dim].runbreaks_.size();
     if(nbreaks > 1)
     {
-        maxdataindex[dim] += rles_[dim].runbreaks_[nbreaks - 1] - rles_[dim].runbreaks_[nbreaks - 2];
+        maxdataindex_[dim] += rles_[dim].runbreaks_[nbreaks - 1] - rles_[dim].runbreaks_[nbreaks - 2];
         //std::cout <<  "here!! "<< rles_[dim].runbreaks_[nbreaks - 1] - rles_[dim].runbreaks_[nbreaks - 2] << std::endl;
     }
     //std::cout << "!!" << std::endl;
     
     rles_[dim].runbreaks_.push_back(startcoord);
-    rles_[dim].runtypes_.push_back(RunTypeCode(DEFINED, maxdataindex[dim]));
-    std::cout << maxdataindex[0] << " "<< maxdataindex[1] << std::endl;
+    rles_[dim].runtypes_.push_back(RunTypeCode(DEFINED, maxdataindex_[dim]));
+    std::cout << maxdataindex_[0] << " "<< maxdataindex_[1] << std::endl;
 }
 
 void HRLE::AddUndefinedSection(int dim, int startcoord, gridstate state)
@@ -171,13 +171,16 @@ Square HRLE::GetSquare(Const::vecDi &coords)
     int index_lr = CartesianToIndex(Const::vecDi{coords[0]+1,coords[1]}, 0, 1);
     int index_ul = CartesianToIndex(Const::vecDi{coords[0]+1,coords[1]+1}, 0, 1);
 
-    Square square();
-    return square;
+    //Square square();
+    //return square;
 }
 
+std::array<int, Const::D> HRLE::GetActiveGrid(int index)
+{
+    return activegrids_[index];
+}
 
 HRLE::~HRLE()
 {
 }
-
 #pragma endregion

@@ -44,27 +44,30 @@ namespace hrle
             HRLE(std::array<std::array<int,2>,Const::D> extents);
             ~HRLE();
 
-            std::vector<RLE> rles_;
+            
 
             void AddNewLayer(int dim, int layerindex, gridstate state);
             void AddDefinedSection(int dim, int startcoord); // new value appended to the end of the LSF, and RLE is changed accordingly by coordinate
             void AddUndefinedSection(int dim, int startcoord, gridstate state);
 
-            void ConstructAllSquares();
+            //void ConstructAllSquares();
 
             Square GetSquare(Const::vecDi& coords); //以后会优化到vector中
         
-            void Iterator(int startindex); // stop once for undefined run, stop once for each position on defined run
+            //void Iterator(int startindex); // stop once for undefined run, stop once for each position on defined run
 
             int CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim);
-            void IndexToCartesian(int index, Const::vecDi &coord);
+            //void IndexToCartesian(int index, Const::vecDi &coord);
+
+            std::array<int,Const::D> GetActiveGrid(int index);
 
             
             //void RemoveGrid(Const::vecDi &coord); 
 
         private:
-            std::array<int,Const::D> maxdataindex;
-
+            std::vector<RLE> rles_;
+            std::array<int,Const::D> maxdataindex_;
+            std::vector<std::array<int, Const::D> > activegrids_;
 
     };
 

@@ -6,6 +6,7 @@
 #include "raytracer/ray.hpp"
 #include "constants.hpp"
 #include "levelset/marchingcube.hpp"
+#include "hrle/hrle.hpp"
 #include <vector>
 
 class Mesh;
@@ -75,6 +76,7 @@ namespace LevelSet
 
         scalar getlsf(label index);
         void setlsf(label index, scalar value);
+        std::array<int, Const::D> GetActiveGrid(label index);
         scalar getvf(label index);
         void setvf(label index, scalar value);
 
@@ -82,6 +84,7 @@ namespace LevelSet
 
     private:
         Mesh *meshptr_;
+        hrle::HRLE* hrle_;
         MarchingCube2D *marchingcube_;
         std::vector<scalar> velocityfield_;
         std::vector<scalar> levelsetfunction_;

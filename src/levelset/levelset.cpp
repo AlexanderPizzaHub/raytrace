@@ -140,25 +140,38 @@ namespace LevelSet
     {
         for (RefArea refarea : refareas_)
         {
-            Square *square = refarea.linked_square_.at(0);
+            Square& square = *refarea.linked_square_.at(0);
 
             Const::vecDd center = refarea.getcenter();
-            GridCartesian *gridul = square->linked_grids_[0];
-            GridCartesian *gridll = square->linked_grids_[1];
-            GridCartesian *gridlr = square->linked_grids_[2];
-            GridCartesian *gridur = square->linked_grids_[3];
+            label gridul = square.linked_grids_[0];
+            label gridll = square.linked_grids_[1];
+            label gridlr = square.linked_grids_[2];
+            label gridur = square.linked_grids_[3];
 
-            scalar areaul = (center[0] - gridul->x) * (center[1] - gridul->y);
-            scalar areall = (center[0] - gridll->x) * (gridll->y - center[1]);
-            scalar arealr = (gridlr->x - center[0]) * (gridlr->y - center[1]);
-            scalar areaur = (gridur->x - center[0]) * (center[1] - gridur->y);
+            scalar h, w; // height and width of left lower sub square
+            if(gridll > 0)
+            {
+                w = center[0] - hrle_->GetActiveGrid(gridll)[0];
+                h = center[1] - hrle_->GetActiveGrid(gridll)[1];
+            }
+            else
+            {
+                w = hrle_->GetActiveGrid(gridur)[0] - center[0];
+                h = hrle_->GetActiveGrid(gridur)[1] - center[1];
+            }
 
-            scalar area = areaul + areall + arealr + areaur;
+            scalar areaul = (1.0-h)*w;
+            scalar areall = h*w;
+            scalar arealr = h*(1.0-w);
+            scalar areaur = (1.0-w)*(1.0-h);
 
-            velocityfield_[gridul->index] += arealr / area * refarea.getrate();
-            velocityfield_[gridll->index] += areaur / area * refarea.getrate();
-            velocityfield_[gridlr->index] += areaul / area * refarea.getrate();
-            velocityfield_[gridur->index] += areall / area * refarea.getrate();
+            //scalar area = areaul + areall + arealr + areaur; 
+
+            // Square area fixed to zero
+            velocityfield_[gridul] += arealr * refarea.getrate();
+            velocityfield_[gridll] += areaur * refarea.getrate();
+            velocityfield_[gridlr] += areaul * refarea.getrate();
+            velocityfield_[gridur] += areall * refarea.getrate();
         }
     }
 
@@ -186,7 +199,8 @@ namespace LevelSet
 
     bool LevelSetFunction::IdentifyEffectiveCube(Square &square)
     {
-        bool ispos = getlsf(square.linked_grids_[0]->index) > 0;
+        // 这里的Square应该被修改过：四个角没有undifiend的情况
+        bool ispos = getlsf(square.linked_grids_[0]) > 0;
         // std::cout << getlsf(square.linked_grids_[0]->index) << " "
         //<< getlsf(square.linked_grids_[1]->index) << " "
         //  << getlsf(square.linked_grids_[2]->index) << " "
@@ -194,9 +208,9 @@ namespace LevelSet
         if (ispos)
         {
             if (
-                getlsf(square.linked_grids_[1]->index) < 0 ||
-                getlsf(square.linked_grids_[2]->index) < 0 ||
-                getlsf(square.linked_grids_[3]->index) < 0)
+                getlsf(square.linked_grids_[1]) < 0 ||
+                getlsf(square.linked_grids_[2]) < 0 ||
+                getlsf(square.linked_grids_[3]) < 0)
             {
                 // std::cout << "Identified" << std::endl;
                 // std::cout << getlsf(square.linked_grids_[1]->index) << " " << getlsf(square.linked_grids_[2]->index) << " " << getlsf(square.linked_grids_[3]->index) << std::endl;
@@ -210,9 +224,9 @@ namespace LevelSet
         else
         {
             if (
-                getlsf(square.linked_grids_[1]->index) > 0 ||
-                getlsf(square.linked_grids_[2]->index) > 0 ||
-                getlsf(square.linked_grids_[3]->index) > 0)
+                getlsf(square.linked_grids_[1]) > 0 ||
+                getlsf(square.linked_grids_[2]) > 0 ||
+                getlsf(square.linked_grids_[3]) > 0)
             {
                 // std::cout << "Identified" << std::endl;
                 // std::cout << getlsf(square.linked_grids_[1]->index) << " " << getlsf(square.linked_grids_[2]->index) << " " << getlsf(square.linked_grids_[3]->index) << std::endl;
@@ -260,6 +274,11 @@ namespace LevelSet
     label LevelSetFunction::getnumRefAreas()
     {
         return refareas_.size();
+    }
+
+    std::array<int, Const::D> LevelSetFunction::GetActiveGrid(label index)
+    {
+        return hrle_->GetActiveGrid(index);
     }
 
     void LevelSetFunction::ToSurface(std::string outputpath_)

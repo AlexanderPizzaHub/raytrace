@@ -23,7 +23,7 @@ int main()
     // int dim = 0;
     //  生成x轴游程编码
     // int nbreaks = hrle.rles_[dim].runbreaks_.size();
-    // hrle.rles_[1].startindices_.reserve(maxdataindex[0] + rles_[0].runbreaks_[nbreaks - 1] - rles_[0].runbreaks_[nbreaks - 2])
+    // hrle.rles_[1].startindices_.reserve(maxdataindex_[0] + rles_[0].runbreaks_[nbreaks - 1] - rles_[0].runbreaks_[nbreaks - 2])
 
     hrle.AddNewLayer(1, 0, UNDEFINED_POS);
 

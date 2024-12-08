@@ -84,6 +84,11 @@ void HRLE::AddUndefinedSection(int dim, int startcoord, gridstate state)
     rles_[dim].runtypes_.push_back(RunTypeCode(state, -1));
 }
 
+int HRLE::GetNumActiveGrids()
+{
+    return activegrids_.size();
+}
+
 int HRLE::CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim)
 {
     // 这里的dim跟笛卡尔坐标一致,x->0, y->1, z->2
@@ -161,7 +166,7 @@ int HRLE::CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim)
 // 计划： 初始化HRLE还是手摇。写一个从老HRLE生成新HRLE的函数.
 //然后，写更新函数。
 
-
+/*
 // 程序可能要重新翻一遍，整理一下基础的数据结构
 void HRLE::CreateSquare(Const::vecDi &coords)
 {
@@ -171,20 +176,20 @@ void HRLE::CreateSquare(Const::vecDi &coords)
     int index_lr = CartesianToIndex(Const::vecDi{coords[0]+1,coords[1]}, 0, 1);
     int index_ul = CartesianToIndex(Const::vecDi{coords[0]+1,coords[1]+1}, 0, 1);
 
-    /*
+    
     // 把合法性检验留给IndentifyEffectiveCube吧
     assert(index_ll >=0 || index_ur >=0);
     if(index_ur < 0) index_ur = index_ul;
     if(index_ll < 0) index_ll = index_lr;
     if(index_lr < 0) index_lr = index_ll;
     if(index_ul < 0) index_ul = index_ur;
-    */
+    
 
     activeSquares_.push_back(Square(index_ul, index_ll, index_lr, index_ur));
     //Square square();
     //return square;
 }
-
+*/
 std::array<int, Const::D> HRLE::GetActiveGrid(int index)
 {
     return activegrids_[index];

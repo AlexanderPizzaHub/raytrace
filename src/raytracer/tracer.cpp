@@ -67,9 +67,8 @@ void RayOperator::UpdatePos(Ray &ray, const scalar dt)
 #pragma endregion
 
 #pragma region Tracer
-Tracer::Tracer(Mesh *meshptr, LevelSet::LevelSetFunction *lsfptr)
+Tracer::Tracer(LevelSet::LevelSetFunction *lsfptr)
 {
-    meshptr_ = meshptr;
     lsfptr_ = lsfptr;
     optr_ = RayOperator();
 };

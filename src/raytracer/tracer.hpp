@@ -41,7 +41,7 @@ public:
 class Tracer
 {
 public:
-    Tracer(Mesh *meshptr, LevelSet::LevelSetFunction *lsfptr);
+    Tracer(LevelSet::LevelSetFunction *lsfptr);
     ~Tracer();
 
     void AddNewSource(RaySampler *splrptr);
@@ -69,7 +69,6 @@ public:
     void CalcAllRateAdd();                 // distribute flux on refarea to grids. This will use the linking information of refarea
 
 private:
-    Mesh *meshptr_;
     LevelSet::LevelSetFunction *lsfptr_;
 
     std::vector<RaySampler *> splr_;

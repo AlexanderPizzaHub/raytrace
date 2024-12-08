@@ -96,12 +96,12 @@ namespace LevelSet
 #pragma endregion
 
 #pragma region LevelSetFunction
-    LevelSetFunction::LevelSetFunction(Mesh *meshptr)
+    LevelSetFunction::LevelSetFunction(hrle::HRLE *hrle)
     {
-        meshptr_ = meshptr;
+        hrle_ = hrle;
         marchingcube_ = new MarchingCube2D();
-        velocityfield_.resize(meshptr_->getnumGrids(), 0.0);
-        levelsetfunction_.resize(meshptr_->getnumGrids(), 0.0);
+        velocityfield_.resize(hrle_->GetNumActiveGrids(), 0.0);
+        levelsetfunction_.resize(hrle_->GetNumActiveGrids(), 0.0);
         // std::cout<<"lsf constructed "<<meshptr_->getnumGrids()<<std::endl;
     }
 
@@ -239,6 +239,60 @@ namespace LevelSet
         }
     }
 
+    bool LevelSetFunction::IdentifyEffectiveCube(std::vector<int> squareindexlist)
+    {
+        bool ispos = getlsf(squareindexlist[0]) > 0;
+        if (ispos)
+        {
+            if (
+                getlsf(squareindexlist[1]) < 0 ||
+                getlsf(squareindexlist[2]) < 0 ||
+                getlsf(squareindexlist[3]) < 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (
+                getlsf(squareindexlist[1]) > 0 ||
+                getlsf(squareindexlist[2]) > 0 ||
+                getlsf(squareindexlist[3]) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    void LevelSetFunction::ConstructAllActiveSquares()
+    {
+        activatesqures_.clear();
+        Const::vecDi nextpoint;
+        nextpoint[0] = 0; // test
+        nextpoint[1] = 0; // test
+        std::vector<int> squareindexlist;
+        while(hrle_->DenseIterator(nextpoint))
+        {
+            squareindexlist.clear();
+            hrle_->GetSquareNeighbours(nextpoint, squareindexlist);
+            if (IdentifyEffectiveCube(squareindexlist))
+            {
+                activatesqures_.emplace_back(Square(squareindexlist[0], squareindexlist[1], squareindexlist[2], squareindexlist[3]));
+            }
+            // std::cout << "get square" << std::endl;
+            //CreateSquare(nextpoint);
+            
+        }
+    }
+
     void LevelSetFunction::AddRefArea(Const::vecDd &start, Const::vecDd &end)
     {
         // refareas_.emplace_back(start, end); // 这个报错是类继承的原因，有些讲究
@@ -254,15 +308,15 @@ namespace LevelSet
     {
         // std::cout <<"here" << std::endl;
         refareas_.clear();
-        label nsquares = meshptr_->getnumSquares();
+        label nsquares = activatesqures_.size();
         for (label i = 0; i < nsquares; i++)
         {
-            Square *squareptr = meshptr_->getSquare(i);
-            if (IdentifyEffectiveCube(*squareptr))
-            {
+            Square& squareptr = activatesqures_[i];
+            //if (IdentifyEffectiveCube(squareptr)) // 默认只有当effective square才会被插入activesquarelist
+            //{
                 // std::cout << "Identified" << std::endl;
-                SetMarchingCube(*squareptr);
-            }
+            SetMarchingCube(squareptr);
+            //}
         }
     }
 

@@ -56,13 +56,15 @@ namespace LevelSet
     class LevelSetFunction
     {
     public:
-        LevelSetFunction(Mesh *meshptr);
+        LevelSetFunction(hrle::HRLE *hrle);
         ~LevelSetFunction();
 
         // related to refarea construction
         bool IdentifyEffectiveCube(Square &square);
+        bool IdentifyEffectiveCube(std::vector<int> squareindexlist);
         void SetMarchingCube(Square &square);
 
+        void ConstructAllActiveSquares(); // construct all active squares and set the linkings.
         void ConstructAllRefAreas(); // construct all reference area and set the linkings.
 
         void AddRefArea(Const::vecDd &start, Const::vecDd &end);
@@ -83,13 +85,15 @@ namespace LevelSet
         void ToSurface(std::string outputpath); // convert the mesh to surface and save it to file
 
     private:
-        Mesh *meshptr_;
+        //Mesh *meshptr_;
         hrle::HRLE* hrle_;
         MarchingCube2D *marchingcube_;
         std::vector<scalar> velocityfield_;
         std::vector<scalar> levelsetfunction_;
 
+        std::vector<Square>  activatesqures_;
         std::vector<RefArea> refareas_;
+
     };
 }; // namespace LevelSet
 

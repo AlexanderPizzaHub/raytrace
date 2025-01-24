@@ -4,7 +4,7 @@
 #include "constants.hpp"
 #include "levelset/levelset.hpp"
 #include <chrono>
-
+/*
 int testrun()
 {
     // 从文件中读grids然后跑程序
@@ -61,7 +61,12 @@ int testrun()
     }
     return 0;
 }
+*/
 
+int testrun2()
+{
+    
+}
 int main()
 {
     auto start_time = std::chrono::steady_clock::now();

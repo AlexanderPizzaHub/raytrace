@@ -199,3 +199,123 @@ HRLE::~HRLE()
 {
 }
 #pragma endregion
+
+
+#pragma region DenseIterator
+
+DenseIterator::DenseIterator(Const::vecDi &coord, HRLE &hrle) : coord_(coord), hrle_(hrle)
+{
+    start_indices_indices_.fill(0);
+    run_types_indices_.fill(0);
+    run_breaks_indices.fill(0);
+}
+
+DenseIterator::~DenseIterator()
+{
+}
+
+bool DenseIterator::dimwise_next(int dim)
+{
+    if(dim<0)
+    {
+        return false;
+    }
+
+    RLE &rle = hrle_.rles_[dim];
+
+    int &start_indices_index = start_indices_indices_[dim];
+    int start_index_rlend = (start_indices_index < hrle_.rles_[dim].startindices_.size() - 1) ? hrle_.rles_[dim].startindices_[start_indices_index + 1] : hrle_.rles_[dim].runtypes_.size();
+
+
+    int &run_types_index = run_types_indices_[dim];
+    int &run_breaks_index = run_breaks_indices[dim];
+
+    int run_breaks_lend = rle.startindices_[start_indices_index] - start_indices_index;
+    int run_breaks_rend = (start_indices_index < hrle_.rles_[dim].startindices_.size() - 1) ?
+    rle.startindices_[start_indices_index+1] - start_indices_index-2 :
+    rle.runbreaks_[rle.runbreaks_.size()-1];
+
+
+    std::vector<RunTypeCode> runtype_slice(rle.runtypes_.begin()+start_indices_index, rle.runtypes_.begin()+start_index_rlend);
+    std::vector<int> runbreaks_slice(rle.runbreaks_.begin()+run_breaks_lend, rle.runbreaks_.begin()+run_breaks_rend);
+
+    runbreaks_slice.push_back(rle.extent_[1]);
+    runbreaks_slice.insert(runbreaks_slice.begin(), rle.extent_[0]);
+
+
+
+    int run_type_index_on_slice = run_types_index - start_indices_index;
+    int run_breaks_index_on_slice = run_breaks_index - run_breaks_lend+1;
+
+    //if(!(run_types_index<start_index_rlend-1))
+    //{
+    //    return false;
+    //}
+    if(run_type_index_on_slice == runtype_slice.size()-1)
+    {
+        run_types_index++;
+        dimwise_restart(dim);
+        return false;
+    }
+
+    if(
+        hrle_.rles_[dim].runtypes_[run_types_index].state_ == UNDEFINED_NEG || 
+        hrle_.rles_[dim].runtypes_[run_types_index].state_ == UNDEFINED_POS
+    )
+    {
+        coord_[Const::D-1-dim] = rle.runbreaks_[run_breaks_index];
+        //run_breaks_index_on_slice++;
+        run_breaks_index++;
+        //run_type_index_on_slice++;
+        run_types_index++;
+        return true;
+    }
+    else
+    {
+        //if(coord_[dim] < rle.runbreaks_[run_breaks_index] - 1)
+        if(coord_[dim] < runbreaks_slice[run_breaks_index_on_slice+1] - 1)
+        {
+            coord_[dim]++;
+            return true;
+        }
+        else
+        {
+            coord_[dim] = runbreaks_slice[run_breaks_index_on_slice+1];
+            run_breaks_index++;
+            run_types_index++;
+            return true;
+        }
+        //run_types_index++;
+        //run_breaks_index = hrle_.rles_[dim].runbreaks_[run_types_index];
+    }
+
+}
+
+bool DenseIterator::dimwise_restart(int dim)
+{
+    if(dim<0)
+    {
+        return false;
+    }
+    coord_[dim] = hrle_.rles_[dim].extent_[0];
+    return true;
+}
+
+bool DenseIterator::next()
+{
+    int current_dim = 0;
+    while(current_dim < Const::D && (!dimwise_next(current_dim)))
+    {
+       current_dim++;
+    }
+    if(current_dim == Const::D)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+#pragma endregion

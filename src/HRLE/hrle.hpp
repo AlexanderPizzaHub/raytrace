@@ -37,6 +37,25 @@ namespace hrle
         ~RLE();
     };
 
+    class DenseIterator
+    {
+        public:
+            DenseIterator(Const::vecDi &coord, HRLE &hrle);
+            ~DenseIterator();
+
+            bool dimwise_next(int dim);
+            bool dimwise_restart(int dim);
+            bool next();
+
+        private:
+            HRLE &hrle_;
+            Const::vecDi &coord_;
+            std::array<int,Const::D> start_indices_indices_;
+            std::array<int,Const::D> run_types_indices_;
+            std::array<int,Const::D> run_breaks_indices;
+
+    };
+
 
     class HRLE
     {
@@ -55,7 +74,7 @@ namespace hrle
             //void CreateSquare(Const::vecDi& coords); //以后会优化到vector中
         
             //void Iterator(int startindex); // stop once for undefined run, stop once for each position on defined run
-            bool DenseIterator(Const::vecDi& coord); // 明天写这个
+            friend class DenseIterator; // 明天写这个
             bool MixedIterator();
 
             int CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim);

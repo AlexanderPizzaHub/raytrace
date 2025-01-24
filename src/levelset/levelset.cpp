@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
+#include <cassert>
 
 namespace LevelSet
 {
@@ -177,6 +178,7 @@ namespace LevelSet
 
     scalar LevelSetFunction::getlsf(label index)
     {
+        assert(index>=0);
         return levelsetfunction_[index];
     }
 
@@ -188,6 +190,7 @@ namespace LevelSet
 
     scalar LevelSetFunction::getvf(label index)
     {
+        assert(index>=0);
         return velocityfield_[index];
     }
 

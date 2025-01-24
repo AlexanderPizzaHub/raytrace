@@ -34,7 +34,8 @@ RLE::~RLE()
 
 #pragma region HRLE
 
-HRLE::HRLE(std::array<std::array<int, 2>, Const::D> extents)
+HRLE::HRLE(std::array<std::array<int, 2>, Const::D> extents):
+denseiterator(*this)
 {
     rles_.reserve(Const::D);
     for (int i = 0; i < Const::D; i++)
@@ -45,6 +46,8 @@ HRLE::HRLE(std::array<std::array<int, 2>, Const::D> extents)
         //rles_[i].runbreaks_.push_back(extents[i][0]);
     }
     //rles_[0].startindices_.push_back(0);
+    //denseiterator = DenseIterator(coord, *this);
+    //denseiterator(coord, *this);
     maxdataindex_.fill(0);
 }
 
@@ -195,6 +198,11 @@ std::array<int, Const::D> HRLE::GetActiveGrid(int index)
     return activegrids_[index];
 }
 
+void HRLE::GetSquareNeighbours(Const::vecDi coords, std::vector<int> indexlist)
+{
+
+}
+
 HRLE::~HRLE()
 {
 }
@@ -203,15 +211,22 @@ HRLE::~HRLE()
 
 #pragma region DenseIterator
 
-DenseIterator::DenseIterator(Const::vecDi &coord, HRLE &hrle) : coord_(coord), hrle_(hrle)
+DenseIterator::DenseIterator(HRLE &hrle) : hrle_(hrle)
 {
     start_indices_indices_.fill(0);
     run_types_indices_.fill(0);
     run_breaks_indices.fill(0);
+    coord_.fill(0);
 }
 
 DenseIterator::~DenseIterator()
 {
+}
+
+void DenseIterator::SetStartPoint()
+{
+    coord_[0] = hrle_.rles_[1].runbreaks_[0];
+    coord_[1] = hrle_.rles_[0].runbreaks_[0];
 }
 
 bool DenseIterator::dimwise_next(int dim)
@@ -220,34 +235,43 @@ bool DenseIterator::dimwise_next(int dim)
     {
         return false;
     }
-
     RLE &rle = hrle_.rles_[dim];
 
-    int &start_indices_index = start_indices_indices_[dim];
-    int start_index_rlend = (start_indices_index < hrle_.rles_[dim].startindices_.size() - 1) ? hrle_.rles_[dim].startindices_[start_indices_index + 1] : hrle_.rles_[dim].runtypes_.size();
+    int &runtypes_lend = start_indices_indices_[dim];
+    int runtypes_rend = (runtypes_lend < hrle_.rles_[dim].startindices_.size() - 1) ? hrle_.rles_[dim].startindices_[runtypes_lend + 1] : hrle_.rles_[dim].runtypes_.size();
 
 
     int &run_types_index = run_types_indices_[dim];
     int &run_breaks_index = run_breaks_indices[dim];
 
-    int run_breaks_lend = rle.startindices_[start_indices_index] - start_indices_index;
-    int run_breaks_rend = (start_indices_index < hrle_.rles_[dim].startindices_.size() - 1) ?
-    rle.startindices_[start_indices_index+1] - start_indices_index-2 :
-    rle.runbreaks_[rle.runbreaks_.size()-1];
+    int run_breaks_lend = rle.startindices_[runtypes_lend] - runtypes_lend;
+    int run_breaks_rend = (runtypes_lend < hrle_.rles_[dim].startindices_.size() - 1) ?
+    rle.startindices_[runtypes_lend+1] - runtypes_lend-1 :
+    rle.runbreaks_.size();
 
+    std::cout << "dim: " << dim << " runtypes_lend: " << runtypes_lend << " run_types_index: " << run_types_index << " run_breaks_index: " << run_breaks_index << std::endl;
 
-    std::vector<RunTypeCode> runtype_slice(rle.runtypes_.begin()+start_indices_index, rle.runtypes_.begin()+start_index_rlend);
+    std::cout << "runtypes_lend: " << runtypes_lend << " runtypes_rend: " << runtypes_rend << std::endl;
+
+    std::cout << "run_breaks_lend: " << run_breaks_lend << " run_breaks_rend: " << run_breaks_rend << std::endl;
+
+    std::vector<RunTypeCode> runtype_slice(rle.runtypes_.begin()+runtypes_lend, rle.runtypes_.begin()+runtypes_rend);
     std::vector<int> runbreaks_slice(rle.runbreaks_.begin()+run_breaks_lend, rle.runbreaks_.begin()+run_breaks_rend);
 
     runbreaks_slice.push_back(rle.extent_[1]);
     runbreaks_slice.insert(runbreaks_slice.begin(), rle.extent_[0]);
 
+    for(int i =0;i<rle.runbreaks_.size();i++)
+    {
+        std::cout << rle.runbreaks_[i] << " ";
+    }
 
 
-    int run_type_index_on_slice = run_types_index - start_indices_index;
+
+    int run_type_index_on_slice = run_types_index - runtypes_lend;
     int run_breaks_index_on_slice = run_breaks_index - run_breaks_lend+1;
 
-    //if(!(run_types_index<start_index_rlend-1))
+    //if(!(run_types_index<runtypes_rend-1))
     //{
     //    return false;
     //}
@@ -258,18 +282,27 @@ bool DenseIterator::dimwise_next(int dim)
         return false;
     }
 
+   
     if(
         hrle_.rles_[dim].runtypes_[run_types_index].state_ == UNDEFINED_NEG || 
         hrle_.rles_[dim].runtypes_[run_types_index].state_ == UNDEFINED_POS
     )
-    {
-        coord_[Const::D-1-dim] = rle.runbreaks_[run_breaks_index];
+    {   
+        //std::cout <<"runbreak index " << run_breaks_index << "here!!" << rle.runbreaks_[run_breaks_index] << std::endl;
+        //std::cout << "!! " <<Const::D-1-dim<<std::endl;
+
+        //std::cout<<"1: "<<coord_[Const::D-1-dim]<<std::endl;
+        coord_[Const::D-1-dim] = rle.runbreaks_[run_breaks_index]; // 这里runbreak是可能是负数，所以coord不能用unsigned int，否则会出问题。
+        //std::cout <<"2: "<<coord_[Const::D-1-dim]<<std::endl;
         //run_breaks_index_on_slice++;
         run_breaks_index++;
         //run_type_index_on_slice++;
         run_types_index++;
+        //std::cout << " here" << std::endl;
+        //std::cout << coord_[0] << std::endl;
         return true;
     }
+    
     else
     {
         //if(coord_[dim] < rle.runbreaks_[run_breaks_index] - 1)
@@ -303,12 +336,12 @@ bool DenseIterator::dimwise_restart(int dim)
 
 bool DenseIterator::next()
 {
-    int current_dim = 0;
+    int current_dim = Const::D - 1;
     while(current_dim < Const::D && (!dimwise_next(current_dim)))
     {
-       current_dim++;
+       current_dim--;
     }
-    if(current_dim == Const::D)
+    if(current_dim < 0)
     {
         return false;
     }

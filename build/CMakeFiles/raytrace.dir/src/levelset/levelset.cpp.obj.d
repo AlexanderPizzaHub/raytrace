@@ -150,4 +150,6 @@ CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.obj: \
  E:/msys2/ucrt64/include/c++/14.2.0/bits/codecvt.h \
  E:/msys2/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/basic_file.h \
  E:/msys2/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++io.h \
- E:/msys2/ucrt64/include/c++/14.2.0/bits/fstream.tcc
+ E:/msys2/ucrt64/include/c++/14.2.0/bits/fstream.tcc \
+ E:/msys2/ucrt64/include/c++/14.2.0/cassert \
+ E:/msys2/ucrt64/include/assert.h

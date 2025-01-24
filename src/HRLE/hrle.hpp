@@ -6,6 +6,8 @@
 
 namespace hrle
 {
+    class HRLE;
+    class RLE;
 
     enum gridstate
     {
@@ -40,16 +42,21 @@ namespace hrle
     class DenseIterator
     {
         public:
-            DenseIterator(Const::vecDi &coord, HRLE &hrle);
+            //DenseIterator(Const::vecDi &coord, HRLE& hrle);
+            DenseIterator(HRLE& hrle);
             ~DenseIterator();
+
+            void SetStartPoint();
 
             bool dimwise_next(int dim);
             bool dimwise_restart(int dim);
             bool next();
 
+            Const::vecDi coord_;
+
         private:
-            HRLE &hrle_;
-            Const::vecDi &coord_;
+            HRLE& hrle_;
+            //Const::vecDi &coord_;
             std::array<int,Const::D> start_indices_indices_;
             std::array<int,Const::D> run_types_indices_;
             std::array<int,Const::D> run_breaks_indices;
@@ -67,6 +74,7 @@ namespace hrle
             void AddDefinedSection(int dim, int startcoord); // new value appended to the end of the LSF, and RLE is changed accordingly by coordinate
             void AddUndefinedSection(int dim, int startcoord, gridstate state);
 
+
             int GetNumActiveGrids();
 
             //void ConstructAllSquares();
@@ -75,6 +83,7 @@ namespace hrle
         
             //void Iterator(int startindex); // stop once for undefined run, stop once for each position on defined run
             friend class DenseIterator; // 明天写这个
+            DenseIterator denseiterator;
             bool MixedIterator();
 
             int CartesianToIndex(Const::vecDi coords, int layerindex, int cartdim);
@@ -88,6 +97,7 @@ namespace hrle
             //void RemoveGrid(Const::vecDi &coord); 
 
         private:
+
             std::vector<RLE> rles_;
             std::array<int,Const::D> maxdataindex_;
             std::vector<std::array<int, Const::D> > activegrids_;

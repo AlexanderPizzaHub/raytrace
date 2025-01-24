@@ -279,10 +279,10 @@ namespace LevelSet
     {
         activatesqures_.clear();
         Const::vecDi nextpoint;
-        nextpoint[0] = 0; // test
-        nextpoint[1] = 0; // test
+        //nextpoint[0] = 0; // test
+        //nextpoint[1] = 0; // test
         std::vector<int> squareindexlist;
-        while(hrle_->DenseIterator(nextpoint))
+        while(hrle_->denseiterator.next())
         {
             squareindexlist.clear();
             hrle_->GetSquareNeighbours(nextpoint, squareindexlist);

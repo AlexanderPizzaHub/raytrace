@@ -13,7 +13,7 @@ namespace Const
     // typedef scalar vecDd[D];
     // typedef label vecDi[D];
     typedef std::array<scalar, D> vecDd;
-    typedef std::array<label, D> vecDi;
+    typedef std::array<int, D> vecDi;
 
     const scalar SMALL = 1e-20;
     const scalar MAXIMUM_LIGHT_TIME = 100.0;

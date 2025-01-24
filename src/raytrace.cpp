@@ -69,9 +69,9 @@ int testrun2()
     using namespace hrle;
 
     std::array<std::array<int, 2>, Const::D> extents;
-    extents[0][0] = 0;
+    extents[0][0] = -3;
     extents[0][1] = 11;
-    extents[1][0] = 0;
+    extents[1][0] = -6;
     extents[1][1] = 10;
 
     HRLE hrle(extents);
@@ -177,7 +177,7 @@ int testrun2()
    std::cout<<hrle.denseiterator.coord_[0] << " " << hrle.denseiterator.coord_[1] << std::endl;
    for(int i=0;i<10;i++)
    {
-    hrle.denseiterator.next();
+    hrle.denseiterator.next(1);
     std::cout<<std::endl;
     std::cout<<hrle.denseiterator.coord_[0] << " " << hrle.denseiterator.coord_[1] << std::endl;
    }

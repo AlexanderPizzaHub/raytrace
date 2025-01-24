@@ -51,6 +51,7 @@ namespace hrle
             bool dimwise_next(int dim);
             bool dimwise_restart(int dim);
             bool next();
+            bool next(int current_dim);
 
             Const::vecDi coord_;
 

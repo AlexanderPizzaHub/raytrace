@@ -225,8 +225,10 @@ DenseIterator::~DenseIterator()
 
 void DenseIterator::SetStartPoint()
 {
-    coord_[0] = hrle_.rles_[1].runbreaks_[0];
+    coord_[0] = hrle_.rles_[1].runbreaks_[0]-1;
     coord_[1] = hrle_.rles_[0].runbreaks_[0];
+    run_types_indices_[0] = 1;
+    run_breaks_indices[0] = 1;
 }
 
 bool DenseIterator::dimwise_next(int dim)
@@ -271,14 +273,20 @@ bool DenseIterator::dimwise_next(int dim)
     int run_type_index_on_slice = run_types_index - runtypes_lend;
     int run_breaks_index_on_slice = run_breaks_index - run_breaks_lend+1;
 
+    for(int i =0;i<runbreaks_slice.size();i++)
+    {
+        std::cout << runbreaks_slice[i] << " @@@";
+    }
     //if(!(run_types_index<runtypes_rend-1))
     //{
     //    return false;
     //}
+    std::cout << "run_type_index_on_slice: " << run_type_index_on_slice << "runtype_slice_size: " << runtype_slice.size() << std::endl;
     if(run_type_index_on_slice == runtype_slice.size()-1)
     {
         run_types_index++;
         dimwise_restart(dim);
+        std::cout<<"false! dim "<<dim << "restarted to " << coord_[Const::D-dim-1]<<std::endl;
         return false;
     }
 
@@ -288,15 +296,15 @@ bool DenseIterator::dimwise_next(int dim)
         hrle_.rles_[dim].runtypes_[run_types_index].state_ == UNDEFINED_POS
     )
     {   
-        //std::cout <<"runbreak index " << run_breaks_index << "here!!" << rle.runbreaks_[run_breaks_index] << std::endl;
+        std::cout <<"runbreak index " << run_breaks_index << "here!!" << rle.runbreaks_[run_breaks_index] << std::endl;
         //std::cout << "!! " <<Const::D-1-dim<<std::endl;
 
         //std::cout<<"1: "<<coord_[Const::D-1-dim]<<std::endl;
         coord_[Const::D-1-dim] = rle.runbreaks_[run_breaks_index]; // 这里runbreak是可能是负数，所以coord不能用unsigned int，否则会出问题。
         //std::cout <<"2: "<<coord_[Const::D-1-dim]<<std::endl;
-        //run_breaks_index_on_slice++;
+        run_breaks_index_on_slice++;
         run_breaks_index++;
-        //run_type_index_on_slice++;
+        run_type_index_on_slice++;
         run_types_index++;
         //std::cout << " here" << std::endl;
         //std::cout << coord_[0] << std::endl;
@@ -305,17 +313,22 @@ bool DenseIterator::dimwise_next(int dim)
     
     else
     {
+        std::cout<<"entering herre!! "<<runbreaks_slice[run_breaks_index_on_slice] - 1<<std::endl;
         //if(coord_[dim] < rle.runbreaks_[run_breaks_index] - 1)
-        if(coord_[dim] < runbreaks_slice[run_breaks_index_on_slice+1] - 1)
+        if(coord_[Const::D-1-dim] < runbreaks_slice[run_breaks_index_on_slice] - 1)
         {
-            coord_[dim]++;
+            std::cout<<"@@!! "<<runbreaks_slice[run_breaks_index_on_slice] - 1<<std::endl;
+            coord_[Const::D-1-dim]++;
             return true;
         }
         else
         {
-            coord_[dim] = runbreaks_slice[run_breaks_index_on_slice+1];
+            std::cout<<"^^!! "<<runbreaks_slice[run_breaks_index_on_slice] - 1<<std::endl;
+            coord_[Const::D-1-dim] = runbreaks_slice[run_breaks_index_on_slice+1];
             run_breaks_index++;
             run_types_index++;
+            run_type_index_on_slice++;
+            run_breaks_index_on_slice++;
             return true;
         }
         //run_types_index++;
@@ -330,24 +343,56 @@ bool DenseIterator::dimwise_restart(int dim)
     {
         return false;
     }
-    coord_[dim] = hrle_.rles_[dim].extent_[0];
+    coord_[Const::D-1-dim] = hrle_.rles_[dim].extent_[0];
     return true;
 }
 
 bool DenseIterator::next()
 {
     int current_dim = Const::D - 1;
-    while(current_dim < Const::D && (!dimwise_next(current_dim)))
-    {
-       current_dim--;
-    }
     if(current_dim < 0)
     {
         return false;
     }
-    else
+    if(dimwise_next(current_dim))
     {
         return true;
+    }
+    else 
+    {
+        int i = 1;
+        while (current_dim - i >=-1)
+        {
+            if(dimwise_next(current_dim-i))
+            {
+                break;
+            }
+            i++;
+        }
+
+    }
+}
+
+bool DenseIterator::next(int current_dim)
+{
+    if(current_dim < 0)
+    {
+        return false;
+    }
+    if(dimwise_next(current_dim))
+    {
+        return true;
+    }
+    else
+    {
+        if(next(current_dim-1))
+        {
+            if(dimwise_next(current_dim))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

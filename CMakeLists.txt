@@ -11,13 +11,13 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O3  -Wall -pedantic-errors 
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/src
-    /opt/homebrew/Cellar/open-mpi/5.0.5/include
-    F:/CODES/Microsoft-MPI-master/src/include
+   # /opt/homebrew/Cellar/open-mpi/5.0.5/include
+   # F:/CODES/Microsoft-MPI-master/src/include
 )
 
 link_directories(
-    /opt/homebrew/Cellar/open-mpi/5.0.5/include
-    F:/CODES/Microsoft-MPI-master/src/include
+   # /opt/homebrew/Cellar/open-mpi/5.0.5/include
+   # F:/CODES/Microsoft-MPI-master/src/include
 )
 
 file(

@@ -4,7 +4,7 @@
 # compile CXX with /Library/Developer/CommandLineTools/usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/dual/Documents/projects/Phd25/raytrace/src -I/opt/homebrew/Cellar/open-mpi/5.0.5/include -I/Users/dual/Documents/projects/Phd25/raytrace/F:/CODES/Microsoft-MPI-master/src/include
+CXX_INCLUDES = -I/Users/dual/Documents/projects/Phd25/raytrace/src
 
 CXX_FLAGSarm64 =  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -std=gnu++11
 

@@ -1,20 +1,23 @@
+# 编译指令
 mkdir build && cd build 
-cmake .. -D CMAKE_CXX_COMPILER=mpic++ #出现mpi的linker command failed就用mpic++来编译
+cmake .. 
 make
 
-### TODO
-1. 参考面通量与源面对齐（normalize） √
-2. 参考面通量分给网格点 √
+# 路径修改
+需要在CMakeList指定omp路经
 
-2.5. 光线与法向相同-> 正通量?正速度? 不同,负速度? √
-    不同粒子应该是要分别做光追,分别计算速度的.把最后的速度累加起来. √
+# 运行指令
+./raytrace(.exe)
 
-3. MPI 不紧急
+# config配置项
+参数输入均在constants.hpp中配置。
+主要配置：source_plane_xbox, source_plane_ybox, substrate_xbox, substrate_ybox, process_time
+source_plane指定光源位置。光线起始点在该盒子内随机生成。
+substrate_xbox指定基底位置。光线与该盒子判定相交。
+process_time指定模拟时间。
 
-4. 稀疏场水平集：HRLE，迎风格式
+光源的添加没有自动化。如果需要添加多个光源，需要在raytrance.cpp中添加tracer->AddNewSource(...)语句。
 
-5. 光追加速
-5.1 调整数据结构
-5.2 kd树
-
-目前需要做kd树和稀疏场。kd树降复杂度，稀疏场保SDF。
+# 输出文件说明
+result文件夹下的txt文件保存每一步的结果。由于形貌表示是分片连续的直线段，所以存储的格式为：
+    起点x 起点y 终点x 终点y 演化速率（打在该直线上的通量）

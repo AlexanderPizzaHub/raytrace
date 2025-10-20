@@ -53,10 +53,10 @@ RM = /opt/homebrew/Cellar/cmake/3.25.1/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/dual/Documents/projects/raytrace
+CMAKE_SOURCE_DIR = /Users/dual/Documents/projects/Phd25/raytrace
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/dual/Documents/projects/raytrace/build
+CMAKE_BINARY_DIR = /Users/dual/Documents/projects/Phd25/raytrace/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/raytrace.dir/depend.make
@@ -70,102 +70,102 @@ include CMakeFiles/raytrace.dir/progress.make
 include CMakeFiles/raytrace.dir/flags.make
 
 CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o: /Users/dual/Documents/projects/raytrace/src/geometry/mesh.cpp
+CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o: /Users/dual/Documents/projects/Phd25/raytrace/src/geometry/mesh.cpp
 CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o -MF CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o.d -o CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o -c /Users/dual/Documents/projects/raytrace/src/geometry/mesh.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/Phd25/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o -MF CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o.d -o CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.o -c /Users/dual/Documents/projects/Phd25/raytrace/src/geometry/mesh.cpp
 
 CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/raytrace/src/geometry/mesh.cpp > CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/Phd25/raytrace/src/geometry/mesh.cpp > CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.i
 
 CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/raytrace/src/geometry/mesh.cpp -o CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/Phd25/raytrace/src/geometry/mesh.cpp -o CMakeFiles/raytrace.dir/src/geometry/mesh.cpp.s
 
 CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o: /Users/dual/Documents/projects/raytrace/src/geometry/objects.cpp
+CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o: /Users/dual/Documents/projects/Phd25/raytrace/src/geometry/objects.cpp
 CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o -MF CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o.d -o CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o -c /Users/dual/Documents/projects/raytrace/src/geometry/objects.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/Phd25/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o -MF CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o.d -o CMakeFiles/raytrace.dir/src/geometry/objects.cpp.o -c /Users/dual/Documents/projects/Phd25/raytrace/src/geometry/objects.cpp
 
 CMakeFiles/raytrace.dir/src/geometry/objects.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/geometry/objects.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/raytrace/src/geometry/objects.cpp > CMakeFiles/raytrace.dir/src/geometry/objects.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/Phd25/raytrace/src/geometry/objects.cpp > CMakeFiles/raytrace.dir/src/geometry/objects.cpp.i
 
 CMakeFiles/raytrace.dir/src/geometry/objects.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/geometry/objects.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/raytrace/src/geometry/objects.cpp -o CMakeFiles/raytrace.dir/src/geometry/objects.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/Phd25/raytrace/src/geometry/objects.cpp -o CMakeFiles/raytrace.dir/src/geometry/objects.cpp.s
 
 CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o: /Users/dual/Documents/projects/raytrace/src/levelset/levelset.cpp
+CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o: /Users/dual/Documents/projects/Phd25/raytrace/src/levelset/levelset.cpp
 CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o -MF CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o.d -o CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o -c /Users/dual/Documents/projects/raytrace/src/levelset/levelset.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/Phd25/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o -MF CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o.d -o CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.o -c /Users/dual/Documents/projects/Phd25/raytrace/src/levelset/levelset.cpp
 
 CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/raytrace/src/levelset/levelset.cpp > CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/Phd25/raytrace/src/levelset/levelset.cpp > CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.i
 
 CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/raytrace/src/levelset/levelset.cpp -o CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/Phd25/raytrace/src/levelset/levelset.cpp -o CMakeFiles/raytrace.dir/src/levelset/levelset.cpp.s
 
 CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o: /Users/dual/Documents/projects/raytrace/src/levelset/marchingcube.cpp
+CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o: /Users/dual/Documents/projects/Phd25/raytrace/src/levelset/marchingcube.cpp
 CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o -MF CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o.d -o CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o -c /Users/dual/Documents/projects/raytrace/src/levelset/marchingcube.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/Phd25/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o -MF CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o.d -o CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.o -c /Users/dual/Documents/projects/Phd25/raytrace/src/levelset/marchingcube.cpp
 
 CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/raytrace/src/levelset/marchingcube.cpp > CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/Phd25/raytrace/src/levelset/marchingcube.cpp > CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.i
 
 CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/raytrace/src/levelset/marchingcube.cpp -o CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/Phd25/raytrace/src/levelset/marchingcube.cpp -o CMakeFiles/raytrace.dir/src/levelset/marchingcube.cpp.s
 
 CMakeFiles/raytrace.dir/src/raytrace.cpp.o: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/raytrace.cpp.o: /Users/dual/Documents/projects/raytrace/src/raytrace.cpp
+CMakeFiles/raytrace.dir/src/raytrace.cpp.o: /Users/dual/Documents/projects/Phd25/raytrace/src/raytrace.cpp
 CMakeFiles/raytrace.dir/src/raytrace.cpp.o: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/raytrace.dir/src/raytrace.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/raytrace.cpp.o -MF CMakeFiles/raytrace.dir/src/raytrace.cpp.o.d -o CMakeFiles/raytrace.dir/src/raytrace.cpp.o -c /Users/dual/Documents/projects/raytrace/src/raytrace.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/Phd25/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/raytrace.dir/src/raytrace.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/raytrace.cpp.o -MF CMakeFiles/raytrace.dir/src/raytrace.cpp.o.d -o CMakeFiles/raytrace.dir/src/raytrace.cpp.o -c /Users/dual/Documents/projects/Phd25/raytrace/src/raytrace.cpp
 
 CMakeFiles/raytrace.dir/src/raytrace.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/raytrace.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/raytrace/src/raytrace.cpp > CMakeFiles/raytrace.dir/src/raytrace.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/Phd25/raytrace/src/raytrace.cpp > CMakeFiles/raytrace.dir/src/raytrace.cpp.i
 
 CMakeFiles/raytrace.dir/src/raytrace.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/raytrace.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/raytrace/src/raytrace.cpp -o CMakeFiles/raytrace.dir/src/raytrace.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/Phd25/raytrace/src/raytrace.cpp -o CMakeFiles/raytrace.dir/src/raytrace.cpp.s
 
 CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o: /Users/dual/Documents/projects/raytrace/src/raytracer/ray.cpp
+CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o: /Users/dual/Documents/projects/Phd25/raytrace/src/raytracer/ray.cpp
 CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o -MF CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o.d -o CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o -c /Users/dual/Documents/projects/raytrace/src/raytracer/ray.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/Phd25/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o -MF CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o.d -o CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o -c /Users/dual/Documents/projects/Phd25/raytrace/src/raytracer/ray.cpp
 
 CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/raytrace/src/raytracer/ray.cpp > CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/Phd25/raytrace/src/raytracer/ray.cpp > CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.i
 
 CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/raytrace/src/raytracer/ray.cpp -o CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/Phd25/raytrace/src/raytracer/ray.cpp -o CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.s
 
 CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o: CMakeFiles/raytrace.dir/flags.make
-CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o: /Users/dual/Documents/projects/raytrace/src/raytracer/tracer.cpp
+CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o: /Users/dual/Documents/projects/Phd25/raytrace/src/raytracer/tracer.cpp
 CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o: CMakeFiles/raytrace.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o -MF CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o.d -o CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o -c /Users/dual/Documents/projects/raytrace/src/raytracer/tracer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dual/Documents/projects/Phd25/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o -MF CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o.d -o CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o -c /Users/dual/Documents/projects/Phd25/raytrace/src/raytracer/tracer.cpp
 
 CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/raytrace/src/raytracer/tracer.cpp > CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dual/Documents/projects/Phd25/raytrace/src/raytracer/tracer.cpp > CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.i
 
 CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/raytrace/src/raytracer/tracer.cpp -o CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dual/Documents/projects/Phd25/raytrace/src/raytracer/tracer.cpp -o CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.s
 
 # Object files for target raytrace
 raytrace_OBJECTS = \
@@ -189,7 +189,7 @@ raytrace: CMakeFiles/raytrace.dir/src/raytracer/ray.cpp.o
 raytrace: CMakeFiles/raytrace.dir/src/raytracer/tracer.cpp.o
 raytrace: CMakeFiles/raytrace.dir/build.make
 raytrace: CMakeFiles/raytrace.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dual/Documents/projects/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable raytrace"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dual/Documents/projects/Phd25/raytrace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable raytrace"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/raytrace.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -201,6 +201,6 @@ CMakeFiles/raytrace.dir/clean:
 .PHONY : CMakeFiles/raytrace.dir/clean
 
 CMakeFiles/raytrace.dir/depend:
-	cd /Users/dual/Documents/projects/raytrace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/dual/Documents/projects/raytrace /Users/dual/Documents/projects/raytrace /Users/dual/Documents/projects/raytrace/build /Users/dual/Documents/projects/raytrace/build /Users/dual/Documents/projects/raytrace/build/CMakeFiles/raytrace.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/dual/Documents/projects/Phd25/raytrace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/dual/Documents/projects/Phd25/raytrace /Users/dual/Documents/projects/Phd25/raytrace /Users/dual/Documents/projects/Phd25/raytrace/build /Users/dual/Documents/projects/Phd25/raytrace/build /Users/dual/Documents/projects/Phd25/raytrace/build/CMakeFiles/raytrace.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/raytrace.dir/depend
 

@@ -115,7 +115,7 @@ namespace LevelSet
         label numgrids_active = levelsetfunction_.size();
         for (label i = 0; i < numgrids_active; i++)
         {
-            // std::cout << "velocity" << velocityfield_[i] << std::endl;
+            //std::cout << "velocity" << velocityfield_[i] << std::endl;
             levelsetfunction_[i] -= velocityfield_[i] * dt;
         }
     }
@@ -154,7 +154,7 @@ namespace LevelSet
             scalar areaur = (gridur->x - center[0]) * (center[1] - gridur->y);
 
             scalar area = areaul + areall + arealr + areaur;
-
+            //std::cout << "rate: " << refarea.getrate() << std::endl;
             velocityfield_[gridul->index] += arealr / area * refarea.getrate();
             velocityfield_[gridll->index] += areaur / area * refarea.getrate();
             velocityfield_[gridlr->index] += areaul / area * refarea.getrate();

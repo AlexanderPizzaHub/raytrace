@@ -10,7 +10,7 @@ int testrun()
     // 从文件中读grids然后跑程序
     Mesh *mesh = new Mesh("./sparsefieldgrids.txt");
 
-    label nx = 1000;
+    label nx = 25;
     mesh->CreateTestMesh2(nx, nx, nx / 2);
     mesh->ConstructTopo();
 
@@ -40,9 +40,9 @@ int testrun()
     {
         std::cout << "time: " << t << std::endl;
         levelset->ConstructAllRefAreas();
-        // std::cout << levelset->getnumRefAreas() << std::endl;
-        // Const::vecDd center  = levelset->getRefArea(0)->getcenter();
-        // std::cout << center[0]<<" "<<center[1] <<std::endl;
+         //std::cout << levelset->getnumRefAreas() << std::endl;
+         //Const::vecDd center  = levelset->getRefArea(0)->getcenter();
+         //std::cout << center[0]<<" "<<center[1] <<std::endl;
         levelset->ClearVelocity();
 
         tracer->CastAllRays(100000, 0);

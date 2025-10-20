@@ -180,9 +180,9 @@ void Tracer::CastOneRay(Ray &ray)
         // std::cout << "hitting ..." << std::endl;
         if (dt + ray.time_ < Const::MAXIMUM_LIGHT_TIME)
         {
-            // std::cout<< "hit!!!" << std::endl;
-            // std::cout << hitRefArea << std::endl;
-            // std::cout << hitRefArea->getweightstore() << std::endl;
+             //std::cout<< "hit!!!" << std::endl;
+             //std::cout << hitRefArea << std::endl;
+             //std::cout << hitRefArea->getweightstore() << std::endl;
             UpdateAfterHit(ray, *hitRefArea, dt);
         }
         else
@@ -209,6 +209,7 @@ void Tracer::CastAllRays(label numrays, label sourceID)
     // Const::vecDd xbound{0.0,1.0};
     // Const::vecDd ybound{0.0,1.0};
     lsfptr_->ClearWeights();
+    #pragma omp parallel for private(i) schedule(static)
     for (i = 0; i < numrays; i++)
     {
         // std::cout << "Ray initializing" << std::endl;
@@ -232,6 +233,7 @@ void Tracer::NormalizeFlux(scalar numrays)
     {
         LevelSet::RefArea *refarea = lsfptr_->getRefArea(i);
         scalar flux = refarea->getweightstore();
+        //std::cout << "flux on refarea " << i << ": " << flux << std::endl;
         refarea->SetWeight(flux / numrays);
     }
 }
